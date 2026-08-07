@@ -1,7 +1,7 @@
-﻿<?php
+<?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_shortcode('marmaray_ucret', 'marmaray_ucret_sc');
+add_shortcode('marmaray_ucret_planla', 'marmaray_ucret_sc');
 function marmaray_ucret_sc() { ob_start(); include(plugin_dir_path(__FILE__) . 'marmaray_ucret_view.php'); return ob_get_clean(); }
 
 // [marmaray_rota_planla]
