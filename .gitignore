@@ -1,0 +1,14 @@
+# WordPress Ignore Rules
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/cache/
+/wp-content/debug.log
+/wp-config.php
+
+# ZIP files
+*.zip
+*.tar.gz
+
+# OS Generated
+.DS_Store
+Thumbs.db

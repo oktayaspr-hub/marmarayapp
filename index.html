@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarmarayApp - Canlı Marmaray Saatleri ve Tren Takibi 2026</title>
+    <meta name="description" content="Güncel Marmaray sefer saatleri, duraklar arası ücret hesaplama ve canlı sefer takibi.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="wp-content/plugins/marmaray-core-v2/assets/css/app.css">
+</head>
+<body>
+    <!-- ===================== APP DOWNLOAD BANNER ===================== -->
+    <div class="app-download-banner">
+        <div class="app-banner-content">
+            <div class="app-banner-text">
+                <span class="app-banner-title">MarmarayApp Cebinizde!</span>
+                <span class="app-banner-desc">Türkiye'nin ilk ve tek Marmaray canlı takip uygulamamızı ücretsiz olarak hemen indirin!</span>
+            </div>
+            <div class="app-banner-buttons">
+                <a href="#" class="app-store-btn play-store-btn" title="Google Play'den İndirin">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                    <span>Google Play</span>
+                </a>
+                <a href="#" class="app-store-btn apple-store-btn" title="App Store'dan İndirin">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.69C20.06,16.76 19.6,18.23 18.71,19.5M12,6.3C11.89,4.45 13.31,2.83 15.11,2.7C15.24,4.68 13.53,6.43 12,6.3Z"/></svg>
+                    <span>App Store</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===================== GLASS HEADER NAVBAR ===================== -->
+    <header class="glass-header" id="main-header">
+        <div class="logo">
+            <a href="/">
+                <img src="wp-content/plugins/marmaray-core-v2/assets/images/marmaray_logo_new.png" alt="MarmarayApp Logo" width="110" height="110" style="background: transparent;">
+                <span><span style="color:#0056b3;">Marmaray</span><span class="highlight">App</span></span>
+            </a>
+        </div>
+
+        <nav class="main-nav" id="main-nav">
+            <a href="/" class="active">Ana Sayfa</a>
+            <a href="/marmaray-saatleri">Marmaray Saatleri</a>
+            <a href="/rota-planla">Rota Planla</a>
+            <a href="/ucret-hesapla">Ücret Hesapla</a>
+            <a href="/blog">Blog</a>
+            <a href="/iletisim">İletişim</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="custom-lang-select" id="custom-lang-select" onclick="this.classList.toggle('active')">
+                <div class="lang-current">
+                    <img src="https://flagcdn.com/tr.svg" alt="TR"> <span>TR</span>
+                </div>
+                <div class="lang-options">
+                    <div class="lang-option" onclick="document.querySelector('.lang-current img').src='https://flagcdn.com/tr.svg'; document.querySelector('.lang-current span').innerText='TR'">
+                        <img src="https://flagcdn.com/tr.svg" alt="TR"> <span>TR</span>
+                    </div>
+                    <div class="lang-option" onclick="document.querySelector('.lang-current img').src='https://flagcdn.com/gb.svg'; document.querySelector('.lang-current span').innerText='EN'">
+                        <img src="https://flagcdn.com/gb.svg" alt="EN"> <span>EN</span>
+                    </div>
+                </div>
+            </div>
+            <button class="action-btn" id="theme-toggle" title="Tema Değiştir">
+                <!-- Sun icon = light mode default -->
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+            </button>
+            <button class="action-btn hamburger" id="mobile-toggle" title="Menü">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===================== LIVE ANNOUNCEMENT BANNER ===================== -->
+    <div class="announcement-banner">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" style="font-weight: bold;">
+            <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <marquee scrollamount="4" style="max-width:800px;">
+            <strong style="font-weight:900;">Duyuru:</strong> Tren hızı, istasyon trafiği ve yolcu yoğunluğuna bağlı olarak sefer saatlerinde mikro farklılıklar olabilir. İyi yolculuklar dileriz.
+        </marquee>
+    </div>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="app-container">
+
+        <!-- HERO -->
+        <div class="hero">
+            <h1>Marmaray <span class="highlight">Canlı Takip</span> Panosu</h1>
+            <p class="subtitle">
+                Tüm duraklar için anlık tren kalkış saatleri ve güzergah durumu.
+                Durak seçerek Halkalı ve Gebze yönü saatlerini görün.
+            </p>
+        </div>
+
+        <!-- İSTASYON SEÇİCİ & KARTLAR (haritanın üstünde) -->
+        <div class="station-picker-section">
+            <div class="station-picker-header">
+                <div class="picker-left">
+                    <label for="station-select">
+                        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                       <label for="station-dropdown">İstasyon Seçin:</label>
+                    <select class="station-dropdown" id="station-dropdown">
+                        <option value="">Durak Seçiniz</option>
+                    </select>
+                </div>
+                <div class="live-badge-pill" id="global-live-badge">
+                    <span class="live-dot-anim"></span>
+                    <span class="live-badge-label">CANLI</span>
+                </div>
+            </div>
+            <div id="station-cards" style="display:none;"></div>
+        </div>
+
+        <div class="ad-slot">
+            REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
+        </div>
+
+
+        <!-- ===================== S-MAP GLASS PANEL ===================== -->
+        <div class="map-glass-panel">
+
+            <!-- TCDD Kırmızı Başlık Bandı -->
+            <div class="map-tcdd-header">
+                <div class="tcdd-logos">
+                    <img src="https://marmarayadminapi.tcddtasimacilik.gov.tr/imgmarmaray/Ula%C5%9Ft%C4%B1rma_Bakanl%C4%B1%C4%9F%C4%B1_Hover.png" alt="T.C. Ulaştırma Bakanlığı" onerror="this.style.display='none'">
+                    <img src="https://marmarayadminapi.tcddtasimacilik.gov.tr/imgmarmaray/Tcdd_Hover.png" alt="TCDD" onerror="this.style.display='none'">
+                </div>
+                <div class="map-live-info">
+                    <span id="current-date-time">--.--.---- --:--:--</span>
+                </div>
+                <div class="map-destination-badge" id="map-dest-badge">
+                    İSTEDİĞİNİZ TRENE TIKLAYINIZ
+                </div>
+            </div>
+
+            <!-- Harita hint + zoom kontrolü -->
+            <div class="map-hint-bar">
+                <span style="display: flex; align-items: center;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    İstasyona tıklayarak veya aşağıdan seçerek seferleri görüntüleyin.
+                </span>
+                <span class="legend-item"><span class="legend-dot red-dot"></span> Gebze Yönü</span>
+                <span class="legend-item"><span class="legend-dot blue-dot"></span> Halkalı Yönü</span>
+            </div>
+
+            <!-- S-Şekilli Harita (zoom/pan destekli) -->
+            <div class="map-wrapper" id="map-wrapper">
+                <div id="marmaray-map-scale">
+                    <div id="marmaray-map"></div>
+                </div>
+                <!-- Station Hover Tooltip -->
+                <div class="station-tooltip" id="station-tooltip">
+                    <div class="tooltip-name" id="tooltip-name">İstasyon</div>
+                    <div class="tooltip-dirs">
+                        <span class="tooltip-dir blue-dir" id="tooltip-halkali">← Halkalı: -- dk</span>
+                        <span class="tooltip-dir red-dir" id="tooltip-gebze">Gebze: -- dk →</span>
+                    </div>
+                </div>
+                <!-- Train Click Popup -->
+                <div class="train-popup" id="train-popup">
+                    <button class="train-popup-close" id="train-popup-close">✕</button>
+                    <div class="train-popup-body" id="train-popup-body">
+                        <!-- Doldurulacak -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GÜZERGAH HATTI ALT HARİTA - TÜM 43 DURAK -->
+        <div class="transfer-section">
+            <h2 class="section-title">Marmaray Güzergah Hattı</h2>
+            <div class="transfer-map-scroll" id="transfer-map-scroll">
+                <div class="transfer-stations-row" id="transfer-row">
+                    <!-- JS ile doldurulur -->
+                </div>
+            </div>
+        </div>
+
+        <!-- İSTANBUL HIZLI ULAŞIM SİSTEMİ HARİTASI -->
+        <div class="transfer-section">
+            <h2 class="section-title">İstanbul Hızlı Ulaşım Sistemi</h2>
+            <div class="map-wrapper" id="istanbul-map-wrapper" style="height: 600px; background: white; border-radius: 8px; overflow: hidden; position: relative; cursor: grab;">
+                <div id="istanbul-map-scale" style="width: 100%; height: 100%; transform-origin: top left; display: flex; align-items: center; justify-content: center;">
+                    <img src="wp-content/plugins/marmaray-core-v2/assets/images/istanbul-hizli-ulasim-agi.png" alt="İstanbul Hızlı Ulaşım Sistemi Haritası" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;" id="istanbul-map-img">
+                </div>
+                <div class="map-controls" style="position: absolute; bottom: 15px; right: 15px;">
+                    <button class="map-ctrl-btn" id="ist-zoom-out" title="Uzaklaştır">−</button>
+                    <button class="map-ctrl-btn" id="ist-zoom-reset" title="Sıfırla">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        </svg>
+                    </button>
+                    <button class="map-ctrl-btn" id="ist-zoom-in" title="Yakınlaştır">+</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ad-slot">
+            REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <div class="footer-logo">Marmaray<span class="highlight">App</span></div>
+                <p class="footer-disclaimer">
+                    Bu site resmi bir TCDD kaynağı değildir. Gösterilen süreler tahmini olup TCDD tarafından paylaşılan
+                    sefer saatleri baz alınarak hesaplanmaktadır.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Kurumsal</h4>
+                <a href="/hakkimizda">Hakkımızda</a>
+                <a href="/iletisim">İletişim</a>
+                <a href="/sponsorluk">Sponsorluk</a>
+            </div>
+            <div class="footer-col">
+                <h4>Yasal Sözleşmeler</h4>
+                <a href="/gizlilik-sozlesmesi">Gizlilik Sözleşmesi</a>
+                <a href="/cerez-politikasi">Çerez Politikası</a>
+                <a href="/kvkk-aydinlatma-metni">KVKK Aydınlatma Metni</a>
+            </div>
+            <div class="footer-col">
+                <h4>Faydalı Linkler</h4>
+                <a href="/uygulamayi-indir">Uygulamayı İndir</a>
+                <a href="/sikca-sorulan-sorular">Sıkça Sorulan Sorular</a>
+                <a href="/sorumluluk-reddi-beyani">Sorumluluk Reddi Beyanı</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 MarmarayApp. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="wp-content/plugins/marmaray-core-v2/assets/js/app.js"></script>
+</body>
+</html>
