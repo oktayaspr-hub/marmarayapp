@@ -1,4 +1,6 @@
+const fs = require('fs');
 
+let content = `
 <style>
 .app-module-card {
     background: var(--glass-bg);
@@ -99,12 +101,12 @@
     const rotaDistSel = document.getElementById('rota-district');
     
     ROTA_STATIONS.forEach((s) => {
-        rotaOriginSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
-        rotaDestSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
+        rotaOriginSel.innerHTML += \`<option value="\${s.name}">\${s.name}</option>\`;
+        rotaDestSel.innerHTML += \`<option value="\${s.name}">\${s.name}</option>\`;
     });
     
     DISTRICTS.forEach((d) => {
-        rotaDistSel.innerHTML += `<option value="${d}">${d}</option>`;
+        rotaDistSel.innerHTML += \`<option value="\${d}">\${d}</option>\`;
     });
     
     // Mapping Districts to best transfer logic
@@ -172,37 +174,40 @@
         
         let html = '';
         
-        html += `
+        html += \`
         <div class="route-step">
-            <div class="step-icon"><img src="${LOGOS.marmaray}" alt="Marmaray"></div>
+            <div class="step-icon"><img src="\${LOGOS.marmaray}" alt="Marmaray"></div>
             <div class="step-content">
-                <div class="step-title">${start} İstasyonundan Marmaray'a Binin</div>
-                <div class="step-desc">TCDD Marmaray hattı ile ${end} istikametine ilerleyin.</div>
+                <div class="step-title">\${start} İstasyonundan Marmaray'a Binin</div>
+                <div class="step-desc">TCDD Marmaray hattı ile \${end} istikametine ilerleyin.</div>
             </div>
         </div>
-        `;
+        \`;
         
-        html += `
+        html += \`
         <div class="route-step">
             <div class="step-icon walk">Y</div>
             <div class="step-content">
-                <div class="step-title">${end} İstasyonunda İnin ve Turnikelerden Çıkın</div>
+                <div class="step-title">\${end} İstasyonunda İnin ve Turnikelerden Çıkın</div>
                 <div class="step-desc">İstasyondan çıkarak aktarma noktasına ilerleyin.</div>
             </div>
         </div>
-        `;
+        \`;
         
-        html += `
+        html += \`
         <div class="route-step">
-            <div class="step-icon">${routeData.logo === LOGOS.walk ? 'Y' : `<img src="${routeData.logo}" alt="${routeData.type}">`}</div>
+            <div class="step-icon">\${routeData.logo === LOGOS.walk ? 'Y' : \`<img src="\${routeData.logo}" alt="\${routeData.type}">\`}</div>
             <div class="step-content">
-                <div class="step-title">${dist} Yönüne Gidiş (${routeData.type})</div>
-                <div class="step-desc">${routeData.desc}</div>
+                <div class="step-title">\${dist} Yönüne Gidiş (\${routeData.type})</div>
+                <div class="step-desc">\${routeData.desc}</div>
             </div>
         </div>
-        `;
+        \`;
         
         document.getElementById('rota-steps-list').innerHTML = html;
         document.getElementById('rota-result-container').style.display = 'block';
     });
 </script>
+`;
+
+fs.writeFileSync('wp-content/plugins/marmaray-core-v2/marmaray_rota_view.php', content, 'utf8');

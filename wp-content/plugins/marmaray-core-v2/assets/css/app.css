@@ -1129,3 +1129,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 
 .sticky-wrapper { position: sticky; top: 0; z-index: 9999; }
 .glass-header { position: static; }
+
+@media (max-width: 900px) { .main-nav { background: var(--panel-bg); } }
+.glass-header { position: relative; z-index: 999; }
+.lang-options { z-index: 1000 !important; }
