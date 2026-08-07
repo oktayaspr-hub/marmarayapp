@@ -1,4 +1,6 @@
+const fs = require('fs');
 
+let content = `
 <style>
 .app-module-card {
     background: var(--glass-bg);
@@ -316,11 +318,11 @@
     const semtGroup = document.getElementById('semt-group');
     
     ROTA_STATIONS.forEach((s) => {
-        rotaOriginSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
+        rotaOriginSel.innerHTML += \`<option value="\${s.name}">\${s.name}</option>\`;
     });
     
     Object.keys(DISTRICT_MAP).sort().forEach((d) => {
-        rotaDistSel.innerHTML += `<option value="${d}">${d}</option>`;
+        rotaDistSel.innerHTML += \`<option value="\${d}">\${d}</option>\`;
     });
     
     rotaDistSel.addEventListener('change', () => {
@@ -328,7 +330,7 @@
         rotaNeighSel.innerHTML = '<option value="">Hedef hat / semt seçiniz...</option>';
         if(dist && DISTRICT_MAP[dist]) {
             DISTRICT_MAP[dist].forEach(n => {
-                rotaNeighSel.innerHTML += `<option value="${n.name}">${n.name}</option>`;
+                rotaNeighSel.innerHTML += \`<option value="\${n.name}">\${n.name}</option>\`;
             });
             semtGroup.style.display = 'block';
         } else {
@@ -360,18 +362,21 @@
             let iconClass = 'step-icon';
             if(step.type === 'walk' || step.type === 'aktarim') iconClass += ' walk';
             
-            html += `
-            <div class="route-step" ${isLast ? 'style="margin-bottom:0;"' : ''}>
-                <div class="${iconClass}"><img src="${logoSrc}" ${step.type==='aktarim'?'style="opacity:0.7"':''} alt="${step.type}"></div>
+            html += \`
+            <div class="route-step" \${isLast ? 'style="margin-bottom:0;"' : ''}>
+                <div class="\${iconClass}"><img src="\${logoSrc}" \${step.type==='aktarim'?'style="opacity:0.7"':''} alt="\${step.type}"></div>
                 <div class="step-content">
-                    <div class="step-title">${step.dest}</div>
-                    <div class="step-desc">${step.text}</div>
+                    <div class="step-title">\${step.dest}</div>
+                    <div class="step-desc">\${step.text}</div>
                 </div>
             </div>
-            `;
+            \`;
         });
         
         document.getElementById('rota-steps-list').innerHTML = html;
         document.getElementById('rota-result-container').style.display = 'block';
     });
 </script>
+`;
+
+fs.writeFileSync('wp-content/plugins/marmaray-core-v2/marmaray_rota_view.php', content, 'utf8');
