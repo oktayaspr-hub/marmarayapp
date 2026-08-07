@@ -8,12 +8,14 @@
 .schedule-list { max-height: 400px; overflow-y: auto; padding: 10px; }
 .schedule-item { padding: 12px; border-bottom: 1px solid var(--border-color); text-align: center; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); }
 .schedule-item:last-child { border-bottom: none; }
+.schedule-list { max-height: 400px; overflow-y: auto; background: var(--panel-bg); }
+.schedule-item:nth-child(even) { background: rgba(0, 0, 0, 0.03); }
 @media (max-width: 768px) { .schedule-tables { flex-direction: column; } }
 </style>
 
 <div class="app-module-card">
     <div class="input-group">
-        <label>İstasyon Seçiniz</label>
+        <label>İstasyon Seçiniz:</label>
         <select id="saat-origin">
             <option value="">İstasyon Seçiniz...</option>
         </select>
@@ -21,11 +23,11 @@
     
     <div class="schedule-tables" id="schedule-container" style="display:none;">
         <div class="schedule-col">
-            <div class="schedule-header">Halkalı Yönü</div>
+            <div class="schedule-header" style="background: linear-gradient(135deg, var(--accent-blue), #003d82);">Halkalı Yönü</div>
             <div class="schedule-list" id="halkali-list"></div>
         </div>
         <div class="schedule-col">
-            <div class="schedule-header" style="background:var(--accent)">Gebze Yönü</div>
+            <div class="schedule-header" style="background: linear-gradient(135deg, var(--accent), #990000);">Gebze Yönü</div>
             <div class="schedule-list" id="gebze-list"></div>
         </div>
     </div>
