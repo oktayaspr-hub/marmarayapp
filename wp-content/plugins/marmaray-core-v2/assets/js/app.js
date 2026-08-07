@@ -494,9 +494,19 @@ const setupMenu = () => {
 // ============================================================
 const updateClock = () => {
   const el = document.getElementById('current-date-time');
-  if (!el) return;
+  const dVal = document.getElementById('current-date-val');
+  const tVal = document.getElementById('current-time-val');
   const n = new Date();
-  el.textContent = `${n.toLocaleDateString('tr-TR',{day:'2-digit',month:'2-digit',year:'numeric'})} ${n.toLocaleTimeString('tr-TR',{hour12:false})}`;
+  const dateStr = n.toLocaleDateString('tr-TR',{day:'2-digit',month:'2-digit',year:'numeric'});
+  const timeStr = n.toLocaleTimeString('tr-TR',{hour12:false});
+  
+  if (el) {
+      el.textContent = `${dateStr} ${timeStr}`;
+  }
+  if (dVal && tVal) {
+      dVal.textContent = dateStr;
+      tVal.textContent = timeStr;
+  }
 };
 
 // ============================================================

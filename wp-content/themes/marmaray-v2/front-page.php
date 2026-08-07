@@ -49,14 +49,20 @@ get_header(); ?>
             <!-- TCDD Kırmızı Başlık Bandı -->
             <div class="map-tcdd-header">
                 <div class="tcdd-logos">
-                    <img src="https://marmarayadminapi.tcddtasimacilik.gov.tr/imgmarmaray/Ula%C5%9Ft%C4%B1rma_Bakanl%C4%B1%C4%9F%C4%B1_Hover.png" alt="T.C. Ulaştırma Bakanlığı" onerror="this.style.display='none'">
-                    <img src="https://marmarayadminapi.tcddtasimacilik.gov.tr/imgmarmaray/Tcdd_Hover.png" alt="TCDD" onerror="this.style.display='none'">
+                    <img src="/wp-content/plugins/marmaray-core-v2/assets/images/trainx.png" alt="TrainX Logo" onerror="this.style.display='none'" style="max-height: 40px; margin-left: 10px;">
                 </div>
-                <div class="map-live-info">
-                    <span id="current-date-time">--.--.---- --:--:--</span>
+                <div class="map-live-info" style="display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.4;">
+                    <span id="current-date" style="display: flex; align-items: center; gap: 6px;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span id="current-date-val">--.--.----</span>
+                    </span>
+                    <span id="current-time" style="display: flex; align-items: center; gap: 6px; font-weight: 700;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <span id="current-time-val">--:--:--</span>
+                    </span>
                 </div>
                 <div class="map-destination-badge" id="map-dest-badge">
-                    İSTEDİĞİNİZ TRENE TIKLAYINIZ
+                    CANLI MARMARAY TAKİBİ
                 </div>
             </div>
 
