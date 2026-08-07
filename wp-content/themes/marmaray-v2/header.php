@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?> data-theme="light">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -8,6 +8,7 @@
 </head>
 <body <?php body_class( 'light-theme' ); ?>>
 <?php wp_body_open(); ?>
+<div class="sticky-wrapper">
     <!-- ===================== APP DOWNLOAD BANNER ===================== -->
     <div class="app-download-banner">
         <div class="app-banner-content">
@@ -92,3 +93,4 @@
             <strong style="font-weight:900;">Duyuru:</strong> Tren hızı, istasyon trafiği ve yolcu yoğunluğuna bağlı olarak sefer saatlerinde mikro farklılıklar olabilir. İyi yolculuklar dileriz.
         </marquee>
     </div>
+</div>

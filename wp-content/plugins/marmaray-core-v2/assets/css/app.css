@@ -1126,3 +1126,6 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 .page-wrapper h2 { margin-top: 40px; margin-bottom: 20px; color: var(--text-primary); font-size: 1.8rem; font-weight: 700; }
 .page-wrapper h3 { margin-top: 30px; margin-bottom: 15px; color: var(--text-primary); font-size: 1.4rem; }
 .page-wrapper p, .page-wrapper li { font-size: 1.15rem; line-height: 1.9; margin-bottom: 20px; color: var(--text-secondary); }
+
+.sticky-wrapper { position: sticky; top: 0; z-index: 9999; }
+.glass-header { position: static; }
