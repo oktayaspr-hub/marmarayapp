@@ -34,124 +34,131 @@
 
 <div class="app-module-card">
     <div class="input-group">
-        <label>Nereden (Marmaray İstasyonu)</label>
+        <label>Başlangıç İstasyonu</label>
         <select id="rota-origin">
-            <option value="">İstasyon Seçiniz...</option>
+            <option value="">Marmaray İstasyonu Seçiniz...</option>
         </select>
     </div>
     
     <div class="input-group">
-        <label>Nereye (Hedef İlçe)</label>
+        <label>Varış İstasyonu</label>
         <select id="rota-dest">
-            <option value="">İlçe Seçiniz...</option>
+            <option value="">Marmaray İstasyonu Seçiniz...</option>
         </select>
     </div>
     
-    <div class="input-group" id="rota-target-group" style="display:none;">
-        <label>Hedef Konum</label>
-        <select id="rota-target">
-            <option value="">Konum Seçiniz...</option>
+    <div class="input-group">
+        <label>Gidilecek Semt (Hedef İlçe)</label>
+        <select id="rota-district">
+            <option value="">İstanbul İlçeleri...</option>
         </select>
     </div>
     
-    <button class="primary-btn" id="rota-calc-btn">Rotayı Planla</button>
+    <button class="primary-btn" id="rota-calc-btn">Rota Planla</button>
     
     <div id="rota-result-container" style="display:none;">
-        <div class="route-result-card" id="rota-result">
+        <div class="route-result-card" id="rota-steps-list">
+            <!-- Rota Adımları Buraya Gelecek -->
         </div>
-        
         <div class="module-alert">
-            <strong>Bilgi:</strong> Sistemimiz ulaşım rotanızı temel raylı ağlar (Metro, Tramvay, Metrobüs ve Marmaray) üzerinden optimize ederek oluşturmaktadır. Seçtiğiniz semte tam ulaşım sağlayabilmek için kendi güzergahınız üzerinde ek olarak otobüs, minibüs, vapur veya taksi gibi diğer ulaşım araçlarını kullanmanız gerekebilir.
+            <strong>Bilgi:</strong> Belirtilen varış istasyonundan seçtiğiniz semte gitmek için kullanılabilecek önerilen güncel ulaşım alternatifleridir. Yürüme süreleri ortalamadır.
         </div>
     </div>
 </div>
 
-<script type="module">
-    import { STATIONS } from '<?php echo esc_url( plugins_url( 'assets/js/data.js', __FILE__ ) ); ?>';
-    import { ISTANBUL_DISTRICTS } from '<?php echo esc_url( plugins_url( 'assets/data/istanbulDistricts.js', __FILE__ ) ); ?>';
-    import { calculateRoute } from '<?php echo esc_url( plugins_url( 'assets/utils/router.js', __FILE__ ) ); ?>';
+<script>
+    const ROTA_STATIONS = [
+      {id:'gebze',name:'Gebze'},{id:'darica',name:'Darıca'},{id:'osmangazi',name:'Osmangazi'},{id:'fatih',name:'Fatih'},{id:'cayirova',name:'Çayırova'},
+      {id:'tuzla',name:'Tuzla'},{id:'icmeler',name:'İçmeler'},{id:'aydintepe',name:'Aydıntepe'},{id:'guzelyali',name:'Güzelyalı'},{id:'tersane',name:'Tersane'},
+      {id:'kaynarca',name:'Kaynarca'},{id:'pendik',name:'Pendik'},{id:'yunus',name:'Yunus'},{id:'kartal',name:'Kartal'},{id:'basak',name:'Başak'},
+      {id:'atalar',name:'Atalar'},{id:'cevizli',name:'Cevizli'},{id:'maltepe',name:'Maltepe'},{id:'sureyyaplaji',name:'Süreyya Plajı'},{id:'idealtepe',name:'İdealtepe'},
+      {id:'kucukyali',name:'Küçükyalı'},{id:'bostanci',name:'Bostancı'},{id:'suadiye',name:'Suadiye'},{id:'erenkoy',name:'Erenköy'},{id:'goztepe',name:'Göztepe'},
+      {id:'feneryolu',name:'Feneryolu'},{id:'sogutlucesme',name:'Söğütlüçeşme'},{id:'ayrilikcesmesi',name:'Ayrılıkçeşmesi'},{id:'uskudar',name:'Üsküdar'},{id:'sirkeci',name:'Sirkeci'},
+      {id:'yenikapi',name:'Yenikapı'},{id:'kazlicesme',name:'Kazlıçeşme'},{id:'zeytinburnu',name:'Zeytinburnu'},{id:'yenimahalle',name:'Yenimahalle'},{id:'bakirkoy',name:'Bakırköy'},
+      {id:'atakoy',name:'Ataköy'},{id:'yesilyurt',name:'Yeşilyurt'},{id:'yesilkoy',name:'Yeşilköy'},{id:'floryaakvaryum',name:'Florya Akvaryum'},{id:'florya',name:'Florya'},
+      {id:'kucukcekmece',name:'Küçükçekmece'},{id:'mustafakemal',name:'Mustafa Kemal'},{id:'halkali',name:'Halkalı'}
+    ];
     
-    const originSel = document.getElementById('rota-origin');
-    const destSel = document.getElementById('rota-dest');
-    const targetSel = document.getElementById('rota-target');
-    const targetGroup = document.getElementById('rota-target-group');
+    const DISTRICTS = [
+        "Adalar", "Arnavutköy", "Ataşehir", "Avcılar", "Bağcılar", "Bahçelievler", "Bakırköy",
+        "Başakşehir", "Bayrampaşa", "Beşiktaş", "Beykoz", "Beylikdüzü", "Beyoğlu", "Büyükçekmece",
+        "Çatalca", "Çekmeköy", "Esenler", "Esenyurt", "Eyüpsultan", "Fatih", "Gaziosmanpaşa",
+        "Güngören", "Kadıköy", "Kağıthane", "Kartal", "Küçükçekmece", "Maltepe", "Pendik",
+        "Sancaktepe", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli",
+        "Tuzla", "Ümraniye", "Üsküdar", "Zeytinburnu"
+    ];
     
-    STATIONS.forEach(s => {
-        originSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+    const rotaOriginSel = document.getElementById('rota-origin');
+    const rotaDestSel = document.getElementById('rota-dest');
+    const rotaDistSel = document.getElementById('rota-district');
+    
+    ROTA_STATIONS.forEach((s) => {
+        rotaOriginSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
+        rotaDestSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
     });
     
-    ISTANBUL_DISTRICTS.forEach(d => {
-        destSel.innerHTML += `<option value="${d.id}">${d.name}</option>`;
+    DISTRICTS.forEach((d) => {
+        rotaDistSel.innerHTML += `<option value="${d}">${d}</option>`;
     });
     
-    destSel.addEventListener('change', () => {
-        const distObj = ISTANBUL_DISTRICTS.find(d => d.id === destSel.value);
-        if (distObj && distObj.targetLocations) {
-            targetSel.innerHTML = '<option value="">Konum Seçiniz...</option>';
-            distObj.targetLocations.forEach(loc => {
-                targetSel.innerHTML += `<option value="${loc.id}">${loc.name}</option>`;
-            });
-            targetGroup.style.display = 'block';
-        } else {
-            targetSel.innerHTML = '<option value="">Konum Seçiniz...</option>';
-            targetGroup.style.display = 'none';
-        }
-    });
-    
-    document.getElementById('rota-calc-btn').addEventListener('click', async () => {
-        const origin = originSel.value;
-        const dest = destSel.value;
-        const target = targetSel.value;
+    document.getElementById('rota-calc-btn').addEventListener('click', () => {
+        const start = rotaOriginSel.value;
+        const end = rotaDestSel.value;
+        const dist = rotaDistSel.value;
         
-        if(!origin || !dest) {
-            alert('Lütfen kalkış ve hedef seçiniz.');
+        if(!start || !end || !dist) {
+            alert('Lütfen başlangıç istasyonu, varış istasyonu ve gidilecek semti seçiniz.');
             return;
         }
-        if(targetGroup.style.display !== 'none' && !target) {
-            alert('Lütfen hedef konumu seçiniz.');
+        if(start === end) {
+            alert('Başlangıç ve varış istasyonu aynı olamaz.');
             return;
         }
         
-        const btn = document.getElementById('rota-calc-btn');
-        btn.textContent = 'Hesaplanıyor...';
+        let html = '';
         
-        try {
-            const t = (k) => k; 
-            const res = await calculateRoute(origin, dest, "fastest", target, t);
-            const resEl = document.getElementById('rota-result');
-            
-            if (res.error) {
-                resEl.innerHTML = `<div style="color:var(--accent-red); font-weight:bold;">${res.error}</div>`;
-            } else if (res.info) {
-                resEl.innerHTML = `<div style="color:#4cd137; font-weight:bold;">Seçtiğiniz Marmaray istasyonu zaten hedeflediğiniz konumda!</div>`;
-            } else if (res.path) {
-                let html = `<div style="margin-bottom:25px; font-weight:900; font-size:1.3rem; border-bottom:2px dashed var(--border-color); padding-bottom:15px; color:var(--text-primary);">Toplam Süre: Yaklaşık ${res.totalDuration} dk</div>`;
-                
-                res.path.forEach((step, idx) => {
-                    let iconClass = 'yuruyus';
-                    if (step.line.includes('Marmaray')) { iconClass = 'marmaray'; }
-                    else if (step.line.includes('Metrobus')) { iconClass = 'marmaray'; }
-                    else if (step.line.includes('Vapur')) { iconClass = 'marmaray'; }
-                    else if (step.line.includes('Tramvay')) { iconClass = 'trenvay'; }
-                    else if (step.line.includes('Metro')) { iconClass = 'metro'; }
-                    
-                    html += `
-                    <div class="route-step">
-                        <img src="<?php echo esc_url( plugins_url( 'assets/images/' . $iconClass . 'logo.svg', __FILE__ ) ); ?>" class="step-icon-img" style="width:40px; height:40px; margin-right:20px; z-index:2; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-                        <div class="step-content">
-                            <div class="step-title">${step.instruction}</div>
-                            <div class="step-desc">${step.line} - ${step.duration} dk</div>
-                        </div>
-                    </div>`;
-                });
-                resEl.innerHTML = html;
-            }
-            document.getElementById('rota-result-container').style.display = 'block';
-        } catch(e) {
-            console.error(e);
-            alert("Rota hesaplanırken bir hata oluştu.");
-        }
+        html += `
+        <div class="route-step">
+            <div class="step-icon marmaray">M</div>
+            <div class="step-content">
+                <div class="step-title">${start} İstasyonundan Marmaray'a Binin</div>
+                <div class="step-desc">Yön: ${end} istikametine doğru ilerleyin.</div>
+            </div>
+        </div>
+        `;
         
-        btn.textContent = 'Rotayı Planla';
+        html += `
+        <div class="route-step">
+            <div class="step-icon walk">Y</div>
+            <div class="step-content">
+                <div class="step-title">${end} İstasyonunda İnin</div>
+                <div class="step-desc">Turnikelerden çıkarak istasyonu terk edin.</div>
+            </div>
+        </div>
+        `;
+        
+        // Dynamic simulated routing for the district
+        const distRoutes = {
+            "Beşiktaş": [{icon:"metro", type:"Metro", desc:"M2 veya bağlantılı otobüs hatlarını kullanarak aktarma yapın."}],
+            "Beyoğlu": [{icon:"metro", type:"Metro", desc:"M2 Yenikapı - Hacıosman metrosuna aktarma yapın ve Taksim durağında inin."}],
+            "Kadıköy": [{icon:"walk", type:"Yürüme", desc:"Ayrılıkçeşmesi veya Söğütlüçeşme durağından kısa yürüme mesafesindedir."}],
+            "Fatih": [{icon:"tramvay", type:"Tramvay", desc:"Sirkeci durağında T1 Kabataş-Bağcılar tramvayına aktarma yapabilirsiniz."}],
+            "Avcılar": [{icon:"metrobus", type:"Metrobüs", desc:"Söğütlüçeşme veya Küçükçekmece duraklarından Metrobüse aktarma yapabilirsiniz."}]
+        };
+        
+        const r = distRoutes[dist] || [{icon:"walk", type:"Aktarma", desc:"Bulunduğunuz noktadan "+dist+" hedefine İETT otobüsleri veya minibüsler ile ulaşabilirsiniz."}];
+        
+        html += `
+        <div class="route-step">
+            <div class="step-icon ${r[0].icon}">${r[0].icon.charAt(0).toUpperCase()}</div>
+            <div class="step-content">
+                <div class="step-title">${dist} Yönüne Gidiş</div>
+                <div class="step-desc">${r[0].desc}</div>
+            </div>
+        </div>
+        `;
+        
+        document.getElementById('rota-steps-list').innerHTML = html;
+        document.getElementById('rota-result-container').style.display = 'block';
     });
 </script>

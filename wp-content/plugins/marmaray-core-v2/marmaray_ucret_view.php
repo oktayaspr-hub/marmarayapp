@@ -71,19 +71,29 @@
     </div>
 </div>
 
-<script type="module">
-    import { STATIONS } from '<?php echo esc_url( plugins_url( 'assets/js/data.js', __FILE__ ) ); ?>';
+<script>
+    const UCRET_STATIONS = [
+      {id:'gebze',name:'Gebze'},{id:'darica',name:'Darıca'},{id:'osmangazi',name:'Osmangazi'},{id:'fatih',name:'Fatih'},{id:'cayirova',name:'Çayırova'},
+      {id:'tuzla',name:'Tuzla'},{id:'icmeler',name:'İçmeler'},{id:'aydintepe',name:'Aydıntepe'},{id:'guzelyali',name:'Güzelyalı'},{id:'tersane',name:'Tersane'},
+      {id:'kaynarca',name:'Kaynarca'},{id:'pendik',name:'Pendik'},{id:'yunus',name:'Yunus'},{id:'kartal',name:'Kartal'},{id:'basak',name:'Başak'},
+      {id:'atalar',name:'Atalar'},{id:'cevizli',name:'Cevizli'},{id:'maltepe',name:'Maltepe'},{id:'sureyyaplaji',name:'Süreyya Plajı'},{id:'idealtepe',name:'İdealtepe'},
+      {id:'kucukyali',name:'Küçükyalı'},{id:'bostanci',name:'Bostancı'},{id:'suadiye',name:'Suadiye'},{id:'erenkoy',name:'Erenköy'},{id:'goztepe',name:'Göztepe'},
+      {id:'feneryolu',name:'Feneryolu'},{id:'sogutlucesme',name:'Söğütlüçeşme'},{id:'ayrilikcesmesi',name:'Ayrılıkçeşmesi'},{id:'uskudar',name:'Üsküdar'},{id:'sirkeci',name:'Sirkeci'},
+      {id:'yenikapi',name:'Yenikapı'},{id:'kazlicesme',name:'Kazlıçeşme'},{id:'zeytinburnu',name:'Zeytinburnu'},{id:'yenimahalle',name:'Yenimahalle'},{id:'bakirkoy',name:'Bakırköy'},
+      {id:'atakoy',name:'Ataköy'},{id:'yesilyurt',name:'Yeşilyurt'},{id:'yesilkoy',name:'Yeşilköy'},{id:'floryaakvaryum',name:'Florya Akvaryum'},{id:'florya',name:'Florya'},
+      {id:'kucukcekmece',name:'Küçükçekmece'},{id:'mustafakemal',name:'Mustafa Kemal'},{id:'halkali',name:'Halkalı'}
+    ];
     
-    const originSel = document.getElementById('ucret-origin');
-    const destSel = document.getElementById('ucret-dest');
-    STATIONS.forEach((s) => {
-        originSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
-        destSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+    const ucretOriginSel = document.getElementById('ucret-origin');
+    const ucretDestSel = document.getElementById('ucret-dest');
+    UCRET_STATIONS.forEach((s) => {
+        ucretOriginSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+        ucretDestSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
     });
     
     document.getElementById('ucret-calc-btn').addEventListener('click', () => {
-        const origin = originSel.value;
-        const dest = destSel.value;
+        const origin = ucretOriginSel.value;
+        const dest = ucretDestSel.value;
         const type = document.getElementById('ucret-type').value;
         if(!origin || !dest) {
             alert('Lütfen başlangıç ve varış istasyonlarını seçiniz.');
@@ -101,8 +111,8 @@
             indirimli: [12.67, 15.05, 17.18, 19.93, 22.31, 24.19, 24.19],
         };
         
-        const idxO = STATIONS.findIndex(s=>s.id===origin);
-        const idxD = STATIONS.findIndex(s=>s.id===dest);
+        const idxO = UCRET_STATIONS.findIndex(s=>s.id===origin);
+        const idxD = UCRET_STATIONS.findIndex(s=>s.id===dest);
         const stops = Math.abs(idxO - idxD);
         
         let tier = 0;

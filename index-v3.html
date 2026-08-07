@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>MarmarayApp V3.0 Local Test</title>
+    <link rel="stylesheet" href="wp-content/plugins/marmaray-core-v2/assets/css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0f172a; color: white; font-family: 'Outfit', sans-serif; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .page-wrapper { margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <h1 style="color:var(--primary-color);">1. Marmaray Saatleri (V3.0)</h1>
+        
+<style>
+.app-module-card { background: var(--bg-card); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
+.app-module-card label { display: block; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; font-size: 1.05rem; }
+.app-module-card select { width: 100%; padding: 16px; border: 2px solid var(--border-color); border-radius: 12px; background: var(--bg-main); font-size: 1.1rem; color: var(--text-primary); transition: all 0.3s; font-family: "Outfit", sans-serif; }
+.schedule-tables { display: flex; gap: 20px; margin-top: 30px; }
+.schedule-col { flex: 1; background: var(--bg-main); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); }
+.schedule-header { background: var(--primary-color); color: white; padding: 15px; text-align: center; font-weight: 800; font-size: 1.2rem; }
+.schedule-list { max-height: 400px; overflow-y: auto; padding: 10px; }
+.schedule-item { padding: 12px; border-bottom: 1px solid var(--border-color); text-align: center; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); }
+.schedule-item:last-child { border-bottom: none; }
+@media (max-width: 768px) { .schedule-tables { flex-direction: column; } }
+</style>
+
+<div class="app-module-card">
+    <div class="input-group">
+        <label>�stasyon Se�iniz</label>
+        <select id="saat-origin">
+            <option value="">�stasyon Se�iniz...</option>
+        </select>
+    </div>
+    
+    <div class="schedule-tables" id="schedule-container" style="display:none;">
+        <div class="schedule-col">
+            <div class="schedule-header">Halkal� Y�n�</div>
+            <div class="schedule-list" id="halkali-list"></div>
+        </div>
+        <div class="schedule-col">
+            <div class="schedule-header" style="background:var(--accent-red)">Gebze Y�n�</div>
+            <div class="schedule-list" id="gebze-list"></div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { STATIONS } from "";
+    const originSel = document.getElementById("saat-origin");
+    STATIONS.forEach(s => {
+        originSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+    });
+    
+    originSel.addEventListener("change", () => {
+        const id = originSel.value;
+        if(!id) {
+            document.getElementById("schedule-container").style.display = "none";
+            return;
+        }
+        
+        const idx = STATIONS.findIndex(s=>s.id === id);
+        
+        // Simulating train schedule based on 15 minute intervals from 06:00 to 23:45
+        let halkaliHtml = "";
+        let gebzeHtml = "";
+        
+        let baseTime = new Date();
+        baseTime.setHours(6, 0, 0, 0);
+        
+        for(let i=0; i<72; i++) {
+            let hTime = new Date(baseTime.getTime() + (i * 15 * 60000) + (idx * 3 * 60000));
+            let gTime = new Date(baseTime.getTime() + (i * 15 * 60000) + ((42 - idx) * 3 * 60000));
+            
+            if(hTime.getHours() >= 6 && hTime.getHours() <= 23) {
+                halkaliHtml += `<div class="schedule-item">${hTime.getHours().toString().padStart(2,"0")}:${hTime.getMinutes().toString().padStart(2,"0")}</div>`;
+            }
+            if(gTime.getHours() >= 6 && gTime.getHours() <= 23) {
+                gebzeHtml += `<div class="schedule-item">${gTime.getHours().toString().padStart(2,"0")}:${gTime.getMinutes().toString().padStart(2,"0")}</div>`;
+            }
+        }
+        
+        if (idx === 0) halkaliHtml = `<div class="schedule-item">Son Durak</div>`;
+        if (idx === 42) gebzeHtml = `<div class="schedule-item">Son Durak</div>`;
+        
+        document.getElementById("halkali-list").innerHTML = halkaliHtml;
+        document.getElementById("gebze-list").innerHTML = gebzeHtml;
+        document.getElementById("schedule-container").style.display = "flex";
+    });
+</script>
+
+
+        <hr style="margin:50px 0;border-color:rgba(255,255,255,0.1);">
+        
+        <h1 style="color:var(--primary-color);">2. Ücret Hesapla (V3.0)</h1>
+        <style>
+.app-module-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+}
+.app-module-card .input-group { margin-bottom: 20px; }
+.app-module-card label { display: block; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; font-size: 1.05rem; }
+.app-module-card select { width: 100%; padding: 16px; border: 2px solid var(--border-color); border-radius: 12px; background: var(--bg-main); font-size: 1.1rem; color: var(--text-primary); transition: all 0.3s; font-family: 'Outfit', sans-serif; }
+.app-module-card select:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(0,86,179,0.1); }
+.app-module-card .primary-btn { width: 100%; padding: 18px; background: var(--primary-color); color: white; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: 800; cursor: pointer; margin-top: 10px; transition: all 0.3s; font-family: 'Outfit', sans-serif; }
+.app-module-card .primary-btn:hover { background: #004494; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,86,179,0.3); }
+
+.fare-result-card { background: var(--bg-main); border-radius: 16px; padding: 25px; margin-top: 30px; border: 1px solid var(--border-color); }
+.fare-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px dashed var(--border-color); align-items: center; }
+.fare-row:last-child { border-bottom: none; font-weight: 900; font-size: 1.4rem; color: var(--text-primary); margin-top: 10px; padding-bottom: 0; }
+.fare-val { font-weight: 800; font-size: 1.2rem; }
+.text-danger { color: var(--accent-red); }
+.text-success { color: #4cd137; }
+
+.module-alert { background: rgba(232, 65, 24, 0.05); border-left: 4px solid var(--accent-red); padding: 15px 20px; border-radius: 0 12px 12px 0; font-size: 0.95rem; margin-top: 25px; color: var(--text-secondary); line-height: 1.6; }
+.module-alert strong { color: var(--accent-red); }
+</style>
+
+<div class="app-module-card">
+    <div class="input-group">
+        <label>Başlangıç İstasyonu</label>
+        <select id="ucret-origin">
+            <option value="">İstasyon Seçiniz...</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label>Varış İstasyonu</label>
+        <select id="ucret-dest">
+            <option value="">İstasyon Seçiniz...</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label>Bilet Tipi / Yolcu</label>
+        <select id="ucret-type">
+            <option value="tam">Tam Bilet</option>
+            <option value="ogrenci">Öğrenci</option>
+            <option value="indirimli">İndirimli (Öğretmen / 60 Yaş)</option>
+            <option value="abonman">Abonman (Aylık Mavi Kart)</option>
+        </select>
+    </div>
+    <button class="primary-btn" id="ucret-calc-btn">Ücreti Hesapla</button>
+    
+    <div id="ucret-result-container" style="display:none;">
+        <div class="fare-result-card">
+            <div class="fare-row">
+                <span>İlk Girişte Kesilen Tutar (En Uzak Mesafe)</span>
+                <span class="fare-val text-danger" id="ucret-max">-</span>
+            </div>
+            <div class="fare-row">
+                <span>İade Cihazından Geri Alınan</span>
+                <span class="fare-val text-success" id="ucret-refund">+</span>
+            </div>
+            <div class="fare-row">
+                <span>Net Ödenen Ücret</span>
+                <span class="fare-val" id="ucret-net"></span>
+            </div>
+        </div>
+        
+        <div class="module-alert">
+            <strong>Önemli Uyarı:</strong> İade tutarını alabilmek için, istasyondan çıkış yaptıktan sonra turuncu renkli "İade Cihazlarına" İstanbulkart'ınızı mutlaka okutmanız gerekmektedir. Aksi takdirde en uzak mesafe ücreti (ilk girişte kesilen tutar) kartınızdan tahsil edilmiş olur. Resmi TCDD verisi değildir.
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { STATIONS } from '';
+    
+    const originSel = document.getElementById('ucret-origin');
+    const destSel = document.getElementById('ucret-dest');
+    STATIONS.forEach((s) => {
+        originSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+        destSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+    });
+    
+    document.getElementById('ucret-calc-btn').addEventListener('click', () => {
+        const origin = originSel.value;
+        const dest = destSel.value;
+        const type = document.getElementById('ucret-type').value;
+        if(!origin || !dest) {
+            alert('Lütfen başlangıç ve varış istasyonlarını seçiniz.');
+            return;
+        }
+        if(origin === dest) {
+            alert('Başlangıç ve varış istasyonu aynı olamaz.');
+            return;
+        }
+        
+        const prices = {
+            tam: [17.70, 22.67, 26.14, 29.89, 34.87, 39.17, 39.17],
+            ogrenci: [8.64, 10.14, 12.01, 14.39, 16.89, 17.70, 17.70],
+            abonman: [0, 0, 0, 0, 0, 0, 0],
+            indirimli: [12.67, 15.05, 17.18, 19.93, 22.31, 24.19, 24.19],
+        };
+        
+        const idxO = STATIONS.findIndex(s=>s.id===origin);
+        const idxD = STATIONS.findIndex(s=>s.id===dest);
+        const stops = Math.abs(idxO - idxD);
+        
+        let tier = 0;
+        if(stops >= 1 && stops <= 7) tier = 0;
+        else if(stops >= 8 && stops <= 14) tier = 1;
+        else if(stops >= 15 && stops <= 21) tier = 2;
+        else if(stops >= 22 && stops <= 28) tier = 3;
+        else if(stops >= 29 && stops <= 35) tier = 4;
+        else if(stops >= 36 && stops <= 43) tier = 5;
+        else tier = 6;
+        
+        const maxFare = prices[type][6];
+        const netFare = prices[type][tier];
+        const refund = maxFare - netFare;
+        
+        document.getElementById('ucret-max').textContent = type === 'abonman' ? '1 Biniş' : maxFare.toFixed(2) + ' ₺';
+        document.getElementById('ucret-refund').textContent = type === 'abonman' ? 'Yok' : refund.toFixed(2) + ' ₺';
+        document.getElementById('ucret-net').textContent = type === 'abonman' ? 'Geçerli' : netFare.toFixed(2) + ' ₺';
+        
+        document.getElementById('ucret-result-container').style.display = 'block';
+    });
+</script>
+
+        <hr style="margin:50px 0;border-color:rgba(255,255,255,0.1);">
+        
+        <h1 style="color:var(--primary-color);">3. Rota Planla (V3.0)</h1>
+        <style>
+.app-module-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+}
+.app-module-card .input-group { margin-bottom: 20px; }
+.app-module-card label { display: block; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; font-size: 1.05rem; }
+.app-module-card select { width: 100%; padding: 16px; border: 2px solid var(--border-color); border-radius: 12px; background: var(--bg-main); font-size: 1.1rem; color: var(--text-primary); transition: all 0.3s; font-family: 'Outfit', sans-serif; }
+.app-module-card select:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(0,86,179,0.1); }
+.app-module-card .primary-btn { width: 100%; padding: 18px; background: var(--primary-color); color: white; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: 800; cursor: pointer; margin-top: 10px; transition: all 0.3s; font-family: 'Outfit', sans-serif; }
+.app-module-card .primary-btn:hover { background: #004494; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,86,179,0.3); }
+
+.route-result-card { background: var(--bg-main); border-radius: 16px; padding: 25px; margin-top: 30px; border: 1px solid var(--border-color); }
+.route-step { display: flex; align-items: flex-start; margin-bottom: 20px; position: relative; }
+.route-step:not(:last-child)::after { content: ''; position: absolute; left: 19px; top: 40px; bottom: -10px; width: 2px; background: var(--border-color); z-index: 1; }
+.step-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-right: 20px; font-size: 0.9rem; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.step-icon.marmaray { background: var(--accent-red); color: white; }
+.step-icon.metro { background: #0097e6; color: white; }
+.step-icon.walk { background: #44bd32; color: white; }
+.step-icon.vapur { background: #8c7ae6; color: white; }
+.step-icon.tramvay { background: #e1b12c; color: white; }
+.step-icon.metrobus { background: #e84118; color: white; }
+.step-content { flex: 1; padding-top: 5px; }
+.step-title { font-weight: 800; color: var(--text-primary); font-size: 1.1rem; }
+.step-desc { font-size: 0.95rem; color: var(--text-secondary); margin-top: 6px; font-weight: 500; }
+
+.module-alert { background: rgba(0, 86, 179, 0.05); border-left: 4px solid var(--primary-color); padding: 15px 20px; border-radius: 0 12px 12px 0; font-size: 0.95rem; margin-top: 25px; color: var(--text-secondary); line-height: 1.6; }
+.module-alert strong { color: var(--primary-color); }
+</style>
+
+<div class="app-module-card">
+    <div class="input-group">
+        <label>Nereden (Marmaray İstasyonu)</label>
+        <select id="rota-origin">
+            <option value="">İstasyon Seçiniz...</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Nereye (Hedef İlçe)</label>
+        <select id="rota-dest">
+            <option value="">İlçe Seçiniz...</option>
+        </select>
+    </div>
+    
+    <div class="input-group" id="rota-target-group" style="display:none;">
+        <label>Hedef Konum</label>
+        <select id="rota-target">
+            <option value="">Konum Seçiniz...</option>
+        </select>
+    </div>
+    
+    <button class="primary-btn" id="rota-calc-btn">Rotayı Planla</button>
+    
+    <div id="rota-result-container" style="display:none;">
+        <div class="route-result-card" id="rota-result">
+        </div>
+        
+        <div class="module-alert">
+            <strong>Bilgi:</strong> Sistemimiz ulaşım rotanızı temel raylı ağlar (Metro, Tramvay, Metrobüs ve Marmaray) üzerinden optimize ederek oluşturmaktadır. Seçtiğiniz semte tam ulaşım sağlayabilmek için kendi güzergahınız üzerinde ek olarak otobüs, minibüs, vapur veya taksi gibi diğer ulaşım araçlarını kullanmanız gerekebilir.
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { STATIONS } from '';
+    import { ISTANBUL_DISTRICTS } from '';
+    import { calculateRoute } from '';
+    
+    const originSel = document.getElementById('rota-origin');
+    const destSel = document.getElementById('rota-dest');
+    const targetSel = document.getElementById('rota-target');
+    const targetGroup = document.getElementById('rota-target-group');
+    
+    STATIONS.forEach(s => {
+        originSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+    });
+    
+    ISTANBUL_DISTRICTS.forEach(d => {
+        destSel.innerHTML += `<option value="${d.id}">${d.name}</option>`;
+    });
+    
+    destSel.addEventListener('change', () => {
+        const distObj = ISTANBUL_DISTRICTS.find(d => d.id === destSel.value);
+        if (distObj && distObj.targetLocations) {
+            targetSel.innerHTML = '<option value="">Konum Seçiniz...</option>';
+            distObj.targetLocations.forEach(loc => {
+                targetSel.innerHTML += `<option value="${loc.id}">${loc.name}</option>`;
+            });
+            targetGroup.style.display = 'block';
+        } else {
+            targetSel.innerHTML = '<option value="">Konum Seçiniz...</option>';
+            targetGroup.style.display = 'none';
+        }
+    });
+    
+    document.getElementById('rota-calc-btn').addEventListener('click', async () => {
+        const origin = originSel.value;
+        const dest = destSel.value;
+        const target = targetSel.value;
+        
+        if(!origin || !dest) {
+            alert('Lütfen kalkış ve hedef seçiniz.');
+            return;
+        }
+        if(targetGroup.style.display !== 'none' && !target) {
+            alert('Lütfen hedef konumu seçiniz.');
+            return;
+        }
+        
+        const btn = document.getElementById('rota-calc-btn');
+        btn.textContent = 'Hesaplanıyor...';
+        
+        try {
+            const t = (k) => k; 
+            const res = await calculateRoute(origin, dest, "fastest", target, t);
+            const resEl = document.getElementById('rota-result');
+            
+            if (res.error) {
+                resEl.innerHTML = `<div style="color:var(--accent-red); font-weight:bold;">${res.error}</div>`;
+            } else if (res.info) {
+                resEl.innerHTML = `<div style="color:#4cd137; font-weight:bold;">Seçtiğiniz Marmaray istasyonu zaten hedeflediğiniz konumda!</div>`;
+            } else if (res.path) {
+                let html = `<div style="margin-bottom:25px; font-weight:900; font-size:1.3rem; border-bottom:2px dashed var(--border-color); padding-bottom:15px; color:var(--text-primary);">Toplam Süre: Yaklaşık ${res.totalDuration} dk</div>`;
+                
+                res.path.forEach((step, idx) => {
+                    let iconClass = 'yuruyus';
+                    if (step.line.includes('Marmaray')) { iconClass = 'marmaray'; }
+                    else if (step.line.includes('Metrobus')) { iconClass = 'marmaray'; }
+                    else if (step.line.includes('Vapur')) { iconClass = 'marmaray'; }
+                    else if (step.line.includes('Tramvay')) { iconClass = 'trenvay'; }
+                    else if (step.line.includes('Metro')) { iconClass = 'metro'; }
+                    
+                    html += `
+                    <div class="route-step">
+                        <img src="" class="step-icon-img" style="width:40px; height:40px; margin-right:20px; z-index:2; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                        <div class="step-content">
+                            <div class="step-title">${step.instruction}</div>
+                            <div class="step-desc">${step.line} - ${step.duration} dk</div>
+                        </div>
+                    </div>`;
+                });
+                resEl.innerHTML = html;
+            }
+            document.getElementById('rota-result-container').style.display = 'block';
+        } catch(e) {
+            console.error(e);
+            alert("Rota hesaplanırken bir hata oluştu.");
+        }
+        
+        btn.textContent = 'Rotayı Planla';
+    });
+</script>
+
+    </div>
+</body>
+</html>
