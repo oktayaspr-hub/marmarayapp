@@ -58,7 +58,7 @@
             <!-- Rota Adımları Buraya Gelecek -->
         </div>
         <div class="module-alert">
-            <strong>Bilgi:</strong> Sizi İstanbul'un yoğun trafiğine takılmadan <b>en hızlı ve konforlu raylı sistem / metrobüs / vapur ağı</b> ile hedefinize ulaştırıyoruz. Bu güzergahtan sonra son noktanıza yürüyerek, minibüs veya taksi ile devam etmek tamamen sizin tercihinizdir. Tüm sorumluluk kullanıcıya aittir.
+            <strong>Bilgi:</strong> Sizi, İstanbul'un yoğun trafiğine takılmadan en hızlı ve konforlu raylı sistem / metrobüs / vapur ağı ile hedefinize ulaştırıyoruz. Bu güzergahtan sonra, son noktanıza varmak üzere yürüyerek, otobüs, minibüs veya taksi ile devam etmek tamamen sizin tercihinizdir. Rotanızı tam olarak oluşturmak için, navigasyon uygulamanızdan yardım almayı unutmayın.
         </div>
     </div>
 </div>
