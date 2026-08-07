@@ -4,7 +4,7 @@
 .app-module-card select { width: 100%; padding: 16px; border: 2px solid var(--border-color); border-radius: 12px; background: var(--bg-main); font-size: 1.1rem; color: var(--text-primary); transition: all 0.3s; font-family: 'Outfit', sans-serif; }
 .schedule-tables { display: flex; gap: 20px; margin-top: 30px; }
 .schedule-col { flex: 1; background: var(--bg-main); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); }
-.schedule-header { background: var(--primary-color); color: white; padding: 15px; text-align: center; font-weight: 800; font-size: 1.2rem; }
+.schedule-header { background: var(--accent-blue); color: white; padding: 15px; text-align: center; font-weight: 800; font-size: 1.2rem; }
 .schedule-list { max-height: 400px; overflow-y: auto; padding: 10px; }
 .schedule-item { padding: 12px; border-bottom: 1px solid var(--border-color); text-align: center; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); }
 .schedule-item:last-child { border-bottom: none; }
@@ -25,7 +25,7 @@
             <div class="schedule-list" id="halkali-list"></div>
         </div>
         <div class="schedule-col">
-            <div class="schedule-header" style="background:var(--accent-red)">Gebze Yönü</div>
+            <div class="schedule-header" style="background:var(--accent)">Gebze Yönü</div>
             <div class="schedule-list" id="gebze-list"></div>
         </div>
     </div>
@@ -84,3 +84,4 @@
         document.getElementById('schedule-container').style.display = 'flex';
     });
 </script>
+

@@ -1,4 +1,6 @@
+const fs = require('fs');
 
+let content = `
 <style>
 .app-module-card {
     background: var(--glass-bg);
@@ -169,11 +171,11 @@
     const semtGroup = document.getElementById('semt-group');
     
     ROTA_STATIONS.forEach((s) => {
-        rotaOriginSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
+        rotaOriginSel.innerHTML += \`<option value="\${s.name}">\${s.name}</option>\`;
     });
     
     Object.keys(DISTRICT_MAP).sort().forEach((d) => {
-        rotaDistSel.innerHTML += `<option value="${d}">${d}</option>`;
+        rotaDistSel.innerHTML += \`<option value="\${d}">\${d}</option>\`;
     });
     
     rotaDistSel.addEventListener('change', () => {
@@ -181,7 +183,7 @@
         rotaNeighSel.innerHTML = '<option value="">Semt seçiniz...</option>';
         if(dist && DISTRICT_MAP[dist]) {
             DISTRICT_MAP[dist].forEach(n => {
-                rotaNeighSel.innerHTML += `<option value="${n.name}">${n.name}</option>`;
+                rotaNeighSel.innerHTML += \`<option value="\${n.name}">\${n.name}</option>\`;
             });
             semtGroup.style.display = 'block';
         } else {
@@ -210,37 +212,40 @@
         
         let html = '';
         
-        html += `
+        html += \`
         <div class="route-step">
-            <div class="step-icon"><img src="${LOGOS.marmaray}" alt="Marmaray"></div>
+            <div class="step-icon"><img src="\${LOGOS.marmaray}" alt="Marmaray"></div>
             <div class="step-content">
-                <div class="step-title">${start} İstasyonundan Marmaray'a Binin</div>
-                <div class="step-desc">TCDD Marmaray hattı ile ${end} istikametine ilerleyin.</div>
+                <div class="step-title">\${start} İstasyonundan Marmaray'a Binin</div>
+                <div class="step-desc">TCDD Marmaray hattı ile \${end} istikametine ilerleyin.</div>
             </div>
         </div>
-        `;
+        \`;
         
-        html += `
+        html += \`
         <div class="route-step">
-            <div class="step-icon walk"><img src="${LOGOS.walk}" alt="Yürüme"></div>
+            <div class="step-icon walk"><img src="\${LOGOS.walk}" alt="Yürüme"></div>
             <div class="step-content">
-                <div class="step-title">${end} İstasyonunda İnin ve Turnikelerden Çıkın</div>
+                <div class="step-title">\${end} İstasyonunda İnin ve Turnikelerden Çıkın</div>
                 <div class="step-desc">İstasyondan çıkarak aktarma noktasına ilerleyin.</div>
             </div>
         </div>
-        `;
+        \`;
         
-        html += `
+        html += \`
         <div class="route-step">
-            <div class="step-icon"><img src="${neighData.logo}" alt="${neighData.type}"></div>
+            <div class="step-icon"><img src="\${neighData.logo}" alt="\${neighData.type}"></div>
             <div class="step-content">
-                <div class="step-title">${neigh} Yönüne Aktarma (${neighData.type})</div>
-                <div class="step-desc">${neighData.desc}</div>
+                <div class="step-title">\${neigh} Yönüne Aktarma (\${neighData.type})</div>
+                <div class="step-desc">\${neighData.desc}</div>
             </div>
         </div>
-        `;
+        \`;
         
         document.getElementById('rota-steps-list').innerHTML = html;
         document.getElementById('rota-result-container').style.display = 'block';
     });
 </script>
+`;
+
+fs.writeFileSync('wp-content/plugins/marmaray-core-v2/marmaray_rota_view.php', content, 'utf8');
