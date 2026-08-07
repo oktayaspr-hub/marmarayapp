@@ -47,11 +47,8 @@ get_header(); ?>
         <div class="map-glass-panel">
 
             <!-- TCDD Kırmızı Başlık Bandı -->
-            <div class="map-tcdd-header">
-                <div class="tcdd-logos">
-                    <img src="/wp-content/plugins/marmaray-core-v2/assets/images/trainx.png" alt="TrainX Logo" onerror="this.style.display='none'" style="max-height: 40px; margin-left: 10px; filter: invert(1) brightness(2); mix-blend-mode: screen;">
-                </div>
-                <div class="map-live-info" style="display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.4;">
+            <div class="map-tcdd-header" style="justify-content: space-between; padding: 0 15px;">
+                <div class="map-live-info" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1.4;">
                     <span id="current-date" style="display: flex; align-items: center; gap: 6px;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                         <span id="current-date-val">--.--.----</span>
