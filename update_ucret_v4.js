@@ -1,4 +1,6 @@
+const fs = require('fs');
 
+const content = `
 <style>
 .app-module-card { background: var(--glass-bg, #ffffff); border-radius: 20px; padding: 30px; border: 1px solid var(--glass-border, rgba(0,0,0,0.1)); box-shadow: var(--shadow-lg, 0 8px 32px rgba(0,0,0,0.05)); backdrop-filter: blur(20px); }
 .app-module-card label { display: block; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; font-size: 1.05rem; }
@@ -74,8 +76,8 @@
     const destSel = document.getElementById('ucret-dest');
     
     MARMARAY_STATIONS.forEach((s, idx) => {
-        originSel.innerHTML += `<option value="${idx}">${s}</option>`;
-        destSel.innerHTML += `<option value="${idx}">${s}</option>`;
+        originSel.innerHTML += \`<option value="\${idx}">\${s}</option>\`;
+        destSel.innerHTML += \`<option value="\${idx}">\${s}</option>\`;
     });
 
     document.getElementById('ucret-calc-btn').addEventListener('click', () => {
@@ -106,41 +108,44 @@
         let html = '';
 
         if(type === 'abonman' || type === 'ucretsiz') {
-            html = `
+            html = \`
                 <div class="fare-row">
                     <span class="fare-label">Gidilen İstasyon Sayısı:</span>
-                    <span class="fare-value">${stops} İstasyon</span>
+                    <span class="fare-value">\${stops} İstasyon</span>
                 </div>
                 <div class="fare-row" style="justify-content: center; margin-top: 15px;">
                     <span class="fare-value free">ÜCRETSİZ</span>
                 </div>
-            `;
+            \`;
         } else {
             let maxFare = (type === 'tam') ? TAM_TIERS[5] : IND_TIERS[5];
             let netFare = (type === 'tam') ? TAM_TIERS[tierIndex] : IND_TIERS[tierIndex];
             let refund = maxFare - netFare;
 
-            html = `
+            html = \`
                 <div class="fare-row">
                     <span class="fare-label">Gidilen Durak:</span>
-                    <span class="fare-value">${stops} İstasyon</span>
+                    <span class="fare-value">\${stops} İstasyon</span>
                 </div>
                 <div class="fare-row">
                     <span class="fare-label">Turnikeden Çekilecek (Max):</span>
-                    <span class="fare-value">${maxFare.toFixed(2)} TL</span>
+                    <span class="fare-value">\${maxFare.toFixed(2)} TL</span>
                 </div>
                 <div class="fare-row">
                     <span class="fare-label">İadematikten Alınacak (İade):</span>
-                    <span class="fare-value" style="color: #ff9800;">${refund.toFixed(2)} TL</span>
+                    <span class="fare-value" style="color: #ff9800;">\${refund.toFixed(2)} TL</span>
                 </div>
                 <div class="fare-row">
                     <span class="fare-label">Net Yolculuk Ücreti:</span>
-                    <span class="fare-value">${netFare.toFixed(2)} TL</span>
+                    <span class="fare-value">\${netFare.toFixed(2)} TL</span>
                 </div>
-            `;
+            \`;
         }
 
         document.getElementById('ucret-result-box').innerHTML = html;
         document.getElementById('ucret-result-container').style.display = 'block';
     });
 </script>
+`;
+
+fs.writeFileSync('wp-content/plugins/marmaray-core-v2/marmaray_ucret_view.php', content, 'utf8');
