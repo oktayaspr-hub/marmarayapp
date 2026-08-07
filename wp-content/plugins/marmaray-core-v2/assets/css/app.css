@@ -1142,43 +1142,43 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
  * dark glassmorphism yerine berrak bir "tren tarife panosu" estetiÄŸi.
  *
  * TÃ¼m renkler CSS deÄŸiÅŸkenlerinde; yÃ¶n accent'leri admin panelinden
- * (--mrt-h / --mrt-g) inline olarak besleniyor.
+ * (--marmarayapp-h / --marmarayapp-g) inline olarak besleniyor.
  */
 
 /* ============================================================
    0. Ã–LÃ‡EK & DEÄÄ°ÅKENLER
    ============================================================ */
-.mrt {
+.marmarayapp {
     /* YÃ¶n accent'leri PHP tarafÄ±ndan inline override edilir */
-    --mrt-h: #c8431f;          /* HalkalÄ± yÃ¶nÃ¼ */
-    --mrt-g: #0e6e8c;          /* Gebze yÃ¶nÃ¼ */
+    --marmarayapp-h: #c8431f;          /* HalkalÄ± yÃ¶nÃ¼ */
+    --marmarayapp-g: #0e6e8c;          /* Gebze yÃ¶nÃ¼ */
 
     /* YÃ¼zeyler */
-    --mrt-panel:   #ffffff;
-    --mrt-panel-2: #f6f4ee;    /* hero bloÄŸu / satÄ±r vurgusu */
-    --mrt-line:    #ece6da;    /* ince ayraÃ§lar */
+    --marmarayapp-panel:   #ffffff;
+    --marmarayapp-panel-2: #f6f4ee;    /* hero bloÄŸu / satÄ±r vurgusu */
+    --marmarayapp-line:    #ece6da;    /* ince ayraÃ§lar */
 
     /* Metin */
-    --mrt-ink:   #181410;      /* birincil metin â€” Ã§ok yÃ¼ksek kontrast */
-    --mrt-ink-2: #6a6053;      /* ikincil etiketler */
-    --mrt-ink-3: #9a9183;      /* en soluk */
+    --marmarayapp-ink:   #181410;      /* birincil metin â€” Ã§ok yÃ¼ksek kontrast */
+    --marmarayapp-ink-2: #6a6053;      /* ikincil etiketler */
+    --marmarayapp-ink-3: #9a9183;      /* en soluk */
 
     /* CanlÄ± durum (yÃ¶n renginden baÄŸÄ±msÄ±z evrensel sinyal) */
-    --mrt-live: #1f9d57;
+    --marmarayapp-live: #1f9d57;
 
-    --mrt-radius: 22px;
-    --mrt-shadow: 0 1px 2px rgba(24, 20, 16, .04),
+    --marmarayapp-radius: 22px;
+    --marmarayapp-shadow: 0 1px 2px rgba(24, 20, 16, .04),
                   0 18px 48px -22px rgba(24, 20, 16, .35);
 
     /* Tipografi */
-    --mrt-font:    "Hanken Grotesk", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-    --mrt-display: "Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif;
+    --marmarayapp-font:    "Hanken Grotesk", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    --marmarayapp-display: "Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif;
 
     display: block;
     width: 100%;
     margin: 0;
-    font-family: var(--mrt-font);
-    color: var(--mrt-ink);
+    font-family: var(--marmarayapp-font);
+    color: var(--marmarayapp-ink);
     line-height: 1.35;
     text-align: left;
     direction: ltr;
@@ -1188,16 +1188,16 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 }
 
 /* Tema sÄ±zÄ±ntÄ±larÄ±nÄ± kes */
-.mrt *,
-.mrt *::before,
-.mrt *::after { box-sizing: border-box; }
+.marmarayapp *,
+.marmarayapp *::before,
+.marmarayapp *::after { box-sizing: border-box; }
 
-.mrt h2,
-.mrt h3,
-.mrt p,
-.mrt ul,
-.mrt li,
-.mrt figure {
+.marmarayapp h2,
+.marmarayapp h3,
+.marmarayapp p,
+.marmarayapp ul,
+.marmarayapp li,
+.marmarayapp figure {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1205,18 +1205,18 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     color: inherit;
 }
 
-.mrt svg { display: block; }
+.marmarayapp svg { display: block; }
 
 /* ============================================================
    1. PANEL (kart)
    ============================================================ */
-.mrt__panel {
+.marmarayapp__panel {
     max-width: 920px;
     margin: 0 auto;
-    background: var(--mrt-panel);
-    border: 1px solid var(--mrt-line);
-    border-radius: var(--mrt-radius);
-    box-shadow: var(--mrt-shadow);
+    background: var(--marmarayapp-panel);
+    border: 1px solid var(--marmarayapp-line);
+    border-radius: var(--marmarayapp-radius);
+    box-shadow: var(--marmarayapp-shadow);
     padding: clamp(18px, 3.5vw, 32px);
     overflow: hidden;
 }
@@ -1224,15 +1224,15 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 /* ============================================================
    2. BAÅLIK
    ============================================================ */
-.mrt__head {
+.marmarayapp__head {
     display: flex;
     flex-direction: column;
     gap: 14px;
     padding-bottom: clamp(16px, 3vw, 24px);
-    border-bottom: 1px solid var(--mrt-line);
+    border-bottom: 1px solid var(--marmarayapp-line);
 }
 
-.mrt__topline {
+.marmarayapp__topline {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1241,7 +1241,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 }
 
 /* "CANLI" rozeti */
-.mrt__live {
+.marmarayapp__live {
     display: inline-flex;
     align-items: center;
     gap: 9px;
@@ -1249,79 +1249,79 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     font-weight: 700;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
 }
 
-.mrt__pulse {
+.marmarayapp__pulse {
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background: var(--mrt-live);
+    background: var(--marmarayapp-live);
     box-shadow: 0 0 0 0 rgba(31, 157, 87, .5);
-    animation: mrt-pulse 2.4s ease-out infinite;
+    animation: marmarayapp-pulse 2.4s ease-out infinite;
     flex: none;
 }
 
 /* CanlÄ± saat */
-.mrt__clock {
+.marmarayapp__clock {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
 }
 
-.mrt__clock svg {
+.marmarayapp__clock svg {
     width: 20px;
     height: 20px;
-    stroke: var(--mrt-ink-3);
+    stroke: var(--marmarayapp-ink-3);
     flex: none;
 }
 
-.mrt__time {
-    font-family: var(--mrt-display);
+.marmarayapp__time {
+    font-family: var(--marmarayapp-display);
     font-size: clamp(19px, 4.2vw, 26px);
     font-weight: 700;
-    color: var(--mrt-ink);
+    color: var(--marmarayapp-ink);
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1;
     letter-spacing: .01em;
 }
 
 /* Ä°stasyon adÄ± */
-.mrt__station {
-    font-family: var(--mrt-display);
+.marmarayapp__station {
+    font-family: var(--marmarayapp-display);
     font-size: clamp(30px, 6.5vw, 46px);
     font-weight: 800;
     line-height: 1.04;
     letter-spacing: -.015em;
-    color: var(--mrt-ink);
+    color: var(--marmarayapp-ink);
 }
 
 /* Ä°stasyon seÃ§ici (selector versiyonu) */
-.mrt__select { margin-top: 4px; }
+.marmarayapp__select { margin-top: 4px; }
 
-.mrt__select-label {
+.marmarayapp__select-label {
     display: block;
     font-size: 14px;
     font-weight: 600;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
     margin-bottom: 8px;
 }
 
-.mrt__select-wrap { position: relative; }
+.marmarayapp__select-wrap { position: relative; }
 
-.mrt__select-input {
+.marmarayapp__select-input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 100%;
     min-height: 62px;
     padding: 0 56px 0 20px;
-    background: var(--mrt-panel-2);
-    border: 2px solid var(--mrt-line);
+    background: var(--marmarayapp-panel-2);
+    border: 2px solid var(--marmarayapp-line);
     border-radius: 14px;
-    color: var(--mrt-ink);
-    font-family: var(--mrt-font);
+    color: var(--marmarayapp-ink);
+    font-family: var(--marmarayapp-font);
     font-size: clamp(18px, 3.6vw, 21px);
     font-weight: 600;
     line-height: 1.2;
@@ -1329,30 +1329,30 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     transition: border-color .18s ease, background .18s ease;
 }
 
-.mrt__select-input:hover { border-color: var(--mrt-ink-3); }
+.marmarayapp__select-input:hover { border-color: var(--marmarayapp-ink-3); }
 
-.mrt__select-input:focus-visible {
+.marmarayapp__select-input:focus-visible {
     outline: none;
-    border-color: var(--mrt-ink);
-    background: var(--mrt-panel);
+    border-color: var(--marmarayapp-ink);
+    background: var(--marmarayapp-panel);
     box-shadow: 0 0 0 4px rgba(24, 20, 16, .12);
 }
 
-.mrt__select-arrow {
+.marmarayapp__select-arrow {
     position: absolute;
     top: 50%;
     right: 18px;
     transform: translateY(-50%);
     width: 26px;
     height: 26px;
-    stroke: var(--mrt-ink-2);
+    stroke: var(--marmarayapp-ink-2);
     pointer-events: none;
 }
 
 /* ============================================================
    3. YÃ–N IZGARASI
    ============================================================ */
-.mrt__grid {
+.marmarayapp__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(14px, 2.5vw, 22px);
@@ -1360,20 +1360,20 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 }
 
 /* YÃ¶n seÃ§ici â€” yalnÄ±zca mobilde + JS varken gÃ¶rÃ¼nÃ¼r (alan tasarrufu) */
-.mrt__toggle { display: none; }
+.marmarayapp__toggle { display: none; }
 
-.mrt__toggle-btn {
+.marmarayapp__toggle-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     min-height: 58px;
     padding: 10px 12px;
-    border: 2px solid var(--mrt-line);
+    border: 2px solid var(--marmarayapp-line);
     border-radius: 13px;
-    background: var(--mrt-panel);
-    color: var(--mrt-ink-2);
-    font-family: var(--mrt-display);
+    background: var(--marmarayapp-panel);
+    color: var(--marmarayapp-ink-2);
+    font-family: var(--marmarayapp-display);
     font-size: clamp(16px, 4.4vw, 19px);
     font-weight: 700;
     line-height: 1.1;
@@ -1383,7 +1383,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     transition: background .18s ease, color .18s ease, border-color .18s ease;
 }
 
-.mrt__toggle-btn svg {
+.marmarayapp__toggle-btn svg {
     width: 22px;
     height: 22px;
     stroke: currentColor;
@@ -1391,29 +1391,29 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     flex: none;
 }
 
-.mrt__toggle-btn[aria-pressed="true"] {
+.marmarayapp__toggle-btn[aria-pressed="true"] {
     color: #fff;
     border-color: transparent;
 }
 
-.mrt__toggle-btn--h[aria-pressed="true"] { background: var(--mrt-h); }
-.mrt__toggle-btn--g[aria-pressed="true"] { background: var(--mrt-g); }
+.marmarayapp__toggle-btn--h[aria-pressed="true"] { background: var(--marmarayapp-h); }
+.marmarayapp__toggle-btn--g[aria-pressed="true"] { background: var(--marmarayapp-g); }
 
-.mrt__toggle-btn:focus-visible {
+.marmarayapp__toggle-btn:focus-visible {
     outline: none;
     box-shadow: 0 0 0 4px rgba(24, 20, 16, .15);
 }
 
-.mrt__dir {
-    background: var(--mrt-panel);
-    border: 1px solid var(--mrt-line);
+.marmarayapp__dir {
+    background: var(--marmarayapp-panel);
+    border: 1px solid var(--marmarayapp-line);
     border-radius: 16px;
     overflow: hidden;
     min-width: 0;
 }
 
 /* YÃ¶n baÅŸlÄ±k Ã§ubuÄŸu â€” dolu accent, beyaz kalÄ±n yazÄ± (yÃ¼ksek kontrast) */
-.mrt__dirhead {
+.marmarayapp__dirhead {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1421,11 +1421,11 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     color: #fff;
 }
 
-.mrt__dir--h .mrt__dirhead { background: var(--mrt-h); }
-.mrt__dir--g .mrt__dirhead { background: var(--mrt-g); }
+.marmarayapp__dir--h .marmarayapp__dirhead { background: var(--marmarayapp-h); }
+.marmarayapp__dir--g .marmarayapp__dirhead { background: var(--marmarayapp-g); }
 
-.mrt__dirname {
-    font-family: var(--mrt-display);
+.marmarayapp__dirname {
+    font-family: var(--marmarayapp-display);
     font-size: clamp(18px, 3.4vw, 23px);
     font-weight: 700;
     letter-spacing: .005em;
@@ -1433,9 +1433,9 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 }
 
 /* Gebze saÄŸ ok ile aynalÄ±: isim saÄŸa yaslÄ± (doÄŸu yÃ¶nÃ¼ hissi) */
-.mrt__dir--g .mrt__dirname { text-align: right; }
+.marmarayapp__dir--g .marmarayapp__dirname { text-align: right; }
 
-.mrt__arrow {
+.marmarayapp__arrow {
     width: 28px;
     height: 28px;
     stroke: #fff;
@@ -1443,34 +1443,34 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     flex: none;
 }
 
-.mrt__list { padding: clamp(14px, 2.4vw, 20px); }
+.marmarayapp__list { padding: clamp(14px, 2.4vw, 20px); }
 
 /* ============================================================
    4. SONRAKÄ° TREN (hero)
    ============================================================ */
-.mrt-next {
+.marmarayapp-next {
     position: relative;
-    background: var(--mrt-panel-2);
-    border: 1px solid var(--mrt-line);
-    border-left: 6px solid var(--mrt-accent, var(--mrt-ink-3));
+    background: var(--marmarayapp-panel-2);
+    border: 1px solid var(--marmarayapp-line);
+    border-left: 6px solid var(--marmarayapp-accent, var(--marmarayapp-ink-3));
     border-radius: 14px;
     padding: clamp(16px, 2.6vw, 22px) clamp(16px, 2.6vw, 22px) clamp(14px, 2.4vw, 18px);
 }
 
-.mrt__dir--h .mrt-next { --mrt-accent: var(--mrt-h); }
-.mrt__dir--g .mrt-next { --mrt-accent: var(--mrt-g); }
+.marmarayapp__dir--h .marmarayapp-next { --marmarayapp-accent: var(--marmarayapp-h); }
+.marmarayapp__dir--g .marmarayapp-next { --marmarayapp-accent: var(--marmarayapp-g); }
 
-.mrt-next__tag {
+.marmarayapp-next__tag {
     display: block;
     font-size: 12.5px;
     font-weight: 700;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
     margin-bottom: 10px;
 }
 
-.mrt-next__body {
+.marmarayapp-next__body {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -1479,19 +1479,19 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 }
 
 /* Geri sayÄ±m (bÃ¼yÃ¼k) */
-.mrt-next__count {
+.marmarayapp-next__count {
     display: flex;
     flex-direction: column;
     min-width: 0;
 }
 
-.mrt-next__count > strong {
-    font-family: var(--mrt-display);
+.marmarayapp-next__count > strong {
+    font-family: var(--marmarayapp-display);
     font-size: clamp(46px, 11vw, 72px);
     font-weight: 800;
     line-height: .92;
     letter-spacing: -.02em;
-    color: var(--mrt-ink);
+    color: var(--marmarayapp-ink);
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1;
     display: flex;
@@ -1499,84 +1499,84 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     gap: 8px;
 }
 
-.mrt-next__unit {
-    font-family: var(--mrt-font);
+.marmarayapp-next__unit {
+    font-family: var(--marmarayapp-font);
     font-size: clamp(18px, 3.6vw, 24px);
     font-weight: 700;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
     letter-spacing: 0;
 }
 
-.mrt-next__count--long > strong {
+.marmarayapp-next__count--long > strong {
     font-size: clamp(30px, 7vw, 46px);
 }
 
-.mrt-next__sub {
+.marmarayapp-next__sub {
     font-size: 14px;
     font-weight: 600;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
     margin-top: 7px;
 }
 
 /* KalkÄ±ÅŸ saati */
-.mrt-next__clock {
+.marmarayapp-next__clock {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     text-align: right;
 }
 
-.mrt-next__clock > strong {
-    font-family: var(--mrt-display);
+.marmarayapp-next__clock > strong {
+    font-family: var(--marmarayapp-display);
     font-size: clamp(30px, 6.5vw, 44px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -.01em;
-    color: var(--mrt-ink);
+    color: var(--marmarayapp-ink);
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1;
 }
 
-.mrt-next__clock .mrt-next__sub { margin-top: 8px; }
+.marmarayapp-next__clock .marmarayapp-next__sub { margin-top: 8px; }
 
 /* Son durak satÄ±rÄ± */
-.mrt-next__dest {
+.marmarayapp-next__dest {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-top: 16px;
     padding-top: 14px;
-    border-top: 1px dashed var(--mrt-line);
+    border-top: 1px dashed var(--marmarayapp-line);
     font-size: 14px;
     font-weight: 600;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
 }
 
-.mrt-next__dest b {
+.marmarayapp-next__dest b {
     font-size: clamp(16px, 3.2vw, 19px);
     font-weight: 700;
-    color: var(--mrt-ink);
+    color: var(--marmarayapp-ink);
 }
 
 /* "YaklaÅŸÄ±yor" durumu â€” geri sayÄ±mÄ± dolu accent hap'a Ã§evir (beyaz yazÄ±) */
-.mrt-next.is-soon {
-    background: var(--mrt-panel);
+.marmarayapp-next.is-soon {
+    background: var(--marmarayapp-panel);
 }
 
-.mrt-next.is-soon .mrt-next__count {
+.marmarayapp-next.is-soon .marmarayapp-next__count {
     align-self: flex-start;
-    background: var(--mrt-accent);
+    background: var(--marmarayapp-accent);
     border-radius: 12px;
     padding: 10px 16px;
-    animation: mrt-soon 1.6s ease-in-out infinite;
+    animation: marmarayapp-soon 1.6s ease-in-out infinite;
 }
 
-.mrt-next.is-soon .mrt-next__count > strong,
-.mrt-next.is-soon .mrt-next__unit,
-.mrt-next.is-soon .mrt-next__sub { color: #fff; }
+.marmarayapp-next.is-soon .marmarayapp-next__count > strong,
+.marmarayapp-next.is-soon .marmarayapp-next__unit,
+.marmarayapp-next.is-soon .marmarayapp-next__sub { color: #fff; }
 
-.mrt-next__now {
-    font-family: var(--mrt-display);
+.marmarayapp-next__now {
+    font-family: var(--marmarayapp-display);
     font-size: clamp(34px, 8vw, 52px);
     font-weight: 800;
     line-height: 1;
@@ -1586,53 +1586,53 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 /* ============================================================
    5. SONRAKÄ° SEFERLER (liste)
    ============================================================ */
-.mrt-rows__head {
+.marmarayapp-rows__head {
     font-size: 12.5px;
     font-weight: 700;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--mrt-ink-3);
+    color: var(--marmarayapp-ink-3);
     margin: 18px 4px 4px;
 }
 
-.mrt-row {
+.marmarayapp-row {
     display: flex;
     align-items: center;
     gap: 12px;
     min-height: 58px;
     padding: 10px 4px;
-    border-top: 1px solid var(--mrt-line);
+    border-top: 1px solid var(--marmarayapp-line);
 }
 
-.mrt-row:first-child { border-top: none; }
+.marmarayapp-row:first-child { border-top: none; }
 
-.mrt-row__dest {
+.marmarayapp-row__dest {
     flex: 1;
     min-width: 0;
     font-size: clamp(16px, 3.2vw, 19px);
     font-weight: 700;
-    color: var(--mrt-ink);
+    color: var(--marmarayapp-ink);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.mrt-row__min {
+.marmarayapp-row__min {
     font-size: clamp(16px, 3.2vw, 19px);
     font-weight: 700;
-    color: var(--mrt-ink);
+    color: var(--marmarayapp-ink);
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1;
     white-space: nowrap;
 }
 
-.mrt-row__at {
+.marmarayapp-row__at {
     min-width: 58px;
     text-align: right;
-    font-family: var(--mrt-display);
+    font-family: var(--marmarayapp-display);
     font-size: clamp(16px, 3.2vw, 19px);
     font-weight: 600;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1;
     white-space: nowrap;
@@ -1641,40 +1641,40 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 /* ============================================================
    6. BOÅ / HATA DURUMU
    ============================================================ */
-.mrt-empty {
+.marmarayapp-empty {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 12px;
     padding: 34px 18px;
-    color: var(--mrt-ink-2);
+    color: var(--marmarayapp-ink-2);
 }
 
-.mrt-empty svg {
+.marmarayapp-empty svg {
     width: 38px;
     height: 38px;
-    stroke: var(--mrt-ink-3);
+    stroke: var(--marmarayapp-ink-3);
 }
 
-.mrt-empty__txt {
+.marmarayapp-empty__txt {
     font-size: 16px;
     font-weight: 600;
     max-width: 26ch;
 }
 
-.mrt-empty--error svg { stroke: #c0492b; }
-.mrt-empty--error .mrt-empty__txt { color: #a8381f; }
+.marmarayapp-empty--error svg { stroke: #c0492b; }
+.marmarayapp-empty--error .marmarayapp-empty__txt { color: #a8381f; }
 
-.mrt-retry {
+.marmarayapp-retry {
     margin-top: 6px;
     min-height: 48px;
     padding: 10px 24px;
-    border: 2px solid var(--mrt-line);
+    border: 2px solid var(--marmarayapp-line);
     border-radius: 12px;
-    background: var(--mrt-panel);
-    color: var(--mrt-ink);
-    font-family: var(--mrt-font);
+    background: var(--marmarayapp-panel);
+    color: var(--marmarayapp-ink);
+    font-family: var(--marmarayapp-font);
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
@@ -1683,9 +1683,9 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     transition: border-color .18s ease, background .18s ease;
 }
 
-.mrt-retry:hover { border-color: var(--mrt-ink-3); }
+.marmarayapp-retry:hover { border-color: var(--marmarayapp-ink-3); }
 
-.mrt-retry:focus-visible {
+.marmarayapp-retry:focus-visible {
     outline: none;
     box-shadow: 0 0 0 4px rgba(24, 20, 16, .15);
 }
@@ -1693,37 +1693,37 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 /* ============================================================
    7. ALT BÄ°LGÄ°
    ============================================================ */
-.mrt__foot {
+.marmarayapp__foot {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 9px;
     margin-top: clamp(16px, 3vw, 22px);
     padding-top: clamp(14px, 2.4vw, 18px);
-    border-top: 1px solid var(--mrt-line);
+    border-top: 1px solid var(--marmarayapp-line);
     font-size: 13.5px;
     font-weight: 600;
-    color: var(--mrt-ink-3);
+    color: var(--marmarayapp-ink-3);
 }
 
-.mrt__foot-dot {
+.marmarayapp__foot-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--mrt-live);
+    background: var(--marmarayapp-live);
     flex: none;
 }
 
 /* ============================================================
    8. ANIMASYONLAR
    ============================================================ */
-@keyframes mrt-pulse {
+@keyframes marmarayapp-pulse {
     0%   { box-shadow: 0 0 0 0 rgba(31, 157, 87, .5); }
     70%  { box-shadow: 0 0 0 10px rgba(31, 157, 87, 0); }
     100% { box-shadow: 0 0 0 0 rgba(31, 157, 87, 0); }
 }
 
-@keyframes mrt-soon {
+@keyframes marmarayapp-soon {
     0%, 100% { transform: scale(1);    opacity: 1; }
     50%      { transform: scale(1.03); opacity: .92; }
 }
@@ -1732,35 +1732,35 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
    9. RESPONSIVE
    ============================================================ */
 @media (max-width: 680px) {
-    .mrt__grid { grid-template-columns: 1fr; }
-    .mrt-next__body { gap: 10px; }
-    .mrt-next__clock { align-items: flex-start; text-align: left; }
+    .marmarayapp__grid { grid-template-columns: 1fr; }
+    .marmarayapp-next__body { gap: 10px; }
+    .marmarayapp-next__clock { align-items: flex-start; text-align: left; }
 
     /* JS aktifse: tek yÃ¶n gÃ¶ster + segmentli seÃ§ici (eski alan tasarrufu davranÄ±ÅŸÄ±).
        JS yoksa iki yÃ¶n de alt alta gÃ¶rÃ¼nÃ¼r (no-JS gÃ¼venli). */
-    .mrt.mrt-js .mrt__toggle {
+    .marmarayapp.marmarayapp-js .marmarayapp__toggle {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 8px;
         padding-top: clamp(16px, 3vw, 24px);
     }
-    .mrt.mrt-js .mrt__grid { padding-top: 12px; }
-    .mrt.mrt-js .mrt__dir { display: none; }
-    .mrt.mrt-js .mrt__dir.is-active { display: block; }
+    .marmarayapp.marmarayapp-js .marmarayapp__grid { padding-top: 12px; }
+    .marmarayapp.marmarayapp-js .marmarayapp__dir { display: none; }
+    .marmarayapp.marmarayapp-js .marmarayapp__dir.is-active { display: block; }
 }
 
 /* ============================================================
    10. DARK MODE (host tema koyuysa uyumlu kal)
    ============================================================ */
 @media (prefers-color-scheme: dark) {
-    .mrt {
-        --mrt-panel:   #17191c;
-        --mrt-panel-2: #202327;
-        --mrt-line:    #2c3036;
-        --mrt-ink:     #f5f2ec;
-        --mrt-ink-2:   #b4ada1;
-        --mrt-ink-3:   #837c70;
-        --mrt-shadow:  0 1px 2px rgba(0, 0, 0, .3),
+    .marmarayapp {
+        --marmarayapp-panel:   #17191c;
+        --marmarayapp-panel-2: #202327;
+        --marmarayapp-line:    #2c3036;
+        --marmarayapp-ink:     #f5f2ec;
+        --marmarayapp-ink-2:   #b4ada1;
+        --marmarayapp-ink-3:   #837c70;
+        --marmarayapp-shadow:  0 1px 2px rgba(0, 0, 0, .3),
                        0 18px 48px -22px rgba(0, 0, 0, .7);
     }
 }
@@ -1769,9 +1769,9 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
    11. HAREKET AZALTMA (eriÅŸilebilirlik)
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-    .mrt__pulse,
-    .mrt-next.is-soon .mrt-next__count {
+    .marmarayapp__pulse,
+    .marmarayapp-next.is-soon .marmarayapp-next__count {
         animation: none;
     }
-    .mrt * { transition: none !important; }
+    .marmarayapp * { transition: none !important; }
 }

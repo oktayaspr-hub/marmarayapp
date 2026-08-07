@@ -31,23 +31,23 @@
 
 <div class="app-module-card">
     <div class="input-group">
-        <label>BaÅŸlangÄ±Ã§ Ä°stasyonu:</label>
+        <label>Başlangıç İstasyonu:</label>
         <select id="rota-origin">
-            <option value="">Ä°stasyon seÃ§iniz...</option>
+            <option value="">İstasyon seçiniz...</option>
         </select>
     </div>
     
     <div class="input-group">
-        <label>VarÄ±ÅŸ Ä°lÃ§esi:</label>
+        <label>Varış İlçesi:</label>
         <select id="rota-district">
-            <option value="">Ä°lÃ§e seÃ§iniz...</option>
+            <option value="">İlçe seçiniz...</option>
         </select>
     </div>
 
     <div class="input-group" id="semt-group" style="display:none;">
-        <label>VarÄ±ÅŸ Semti Yerine Uygun Rotalar:</label>
+        <label>Varış Semti Yerine Uygun Rotalar:</label>
         <select id="rota-neighborhood">
-            <option value="">Uygun rota seÃ§iniz...</option>
+            <option value="">Uygun rota seçiniz...</option>
         </select>
     </div>
     
@@ -55,25 +55,25 @@
     
     <div id="rota-result-container" style="display:none;">
         <div class="route-result-card" id="rota-steps-list">
-            <!-- Rota AdÄ±mlarÄ± Buraya Gelecek -->
+            <!-- Rota Adımları Buraya Gelecek -->
         </div>
         <div class="module-alert">
-            <strong>Bilgi:</strong> Sizi, Ä°stanbul'un yoÄŸun trafiÄŸine takÄ±lmadan en hÄ±zlÄ± ve konforlu raylÄ± sistem / metrobÃ¼s / vapur aÄŸÄ± ile hedefinize ulaÅŸtÄ±rÄ±yoruz. Bu gÃ¼zergahtan sonra, son noktanÄ±za varmak Ã¼zere yÃ¼rÃ¼yerek, otobÃ¼s, minibÃ¼s veya taksi ile devam etmek tamamen sizin tercihinizdir. RotanÄ±zÄ± tam olarak oluÅŸturmak iÃ§in, navigasyon uygulamanÄ±zdan yardÄ±m almayÄ± unutmayÄ±n.
+            <strong>Bilgi:</strong> Sizi, İstanbul'un yoğun trafiğine takılmadan en hızlı ve konforlu raylı sistem / metrobüs / vapur ağı ile hedefinize ulaştırıyoruz. Bu güzergahtan sonra, son noktanıza varmak üzere yürüyerek, otobüs, minibüs veya taksi ile devam etmek tamamen sizin tercihinizdir. Rotanızı tam olarak oluşturmak için, navigasyon uygulamanızdan yardım almayı unutmayın.
         </div>
     </div>
 </div>
 
 <script>
     const ROTA_STATIONS = [
-      {id:'gebze',name:'Gebze'},{id:'darica',name:'DarÄ±ca'},{id:'osmangazi',name:'Osmangazi'},{id:'fatih',name:'Fatih'},{id:'cayirova',name:'Ã‡ayÄ±rova'},
-      {id:'tuzla',name:'Tuzla'},{id:'icmeler',name:'Ä°Ã§meler'},{id:'aydintepe',name:'AydÄ±ntepe'},{id:'guzelyali',name:'GÃ¼zelyalÄ±'},{id:'tersane',name:'Tersane'},
-      {id:'kaynarca',name:'Kaynarca'},{id:'pendik',name:'Pendik'},{id:'yunus',name:'Yunus'},{id:'kartal',name:'Kartal'},{id:'basak',name:'BaÅŸak'},
-      {id:'atalar',name:'Atalar'},{id:'cevizli',name:'Cevizli'},{id:'maltepe',name:'Maltepe'},{id:'sureyyaplaji',name:'SÃ¼reyya PlajÄ±'},{id:'idealtepe',name:'Ä°dealtepe'},
-      {id:'kucukyali',name:'KÃ¼Ã§Ã¼kyalÄ±'},{id:'bostanci',name:'BostancÄ±'},{id:'suadiye',name:'Suadiye'},{id:'erenkoy',name:'ErenkÃ¶y'},{id:'goztepe',name:'GÃ¶ztepe'},
-      {id:'feneryolu',name:'Feneryolu'},{id:'sogutlucesme',name:'SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme'},{id:'ayrilikcesmesi',name:'AyrÄ±lÄ±kÃ§eÅŸmesi'},{id:'uskudar',name:'ÃœskÃ¼dar'},{id:'sirkeci',name:'Sirkeci'},
-      {id:'yenikapi',name:'YenikapÄ±'},{id:'kazlicesme',name:'KazlÄ±Ã§eÅŸme'},{id:'zeytinburnu',name:'Zeytinburnu'},{id:'yenimahalle',name:'Yenimahalle'},{id:'bakirkoy',name:'BakÄ±rkÃ¶y'},
-      {id:'atakoy',name:'AtakÃ¶y'},{id:'yesilyurt',name:'YeÅŸilyurt'},{id:'yesilkoy',name:'YeÅŸilkÃ¶y'},{id:'floryaakvaryum',name:'Florya Akvaryum'},{id:'florya',name:'Florya'},
-      {id:'kucukcekmece',name:'KÃ¼Ã§Ã¼kÃ§ekmece'},{id:'mustafakemal',name:'Mustafa Kemal'},{id:'halkali',name:'HalkalÄ±'}
+      {id:'gebze',name:'Gebze'},{id:'darica',name:'Darıca'},{id:'osmangazi',name:'Osmangazi'},{id:'fatih',name:'Fatih'},{id:'cayirova',name:'Çayırova'},
+      {id:'tuzla',name:'Tuzla'},{id:'icmeler',name:'İçmeler'},{id:'aydintepe',name:'Aydıntepe'},{id:'guzelyali',name:'Güzelyalı'},{id:'tersane',name:'Tersane'},
+      {id:'kaynarca',name:'Kaynarca'},{id:'pendik',name:'Pendik'},{id:'yunus',name:'Yunus'},{id:'kartal',name:'Kartal'},{id:'basak',name:'Başak'},
+      {id:'atalar',name:'Atalar'},{id:'cevizli',name:'Cevizli'},{id:'maltepe',name:'Maltepe'},{id:'sureyyaplaji',name:'Süreyya Plajı'},{id:'idealtepe',name:'İdealtepe'},
+      {id:'kucukyali',name:'Küçükyalı'},{id:'bostanci',name:'Bostancı'},{id:'suadiye',name:'Suadiye'},{id:'erenkoy',name:'Erenköy'},{id:'goztepe',name:'Göztepe'},
+      {id:'feneryolu',name:'Feneryolu'},{id:'sogutlucesme',name:'Söğütlüçeşme'},{id:'ayrilikcesmesi',name:'Ayrılıkçeşmesi'},{id:'uskudar',name:'Üsküdar'},{id:'sirkeci',name:'Sirkeci'},
+      {id:'yenikapi',name:'Yenikapı'},{id:'kazlicesme',name:'Kazlıçeşme'},{id:'zeytinburnu',name:'Zeytinburnu'},{id:'yenimahalle',name:'Yenimahalle'},{id:'bakirkoy',name:'Bakırköy'},
+      {id:'atakoy',name:'Ataköy'},{id:'yesilyurt',name:'Yeşilyurt'},{id:'yesilkoy',name:'Yeşilköy'},{id:'floryaakvaryum',name:'Florya Akvaryum'},{id:'florya',name:'Florya'},
+      {id:'kucukcekmece',name:'Küçükçekmece'},{id:'mustafakemal',name:'Mustafa Kemal'},{id:'halkali',name:'Halkalı'}
     ];
     
     // Logos
@@ -86,686 +86,686 @@
         aktarim: "<?php echo esc_url( plugins_url( 'assets/images/aktarim.png', __FILE__ ) ); ?>"
     };
 
-    // V3.6 Ã‡ok AdÄ±mlÄ± (Multi-Step) Transit Entegrasyon AlgoritmasÄ±
+    // V3.6 Çok Adımlı (Multi-Step) Transit Entegrasyon Algoritması
     const DISTRICT_MAP = {
     "Adalar": [
         {
-            name: "Åehir HatlarÄ± (BÃ¼yÃ¼kada / Heybeliada / KÄ±nalÄ±ada)",
+            name: "Åehir Hatları (Büyükada / Heybeliada / Kınalıada)",
             steps: [
-                { type: "marmaray", dest: "BostancÄ±", text: "Marmaray'a binerek BostancÄ± istasyonunda inin." },
-                { type: "walk", dest: "BostancÄ± Ä°skelesi", text: "BostancÄ±'da inip sahildeki iskeleye kÄ±sa bir yÃ¼rÃ¼yÃ¼ÅŸ yapÄ±n." },
-                { type: "vapur", dest: "Adalar", text: "Ä°skeleden Adalar vapuruna binerek hedefinize ulaÅŸÄ±n." }
+                { type: "marmaray", dest: "Bostancı", text: "Marmaray'a binerek Bostancı istasyonunda inin." },
+                { type: "walk", dest: "Bostancı İskelesi", text: "Bostancı'da inip sahildeki iskeleye kısa bir yürüyüş yapın." },
+                { type: "vapur", dest: "Adalar", text: "İskeleden Adalar vapuruna binerek hedefinize ulaşın." }
             ]
         }
     ],
-    "ArnavutkÃ¶y": [
+    "Arnavutköy": [
         {
-            name: "M11 Ä°stanbul HavalimanÄ± - ArnavutkÃ¶y Metrosu",
+            name: "M11 İstanbul Havalimanı - Arnavutköy Metrosu",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "aktarim", dest: "M2 Metro", text: "YenikapÄ±'da inip M2 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "Gayrettepe", text: "M2 ile Gayrettepe duraÄŸÄ±nda inin." },
-                { type: "aktarim", dest: "M11 Metro", text: "Gayrettepe'den M11 HavalimanÄ± Metrosuna geÃ§iÅŸ yapÄ±n." },
-                { type: "metro", dest: "ArnavutkÃ¶y", text: "M11 ile ArnavutkÃ¶y veya TaÅŸoluk duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "aktarim", dest: "M2 Metro", text: "Yenikapı'da inip M2 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Gayrettepe", text: "M2 ile Gayrettepe durağında inin." },
+                { type: "aktarim", dest: "M11 Metro", text: "Gayrettepe'den M11 Havalimanı Metrosuna geçiş yapın." },
+                { type: "metro", dest: "Arnavutköy", text: "M11 ile Arnavutköy veya Taşoluk durağında inin." }
             ]
         }
     ],
-    "AtaÅŸehir": [
+    "Ataşehir": [
         {
-            name: "M4 KadÄ±kÃ¶y - Sabiha GÃ¶kÃ§en Metrosu (Yenisahra/KozyataÄŸÄ±)",
+            name: "M4 Kadıköy - Sabiha Gökçen Metrosu (Yenisahra/Kozyatağı)",
             steps: [
-                { type: "marmaray", dest: "AyrÄ±lÄ±k Ã‡eÅŸmesi", text: "Marmaray ile AyrÄ±lÄ±k Ã‡eÅŸmesi istasyonunda inin." },
-                { type: "aktarim", dest: "M4 Metro", text: "Turnikelerden M4 Metro katÄ±na geÃ§in." },
-                { type: "metro", dest: "Yenisahra / KozyataÄŸÄ±", text: "M4 metrosuna binip Yenisahra veya KozyataÄŸÄ± duraÄŸÄ±nda inerek AtaÅŸehir'e geÃ§in." }
+                { type: "marmaray", dest: "Ayrılık Çeşmesi", text: "Marmaray ile Ayrılık Çeşmesi istasyonunda inin." },
+                { type: "aktarim", dest: "M4 Metro", text: "Turnikelerden M4 Metro katına geçin." },
+                { type: "metro", dest: "Yenisahra / Kozyatağı", text: "M4 metrosuna binip Yenisahra veya Kozyatağı durağında inerek Ataşehir'e geçin." }
             ]
         },
         {
-            name: "M8 BostancÄ± - Parseller Metrosu (Ä°Ã§erenkÃ¶y/KayÄ±ÅŸdaÄŸÄ±)",
+            name: "M8 Bostancı - Parseller Metrosu (İçerenköy/Kayışdağı)",
             steps: [
-                { type: "marmaray", dest: "BostancÄ±", text: "Marmaray ile BostancÄ± istasyonunda inin." },
-                { type: "aktarim", dest: "M8 Metro", text: "Ä°stasyondan doÄŸrudan M8 Metrosuna geÃ§iÅŸ yapÄ±n." },
-                { type: "metro", dest: "Ä°Ã§erenkÃ¶y / KayÄ±ÅŸdaÄŸÄ±", text: "M8 metrosuna binip Ä°Ã§erenkÃ¶y, KÃ¼Ã§Ã¼kbakkalkÃ¶y veya KayÄ±ÅŸdaÄŸÄ± duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Bostancı", text: "Marmaray ile Bostancı istasyonunda inin." },
+                { type: "aktarim", dest: "M8 Metro", text: "İstasyondan doğrudan M8 Metrosuna geçiş yapın." },
+                { type: "metro", dest: "İçerenköy / Kayışdağı", text: "M8 metrosuna binip İçerenköy, Küçükbakkalköy veya Kayışdağı durağında inin." }
             ]
         }
     ],
-    "AvcÄ±lar": [
+    "Avcılar": [
         {
-            name: "MetrobÃ¼s (AvcÄ±lar Merkez / Cihangir)",
+            name: "Metrobüs (Avcılar Merkez / Cihangir)",
             steps: [
-                { type: "marmaray", dest: "KÃ¼Ã§Ã¼kÃ§ekmece", text: "Marmaray ile KÃ¼Ã§Ã¼kÃ§ekmece istasyonunda inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "Turnikelerden Ã§Ä±karak KÃ¼Ã§Ã¼kÃ§ekmece MetrobÃ¼s duraÄŸÄ±na geÃ§iÅŸ yapÄ±n." },
-                { type: "metrobus", dest: "AvcÄ±lar Merkez", text: "BeylikdÃ¼zÃ¼ yÃ¶nÃ¼ne giden MetrobÃ¼se binip AvcÄ±lar KampÃ¼s veya Cihangir duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Küçükçekmece", text: "Marmaray ile Küçükçekmece istasyonunda inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Turnikelerden çıkarak Küçükçekmece Metrobüs durağına geçiş yapın." },
+                { type: "metrobus", dest: "Avcılar Merkez", text: "Beylikdüzü yönüne giden Metrobüse binip Avcılar Kampüs veya Cihangir durağında inin." }
             ]
         }
     ],
-    "BaÄŸcÄ±lar": [
+    "Bağcılar": [
         {
-            name: "M1B YenikapÄ± - KirazlÄ± Metrosu (BaÄŸcÄ±lar Meydan)",
+            name: "M1B Yenikapı - Kirazlı Metrosu (Bağcılar Meydan)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna kadar gidin." },
-                { type: "aktarim", dest: "M1 Metro", text: "YenikapÄ±'da inip M1 Metro katÄ±na yÃ¼rÃ¼yÃ¼n." },
-                { type: "metro", dest: "BaÄŸcÄ±lar Meydan / KirazlÄ±", text: "M1B YenikapÄ±-KirazlÄ± metrosuna binerek BaÄŸcÄ±lar Meydan veya KirazlÄ± duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna kadar gidin." },
+                { type: "aktarim", dest: "M1 Metro", text: "Yenikapı'da inip M1 Metro katına yürüyün." },
+                { type: "metro", dest: "Bağcılar Meydan / Kirazlı", text: "M1B Yenikapı-Kirazlı metrosuna binerek Bağcılar Meydan veya Kirazlı durağında inin." }
             ]
         },
         {
-            name: "T1 KabataÅŸ - BaÄŸcÄ±lar TramvayÄ± (GÃ¼neÅŸtepe/Yavuz Selim)",
+            name: "T1 Kabataş - Bağcılar Tramvayı (Güneştepe/Yavuz Selim)",
             steps: [
                 { type: "marmaray", dest: "Sirkeci", text: "Marmaray ile Sirkeci istasyonunda inin." },
-                { type: "aktarim", dest: "T1 Tramvay", text: "Sirkeci'den Ã§Ä±karak T1 Tramvay duraÄŸÄ±na geÃ§in." },
-                { type: "metro", dest: "BaÄŸcÄ±lar Merkez", text: "T1 KabataÅŸ-BaÄŸcÄ±lar tramvayÄ±na binip GÃ¼neÅŸtepe veya BaÄŸcÄ±lar Merkez'de inin." }
+                { type: "aktarim", dest: "T1 Tramvay", text: "Sirkeci'den çıkarak T1 Tramvay durağına geçin." },
+                { type: "metro", dest: "Bağcılar Merkez", text: "T1 Kabataş-Bağcılar tramvayına binip Güneştepe veya Bağcılar Merkez'de inin." }
             ]
         }
     ],
-    "BahÃ§elievler": [
+    "Bahçelievler": [
         {
-            name: "M1A YenikapÄ± - HavalimanÄ± Metrosu (Åirinevler / Yenibosna)",
+            name: "M1A Yenikapı - Havalimanı Metrosu (Åirinevler / Yenibosna)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "aktarim", dest: "M1 Metro", text: "YenikapÄ±'da inip M1 Metro alanÄ±na geÃ§in." },
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "aktarim", dest: "M1 Metro", text: "Yenikapı'da inip M1 Metro alanına geçin." },
                 { type: "metro", dest: "Åirinevler / Yenibosna", text: "M1A metrosuna binip Åirinevler veya Yenibosna'da inin." }
             ]
         },
         {
-            name: "MetrobÃ¼s (Åirinevler / Yenibosna)",
+            name: "Metrobüs (Åirinevler / Yenibosna)",
             steps: [
-                { type: "marmaray", dest: "Zeytinburnu", text: "Marmaray ile Zeytinburnu duraÄŸÄ±nda inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "Marmaray'dan Ã§Ä±kÄ±p minibÃ¼s veya kÄ±sa bir yÃ¼rÃ¼yÃ¼ÅŸ ile CevizlibaÄŸ/Zeytinburnu metrobÃ¼sÃ¼ne geÃ§in (Veya SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme/KÃ¼Ã§Ã¼kÃ§ekmece'den doÄŸrudan metrobÃ¼se binin)." },
-                { type: "metrobus", dest: "Åirinevler", text: "MetrobÃ¼se binerek Åirinevler veya Yenibosna duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Zeytinburnu", text: "Marmaray ile Zeytinburnu durağında inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Marmaray'dan çıkıp minibüs veya kısa bir yürüyüş ile Cevizlibağ/Zeytinburnu metrobüsüne geçin (Veya Söğütlüçeşme/Küçükçekmece'den doğrudan metrobüse binin)." },
+                { type: "metrobus", dest: "Åirinevler", text: "Metrobüse binerek Åirinevler veya Yenibosna durağında inin." }
             ]
         }
     ],
-    "BakÄ±rkÃ¶y": [
+    "Bakırköy": [
         {
-            name: "M3 BakÄ±rkÃ¶y Sahil - KayaÅŸehir Metrosu (Ä°ncirli)",
+            name: "M3 Bakırköy Sahil - Kayaşehir Metrosu (İncirli)",
             steps: [
-                { type: "marmaray", dest: "BakÄ±rkÃ¶y", text: "Marmaray ile BakÄ±rkÃ¶y istasyonunda inin." },
-                { type: "aktarim", dest: "M3 Metro", text: "Marmaray'dan inerek doÄŸrudan M3 Metro hattÄ±na aktarma yapÄ±n." },
-                { type: "metro", dest: "Ä°ncirli / Haznedar", text: "M3 Metrosu ile Ä°ncirli veya Haznedar duraÄŸÄ±na geÃ§in." }
+                { type: "marmaray", dest: "Bakırköy", text: "Marmaray ile Bakırköy istasyonunda inin." },
+                { type: "aktarim", dest: "M3 Metro", text: "Marmaray'dan inerek doğrudan M3 Metro hattına aktarma yapın." },
+                { type: "metro", dest: "İncirli / Haznedar", text: "M3 Metrosu ile İncirli veya Haznedar durağına geçin." }
             ]
         },
         {
-            name: "BakÄ±rkÃ¶y Merkez (YÃ¼rÃ¼me)",
+            name: "Bakırköy Merkez (Yürüme)",
             steps: [
-                { type: "marmaray", dest: "BakÄ±rkÃ¶y", text: "Marmaray ile doÄŸrudan BakÄ±rkÃ¶y istasyonunda inin." },
-                { type: "walk", dest: "BakÄ±rkÃ¶y Ã‡arÅŸÄ±", text: "Ä°stasyondan Ã§Ä±karak Ã–zgÃ¼rlÃ¼k MeydanÄ± veya Ä°ncirli yÃ¶nÃ¼ne yÃ¼rÃ¼yÃ¼n." }
+                { type: "marmaray", dest: "Bakırköy", text: "Marmaray ile doğrudan Bakırköy istasyonunda inin." },
+                { type: "walk", dest: "Bakırköy Çarşı", text: "İstasyondan çıkarak Özgürlük Meydanı veya İncirli yönüne yürüyün." }
             ]
         }
     ],
-    "BaÅŸakÅŸehir": [
+    "Başakşehir": [
         {
-            name: "M3 BakÄ±rkÃ¶y Sahil - KayaÅŸehir Metrosu (Metrokent)",
+            name: "M3 Bakırköy Sahil - Kayaşehir Metrosu (Metrokent)",
             steps: [
-                { type: "marmaray", dest: "BakÄ±rkÃ¶y", text: "Marmaray ile BakÄ±rkÃ¶y istasyonunda inin." },
-                { type: "aktarim", dest: "M3 Metro", text: "BakÄ±rkÃ¶y istasyonundan M3 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "BaÅŸakÅŸehir Metrokent", text: "M3 metrosuna binip BaÅŸakÅŸehir Metrokent veya Åehir Hastanesi duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Bakırköy", text: "Marmaray ile Bakırköy istasyonunda inin." },
+                { type: "aktarim", dest: "M3 Metro", text: "Bakırköy istasyonundan M3 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Başakşehir Metrokent", text: "M3 metrosuna binip Başakşehir Metrokent veya Åehir Hastanesi durağında inin." }
             ]
         },
         {
-            name: "M9 AtakÃ¶y - Olimpiyat Metrosu (Bahariye/Masko)",
+            name: "M9 Ataköy - Olimpiyat Metrosu (Bahariye/Masko)",
             steps: [
-                { type: "marmaray", dest: "AtakÃ¶y", text: "Marmaray ile AtakÃ¶y istasyonunda inin." },
-                { type: "aktarim", dest: "M9 Metro", text: "AtakÃ¶y istasyonundan doÄŸrudan M9 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "Masko / Olimpiyat", text: "M9 metrosuna binip Ä°kitelli Sanayi, Masko veya Olimpiyat duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Ataköy", text: "Marmaray ile Ataköy istasyonunda inin." },
+                { type: "aktarim", dest: "M9 Metro", text: "Ataköy istasyonundan doğrudan M9 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Masko / Olimpiyat", text: "M9 metrosuna binip İkitelli Sanayi, Masko veya Olimpiyat durağında inin." }
             ]
         }
     ],
-    "BayrampaÅŸa": [
+    "Bayrampaşa": [
         {
-            name: "M1A / M1B Metrosu (BayrampaÅŸa / SaÄŸmalcÄ±lar)",
+            name: "M1A / M1B Metrosu (Bayrampaşa / Sağmalcılar)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "aktarim", dest: "M1 Metro", text: "YenikapÄ±'da inip M1 Metro katÄ±na yÃ¼rÃ¼yÃ¼n." },
-                { type: "metro", dest: "BayrampaÅŸa - Maltepe", text: "M1A/M1B metrosuna binip BayrampaÅŸa-Maltepe veya SaÄŸmalcÄ±lar duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "aktarim", dest: "M1 Metro", text: "Yenikapı'da inip M1 Metro katına yürüyün." },
+                { type: "metro", dest: "Bayrampaşa - Maltepe", text: "M1A/M1B metrosuna binip Bayrampaşa-Maltepe veya Sağmalcılar durağında inin." }
             ]
         },
         {
-            name: "T4 TopkapÄ± - Mescid-i Selam TramvayÄ±",
+            name: "T4 Topkapı - Mescid-i Selam Tramvayı",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ±'ya gidin." },
-                { type: "metro", dest: "TopkapÄ±", text: "YenikapÄ±'dan M1 Metrosu ile TopkapÄ±'ya geÃ§in." },
-                { type: "aktarim", dest: "T4 Tramvay", text: "TopkapÄ±'da inip T4 Tramvay Ä°stasyonuna yÃ¼rÃ¼yÃ¼n." },
-                { type: "metro", dest: "SaÄŸmalcÄ±lar / Bosna Ã‡ukurÃ§eÅŸme", text: "T4 TramvayÄ± ile SaÄŸmalcÄ±lar veya Bosna Ã‡ukurÃ§eÅŸme duraÄŸÄ±na gidin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı'ya gidin." },
+                { type: "metro", dest: "Topkapı", text: "Yenikapı'dan M1 Metrosu ile Topkapı'ya geçin." },
+                { type: "aktarim", dest: "T4 Tramvay", text: "Topkapı'da inip T4 Tramvay İstasyonuna yürüyün." },
+                { type: "metro", dest: "Sağmalcılar / Bosna Çukurçeşme", text: "T4 Tramvayı ile Sağmalcılar veya Bosna Çukurçeşme durağına gidin." }
             ]
         }
     ],
-    "BeÅŸiktaÅŸ": [
+    "Beşiktaş": [
         {
-            name: "M2 YenikapÄ± - HacÄ±osman Metrosu (Levent / Gayrettepe)",
+            name: "M2 Yenikapı - Hacıosman Metrosu (Levent / Gayrettepe)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "aktarim", dest: "M2 Metro", text: "YenikapÄ±'da inip M2 HacÄ±osman metrosu katÄ±na geÃ§in." },
-                { type: "metro", dest: "Levent / Gayrettepe", text: "M2 metrosuna binip Gayrettepe, Levent veya 4. Levent duraklarÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "aktarim", dest: "M2 Metro", text: "Yenikapı'da inip M2 Hacıosman metrosu katına geçin." },
+                { type: "metro", dest: "Levent / Gayrettepe", text: "M2 metrosuna binip Gayrettepe, Levent veya 4. Levent duraklarında inin." }
             ]
         },
         {
-            name: "M7 YÄ±ldÄ±z - Mahmutbey Metrosu (YÄ±ldÄ±z / Barbaros)",
+            name: "M7 Yıldız - Mahmutbey Metrosu (Yıldız / Barbaros)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ±'ya gidin." },
-                { type: "metro", dest: "MecidiyekÃ¶y", text: "YenikapÄ±'dan M2 metrosu ile ÅiÅŸli-MecidiyekÃ¶y'e geÃ§in." },
-                { type: "aktarim", dest: "M7 Metro", text: "MecidiyekÃ¶y'de inip M7 YÄ±ldÄ±z metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "YÄ±ldÄ±z (BeÅŸiktaÅŸ)", text: "M7 metrosu ile YÄ±ldÄ±z duraÄŸÄ±nda (Barbaros BulvarÄ±) inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı'ya gidin." },
+                { type: "metro", dest: "Mecidiyeköy", text: "Yenikapı'dan M2 metrosu ile Åişli-Mecidiyeköy'e geçin." },
+                { type: "aktarim", dest: "M7 Metro", text: "Mecidiyeköy'de inip M7 Yıldız metrosuna aktarma yapın." },
+                { type: "metro", dest: "Yıldız (Beşiktaş)", text: "M7 metrosu ile Yıldız durağında (Barbaros Bulvarı) inin." }
             ]
         },
         {
-            name: "Åehir HatlarÄ± Vapuru (BeÅŸiktaÅŸ Merkez)",
+            name: "Åehir Hatları Vapuru (Beşiktaş Merkez)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "aktarim", dest: "Åehir HatlarÄ±", text: "ÃœskÃ¼dar'da inip sahildeki iskelelere yÃ¼rÃ¼yÃ¼n." },
-                { type: "vapur", dest: "BeÅŸiktaÅŸ Ä°skelesi", text: "ÃœskÃ¼dar - BeÅŸiktaÅŸ motoru veya vapuruyla BeÅŸiktaÅŸ Meydan'a doÄŸrudan geÃ§in." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "aktarim", dest: "Åehir Hatları", text: "Üsküdar'da inip sahildeki iskelelere yürüyün." },
+                { type: "vapur", dest: "Beşiktaş İskelesi", text: "Üsküdar - Beşiktaş motoru veya vapuruyla Beşiktaş Meydan'a doğrudan geçin." }
             ]
         }
     ],
     "Beykoz": [
         {
-            name: "Åehir HatlarÄ± Vapuru (Beykoz / Ã‡ubuklu Ä°skelesi)",
+            name: "Åehir Hatları Vapuru (Beykoz / Çubuklu İskelesi)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "aktarim", dest: "Åehir HatlarÄ±", text: "ÃœskÃ¼dar'da inip sahildeki iskelelere yÃ¼rÃ¼yÃ¼n." },
-                { type: "vapur", dest: "Beykoz Ä°skelesi", text: "BoÄŸaz hattÄ± vapurlarÄ±na binerek Beykoz, Ã‡ubuklu veya KanlÄ±ca iskelelerinde inin." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "aktarim", dest: "Åehir Hatları", text: "Üsküdar'da inip sahildeki iskelelere yürüyün." },
+                { type: "vapur", dest: "Beykoz İskelesi", text: "Boğaz hattı vapurlarına binerek Beykoz, Çubuklu veya Kanlıca iskelelerinde inin." }
             ]
         },
         {
-            name: "Ä°ETT OtobÃ¼sleri (KÄ±yÄ± Åeridi)",
+            name: "İETT Otobüsleri (Kıyı Åeridi)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "aktarim", dest: "Ä°ETT", text: "ÃœskÃ¼dar MeydanÄ±ndaki otobÃ¼s duraklarÄ±na geÃ§in." },
-                { type: "walk", dest: "Beykoz Merkez", text: "15 serisi sahil otobÃ¼sleri veya dolmuÅŸlarÄ±yla Beykoz'a geÃ§iÅŸ yapÄ±n." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "aktarim", dest: "İETT", text: "Üsküdar Meydanındaki otobüs duraklarına geçin." },
+                { type: "walk", dest: "Beykoz Merkez", text: "15 serisi sahil otobüsleri veya dolmuşlarıyla Beykoz'a geçiş yapın." }
             ]
         }
     ],
-    "BeylikdÃ¼zÃ¼": [
+    "Beylikdüzü": [
         {
-            name: "MetrobÃ¼s (BeylikdÃ¼zÃ¼ Son Durak / TÃœYAP)",
+            name: "Metrobüs (Beylikdüzü Son Durak / TÜYAP)",
             steps: [
-                { type: "marmaray", dest: "KÃ¼Ã§Ã¼kÃ§ekmece", text: "Marmaray ile KÃ¼Ã§Ã¼kÃ§ekmece istasyonunda inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "Yaya geÃ§idini kullanarak MetrobÃ¼s duraÄŸÄ±na gidin." },
-                { type: "metrobus", dest: "BeylikdÃ¼zÃ¼ Son Durak", text: "BeylikdÃ¼zÃ¼ yÃ¶nÃ¼ne giden MetrobÃ¼se binip Cumhuriyet Mah. veya TÃœYAP'ta inin." }
+                { type: "marmaray", dest: "Küçükçekmece", text: "Marmaray ile Küçükçekmece istasyonunda inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Yaya geçidini kullanarak Metrobüs durağına gidin." },
+                { type: "metrobus", dest: "Beylikdüzü Son Durak", text: "Beylikdüzü yönüne giden Metrobüse binip Cumhuriyet Mah. veya TÜYAP'ta inin." }
             ]
         }
     ],
-    "BeyoÄŸlu": [
+    "Beyoğlu": [
         {
-            name: "M2 YenikapÄ± - HacÄ±osman Metrosu (Taksim / ÅiÅŸhane)",
+            name: "M2 Yenikapı - Hacıosman Metrosu (Taksim / Åişhane)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "aktarim", dest: "M2 Metro", text: "YenikapÄ±'da inip M2 HacÄ±osman metrosu katÄ±na geÃ§in." },
-                { type: "metro", dest: "Taksim / ÅiÅŸhane", text: "M2 metrosuna binerek ÅiÅŸhane veya Taksim duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "aktarim", dest: "M2 Metro", text: "Yenikapı'da inip M2 Hacıosman metrosu katına geçin." },
+                { type: "metro", dest: "Taksim / Åişhane", text: "M2 metrosuna binerek Åişhane veya Taksim durağında inin." }
             ]
         },
         {
-            name: "T1 KabataÅŸ - BaÄŸcÄ±lar TramvayÄ± (KarakÃ¶y / FÄ±ndÄ±klÄ±)",
+            name: "T1 Kabataş - Bağcılar Tramvayı (Karaköy / Fındıklı)",
             steps: [
                 { type: "marmaray", dest: "Sirkeci", text: "Marmaray ile Sirkeci istasyonunda inin." },
-                { type: "aktarim", dest: "T1 Tramvay", text: "Sirkeci'den Ã§Ä±karak T1 Tramvay duraÄŸÄ±na geÃ§in." },
-                { type: "metro", dest: "KarakÃ¶y / Tophane / KabataÅŸ", text: "T1 TramvayÄ± ile KarakÃ¶y, Tophane, FÄ±ndÄ±klÄ± veya KabataÅŸ duraklarÄ±nda inin." }
+                { type: "aktarim", dest: "T1 Tramvay", text: "Sirkeci'den çıkarak T1 Tramvay durağına geçin." },
+                { type: "metro", dest: "Karaköy / Tophane / Kabataş", text: "T1 Tramvayı ile Karaköy, Tophane, Fındıklı veya Kabataş duraklarında inin." }
             ]
         },
         {
-            name: "Åehir HatlarÄ± Vapuru (KasÄ±mpaÅŸa / HaskÃ¶y)",
+            name: "Åehir Hatları Vapuru (Kasımpaşa / Hasköy)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "aktarim", dest: "Åehir HatlarÄ±", text: "ÃœskÃ¼dar iskelesine geÃ§in." },
-                { type: "vapur", dest: "KasÄ±mpaÅŸa Ä°skelesi", text: "HaliÃ§ HattÄ± vapurlarÄ±na binerek KasÄ±mpaÅŸa veya HaskÃ¶y iskelesinde inin." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "aktarim", dest: "Åehir Hatları", text: "Üsküdar iskelesine geçin." },
+                { type: "vapur", dest: "Kasımpaşa İskelesi", text: "Haliç Hattı vapurlarına binerek Kasımpaşa veya Hasköy iskelesinde inin." }
             ]
         }
     ],
-    "BÃ¼yÃ¼kÃ§ekmece": [
+    "Büyükçekmece": [
         {
-            name: "MetrobÃ¼s (TÃœYAP) SonrasÄ± MinibÃ¼s",
+            name: "Metrobüs (TÜYAP) Sonrası Minibüs",
             steps: [
-                { type: "marmaray", dest: "KÃ¼Ã§Ã¼kÃ§ekmece", text: "Marmaray ile KÃ¼Ã§Ã¼kÃ§ekmece istasyonunda inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "MetrobÃ¼s duraÄŸÄ±na aktarma yapÄ±n." },
-                { type: "metrobus", dest: "TÃœYAP (Son Durak)", text: "MetrobÃ¼s ile BeylikdÃ¼zÃ¼ Son Durak (TÃœYAP) istasyonunda inin." },
-                { type: "walk", dest: "BÃ¼yÃ¼kÃ§ekmece Sahil", text: "TÃœYAP'tan kalkan minibÃ¼s veya otobÃ¼slerle BÃ¼yÃ¼kÃ§ekmece sahile / merkeze inin." }
+                { type: "marmaray", dest: "Küçükçekmece", text: "Marmaray ile Küçükçekmece istasyonunda inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Metrobüs durağına aktarma yapın." },
+                { type: "metrobus", dest: "TÜYAP (Son Durak)", text: "Metrobüs ile Beylikdüzü Son Durak (TÜYAP) istasyonunda inin." },
+                { type: "walk", dest: "Büyükçekmece Sahil", text: "TÜYAP'tan kalkan minibüs veya otobüslerle Büyükçekmece sahile / merkeze inin." }
             ]
         }
     ],
-    "Ã‡atalca": [
+    "Çatalca": [
         {
-            name: "MetrobÃ¼s / OtobÃ¼s (TÃœYAP AktarmalÄ±)",
+            name: "Metrobüs / Otobüs (TÜYAP Aktarmalı)",
             steps: [
-                { type: "marmaray", dest: "KÃ¼Ã§Ã¼kÃ§ekmece", text: "Marmaray ile KÃ¼Ã§Ã¼kÃ§ekmece'de inin." },
-                { type: "metrobus", dest: "TÃœYAP", text: "MetrobÃ¼s ile TÃœYAP son duraÄŸa gidin." },
-                { type: "walk", dest: "Ã‡atalca", text: "TÃœYAP'tan Ã‡atalca yÃ¶nÃ¼ne giden halk otobÃ¼sleri veya minibÃ¼slere aktarma yapÄ±n." }
+                { type: "marmaray", dest: "Küçükçekmece", text: "Marmaray ile Küçükçekmece'de inin." },
+                { type: "metrobus", dest: "TÜYAP", text: "Metrobüs ile TÜYAP son durağa gidin." },
+                { type: "walk", dest: "Çatalca", text: "TÜYAP'tan Çatalca yönüne giden halk otobüsleri veya minibüslere aktarma yapın." }
             ]
         }
     ],
-    "Ã‡ekmekÃ¶y": [
+    "Çekmeköy": [
         {
-            name: "M5 ÃœskÃ¼dar - Ã‡ekmekÃ¶y Metrosu",
+            name: "M5 Üsküdar - Çekmeköy Metrosu",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "aktarim", dest: "M5 Metro", text: "ÃœskÃ¼dar istasyonundan M5 Metrosuna doÄŸrudan aktarma yapÄ±n." },
-                { type: "metro", dest: "Ã‡ekmekÃ¶y", text: "M5 metrosu ile Madenler veya Ã‡ekmekÃ¶y son duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "aktarim", dest: "M5 Metro", text: "Üsküdar istasyonundan M5 Metrosuna doğrudan aktarma yapın." },
+                { type: "metro", dest: "Çekmeköy", text: "M5 metrosu ile Madenler veya Çekmeköy son durağında inin." }
             ]
         }
     ],
     "Esenler": [
         {
-            name: "M1B YenikapÄ± - KirazlÄ± Metrosu (Esenler Otogar)",
+            name: "M1B Yenikapı - Kirazlı Metrosu (Esenler Otogar)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonunda inin." },
-                { type: "aktarim", dest: "M1 Metro", text: "YenikapÄ±'dan M1B metrosuna geÃ§in." },
-                { type: "metro", dest: "Esenler Otogar", text: "M1B metrosu ile Esenler veya Otogar duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonunda inin." },
+                { type: "aktarim", dest: "M1 Metro", text: "Yenikapı'dan M1B metrosuna geçin." },
+                { type: "metro", dest: "Esenler Otogar", text: "M1B metrosu ile Esenler veya Otogar durağında inin." }
             ]
         }
     ],
     "Esenyurt": [
         {
-            name: "MetrobÃ¼s (Haramidere / Saadetdere)",
+            name: "Metrobüs (Haramidere / Saadetdere)",
             steps: [
-                { type: "marmaray", dest: "KÃ¼Ã§Ã¼kÃ§ekmece", text: "Marmaray ile KÃ¼Ã§Ã¼kÃ§ekmece'de inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "MetrobÃ¼se aktarma yapÄ±n." },
-                { type: "metrobus", dest: "Haramidere", text: "MetrobÃ¼s ile Haramidere, Saadetdere veya GÃ¼zelyurt duraÄŸÄ±nda inerek Esenyurt'a yÃ¼rÃ¼yÃ¼n veya minibÃ¼se binin." }
+                { type: "marmaray", dest: "Küçükçekmece", text: "Marmaray ile Küçükçekmece'de inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Metrobüse aktarma yapın." },
+                { type: "metrobus", dest: "Haramidere", text: "Metrobüs ile Haramidere, Saadetdere veya Güzelyurt durağında inerek Esenyurt'a yürüyün veya minibüse binin." }
             ]
         }
     ],
-    "EyÃ¼psultan": [
+    "Eyüpsultan": [
         {
-            name: "T5 EminÃ¶nÃ¼ - AlibeykÃ¶y TramvayÄ±",
+            name: "T5 Eminönü - Alibeyköy Tramvayı",
             steps: [
                 { type: "marmaray", dest: "Sirkeci", text: "Marmaray ile Sirkeci istasyonunda inin." },
-                { type: "aktarim", dest: "EminÃ¶nÃ¼ Tramvay", text: "Sirkeci'den EminÃ¶nÃ¼ meydanÄ±na yÃ¼rÃ¼yÃ¼p T5 Tramvay duraÄŸÄ±na geÃ§in." },
-                { type: "metro", dest: "EyÃ¼psultan Merkez", text: "T5 TramvayÄ± ile EyÃ¼psultan Teleferik veya AlibeykÃ¶y duraklarÄ±nda inin." }
+                { type: "aktarim", dest: "Eminönü Tramvay", text: "Sirkeci'den Eminönü meydanına yürüyüp T5 Tramvay durağına geçin." },
+                { type: "metro", dest: "Eyüpsultan Merkez", text: "T5 Tramvayı ile Eyüpsultan Teleferik veya Alibeyköy duraklarında inin." }
             ]
         },
         {
-            name: "M7 YÄ±ldÄ±z - Mahmutbey Metrosu (AlibeykÃ¶y)",
+            name: "M7 Yıldız - Mahmutbey Metrosu (Alibeyköy)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ±'ya gidin." },
-                { type: "metro", dest: "MecidiyekÃ¶y", text: "YenikapÄ±'dan M2 ile MecidiyekÃ¶y'e geÃ§in." },
-                { type: "aktarim", dest: "M7 Metro", text: "MecidiyekÃ¶y'den M7 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "AlibeykÃ¶y / YeÅŸilpÄ±nar", text: "M7 metrosu ile AlibeykÃ¶y, Ã‡Ä±rÃ§Ä±r veya YeÅŸilpÄ±nar'da inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı'ya gidin." },
+                { type: "metro", dest: "Mecidiyeköy", text: "Yenikapı'dan M2 ile Mecidiyeköy'e geçin." },
+                { type: "aktarim", dest: "M7 Metro", text: "Mecidiyeköy'den M7 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Alibeyköy / Yeşilpınar", text: "M7 metrosu ile Alibeyköy, Çırçır veya Yeşilpınar'da inin." }
             ]
         }
     ],
     "Fatih": [
         {
-            name: "T1 KabataÅŸ - BaÄŸcÄ±lar TramvayÄ± (Sultanahmet / BeyazÄ±t)",
+            name: "T1 Kabataş - Bağcılar Tramvayı (Sultanahmet / Beyazıt)",
             steps: [
                 { type: "marmaray", dest: "Sirkeci", text: "Marmaray ile Sirkeci istasyonunda inin." },
-                { type: "aktarim", dest: "T1 Tramvay", text: "Sirkeci'de T1 tramvayÄ±na aktarma yapÄ±n." },
-                { type: "metro", dest: "Sultanahmet / BeyazÄ±t", text: "T1 ile Sultanahmet, Ã‡emberlitaÅŸ veya BeyazÄ±t (KapalÄ±Ã§arÅŸÄ±) duraÄŸÄ±nda inin." }
+                { type: "aktarim", dest: "T1 Tramvay", text: "Sirkeci'de T1 tramvayına aktarma yapın." },
+                { type: "metro", dest: "Sultanahmet / Beyazıt", text: "T1 ile Sultanahmet, Çemberlitaş veya Beyazıt (Kapalıçarşı) durağında inin." }
             ]
         },
         {
             name: "M1 / M2 Metrosu (Aksaray / Vezneciler)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonunda inin." },
-                { type: "aktarim", dest: "YenikapÄ± Ã‡Ä±kÄ±ÅŸ", text: "YenikapÄ±'dan M2 veya M1 metrosuna geÃ§in veya dÄ±ÅŸarÄ± Ã§Ä±kÄ±n." },
-                { type: "metro", dest: "Aksaray / Vezneciler", text: "M2 ile Vezneciler'e gidebilir veya yÃ¼rÃ¼me mesafesindeki Aksaray MeydanÄ±'na geÃ§ebilirsiniz." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonunda inin." },
+                { type: "aktarim", dest: "Yenikapı Çıkış", text: "Yenikapı'dan M2 veya M1 metrosuna geçin veya dışarı çıkın." },
+                { type: "metro", dest: "Aksaray / Vezneciler", text: "M2 ile Vezneciler'e gidebilir veya yürüme mesafesindeki Aksaray Meydanı'na geçebilirsiniz." }
             ]
         }
     ],
-    "GaziosmanpaÅŸa": [
+    "Gaziosmanpaşa": [
         {
-            name: "T4 TopkapÄ± - Mescid-i Selam TramvayÄ±",
+            name: "T4 Topkapı - Mescid-i Selam Tramvayı",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "aktarim", dest: "M1 Metro", text: "YenikapÄ±'da inip M1 Metro katÄ±na yÃ¼rÃ¼yÃ¼n." },
-                { type: "metro", dest: "TopkapÄ±", text: "M1A/M1B Metrosuna binip TopkapÄ± duraÄŸÄ±nda inin." },
-                { type: "aktarim", dest: "T4 Tramvay", text: "TopkapÄ±'dan yÃ¼rÃ¼yerek T4 Tramvay Ä°stasyonuna geÃ§iÅŸ yapÄ±n." },
-                { type: "metro", dest: "SaÄŸmalcÄ±lar / Bosna Ã‡ukurÃ§eÅŸme", text: "T4 TramvayÄ± ile SaÄŸmalcÄ±lar, Bosna Ã‡ukurÃ§eÅŸme veya Ali Fuat BaÅŸgil duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "aktarim", dest: "M1 Metro", text: "Yenikapı'da inip M1 Metro katına yürüyün." },
+                { type: "metro", dest: "Topkapı", text: "M1A/M1B Metrosuna binip Topkapı durağında inin." },
+                { type: "aktarim", dest: "T4 Tramvay", text: "Topkapı'dan yürüyerek T4 Tramvay İstasyonuna geçiş yapın." },
+                { type: "metro", dest: "Sağmalcılar / Bosna Çukurçeşme", text: "T4 Tramvayı ile Sağmalcılar, Bosna Çukurçeşme veya Ali Fuat Başgil durağında inin." }
             ]
         },
         {
-            name: "M7 YÄ±ldÄ±z - Mahmutbey Metrosu (Karadeniz Mah.)",
+            name: "M7 Yıldız - Mahmutbey Metrosu (Karadeniz Mah.)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ±'ya gidin." },
-                { type: "metro", dest: "MecidiyekÃ¶y", text: "YenikapÄ±'dan M2 ile MecidiyekÃ¶y'e geÃ§in." },
-                { type: "aktarim", dest: "M7 Metro", text: "M7 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "Karadeniz Mahallesi", text: "M7 ile Karadeniz Mahallesi veya KÃ¢zÄ±m Karabekir duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı'ya gidin." },
+                { type: "metro", dest: "Mecidiyeköy", text: "Yenikapı'dan M2 ile Mecidiyeköy'e geçin." },
+                { type: "aktarim", dest: "M7 Metro", text: "M7 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Karadeniz Mahallesi", text: "M7 ile Karadeniz Mahallesi veya Kâzım Karabekir durağında inin." }
             ]
         }
     ],
-    "GÃ¼ngÃ¶ren": [
+    "Güngören": [
         {
-            name: "M1A YenikapÄ± - HavalimanÄ± Metrosu (Merter / Zeytinburnu)",
+            name: "M1A Yenikapı - Havalimanı Metrosu (Merter / Zeytinburnu)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonunda inin." },
-                { type: "aktarim", dest: "M1 Metro", text: "M1A metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "Merter", text: "M1A metrosu ile Merter duraÄŸÄ±nda inin (GÃ¼ngÃ¶ren merkez iÃ§in T1 TramvayÄ±na aktarma yapabilirsiniz)." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonunda inin." },
+                { type: "aktarim", dest: "M1 Metro", text: "M1A metrosuna aktarma yapın." },
+                { type: "metro", dest: "Merter", text: "M1A metrosu ile Merter durağında inin (Güngören merkez için T1 Tramvayına aktarma yapabilirsiniz)." }
             ]
         },
         {
-            name: "T1 KabataÅŸ - BaÄŸcÄ±lar TramvayÄ± (GÃ¼ngÃ¶ren Merkez)",
+            name: "T1 Kabataş - Bağcılar Tramvayı (Güngören Merkez)",
             steps: [
-                { type: "marmaray", dest: "Zeytinburnu", text: "Marmaray ile Zeytinburnu duraÄŸÄ±nda inin." },
-                { type: "aktarim", dest: "T1 Tramvay", text: "Zeytinburnu'ndan dÄ±ÅŸarÄ± Ã§Ä±kÄ±p T1 TramvayÄ±na (BaÄŸcÄ±lar yÃ¶nÃ¼) binin." },
-                { type: "metro", dest: "GÃ¼ngÃ¶ren", text: "T1 TramvayÄ± ile GÃ¼ngÃ¶ren, AkÄ±ncÄ±lar veya SoÄŸanlÄ± duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Zeytinburnu", text: "Marmaray ile Zeytinburnu durağında inin." },
+                { type: "aktarim", dest: "T1 Tramvay", text: "Zeytinburnu'ndan dışarı çıkıp T1 Tramvayına (Bağcılar yönü) binin." },
+                { type: "metro", dest: "Güngören", text: "T1 Tramvayı ile Güngören, Akıncılar veya Soğanlı durağında inin." }
             ]
         }
     ],
-    "KadÄ±kÃ¶y": [
+    "Kadıköy": [
         {
-            name: "M4 KadÄ±kÃ¶y - Sabiha GÃ¶kÃ§en Metrosu / T3 Moda TramvayÄ±",
+            name: "M4 Kadıköy - Sabiha Gökçen Metrosu / T3 Moda Tramvayı",
             steps: [
-                { type: "marmaray", dest: "AyrÄ±lÄ±k Ã‡eÅŸmesi", text: "Marmaray ile AyrÄ±lÄ±k Ã‡eÅŸmesi istasyonunda inin." },
-                { type: "aktarim", dest: "M4 Metro", text: "M4 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "KadÄ±kÃ¶y RÄ±htÄ±m", text: "1 durak giderek KadÄ±kÃ¶y son durakta inin (Buradan T3 Moda TramvayÄ±na veya vapurlara geÃ§ebilirsiniz)." }
+                { type: "marmaray", dest: "Ayrılık Çeşmesi", text: "Marmaray ile Ayrılık Çeşmesi istasyonunda inin." },
+                { type: "aktarim", dest: "M4 Metro", text: "M4 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Kadıköy Rıhtım", text: "1 durak giderek Kadıköy son durakta inin (Buradan T3 Moda Tramvayına veya vapurlara geçebilirsiniz)." }
             ]
         },
         {
-            name: "MetrobÃ¼s (SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme / Fikirtepe)",
+            name: "Metrobüs (Söğütlüçeşme / Fikirtepe)",
             steps: [
-                { type: "marmaray", dest: "SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme", text: "Marmaray ile SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme istasyonunda inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme MetrobÃ¼s baÅŸlangÄ±Ã§ duraÄŸÄ±na geÃ§in." },
-                { type: "metrobus", dest: "Fikirtepe", text: "MetrobÃ¼se binerek Fikirtepe veya UzunÃ§ayÄ±r duraklarÄ±nda inin." }
+                { type: "marmaray", dest: "Söğütlüçeşme", text: "Marmaray ile Söğütlüçeşme istasyonunda inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Söğütlüçeşme Metrobüs başlangıç durağına geçin." },
+                { type: "metrobus", dest: "Fikirtepe", text: "Metrobüse binerek Fikirtepe veya Uzunçayır duraklarında inin." }
             ]
         },
         {
-            name: "Åehir HatlarÄ± Vapuru (KadÄ±kÃ¶y Ä°skelesi)",
+            name: "Åehir Hatları Vapuru (Kadıköy İskelesi)",
             steps: [
-                { type: "marmaray", dest: "AyrÄ±lÄ±k Ã‡eÅŸmesi", text: "Marmaray ile AyrÄ±lÄ±k Ã‡eÅŸmesi istasyonunda inin." },
-                { type: "aktarim", dest: "M4 Metro / YÃ¼rÃ¼me", text: "KadÄ±kÃ¶y rÄ±htÄ±ma inerek vapur iskelesine ulaÅŸÄ±n." },
-                { type: "vapur", dest: "KadÄ±kÃ¶y Ä°skelesi", text: "Åehir HatlarÄ± Vapuru ile BeÅŸiktaÅŸ, KarakÃ¶y veya EminÃ¶nÃ¼'ne geÃ§ebilirsiniz." }
+                { type: "marmaray", dest: "Ayrılık Çeşmesi", text: "Marmaray ile Ayrılık Çeşmesi istasyonunda inin." },
+                { type: "aktarim", dest: "M4 Metro / Yürüme", text: "Kadıköy rıhtıma inerek vapur iskelesine ulaşın." },
+                { type: "vapur", dest: "Kadıköy İskelesi", text: "Åehir Hatları Vapuru ile Beşiktaş, Karaköy veya Eminönü'ne geçebilirsiniz." }
             ]
         }
     ],
-    "KaÄŸÄ±thane": [
+    "Kağıthane": [
         {
-            name: "M7 YÄ±ldÄ±z - Mahmutbey Metrosu (KaÄŸÄ±thane Merkez)",
+            name: "M7 Yıldız - Mahmutbey Metrosu (Kağıthane Merkez)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ±'ya gidin." },
-                { type: "metro", dest: "MecidiyekÃ¶y", text: "YenikapÄ±'dan M2 metrosu ile MecidiyekÃ¶y'e gidin." },
-                { type: "aktarim", dest: "M7 Metro", text: "MecidiyekÃ¶y'de inip M7 metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "KaÄŸÄ±thane / Nurtepe", text: "M7 metrosu ile KaÄŸÄ±thane veya Nurtepe duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı'ya gidin." },
+                { type: "metro", dest: "Mecidiyeköy", text: "Yenikapı'dan M2 metrosu ile Mecidiyeköy'e gidin." },
+                { type: "aktarim", dest: "M7 Metro", text: "Mecidiyeköy'de inip M7 metrosuna aktarma yapın." },
+                { type: "metro", dest: "Kağıthane / Nurtepe", text: "M7 metrosu ile Kağıthane veya Nurtepe durağında inin." }
             ]
         },
         {
-            name: "M11 HavalimanÄ± Metrosu",
+            name: "M11 Havalimanı Metrosu",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ±'ya gidin." },
-                { type: "metro", dest: "Gayrettepe", text: "YenikapÄ±'dan M2 ile Gayrettepe'ye gidin." },
-                { type: "aktarim", dest: "M11 Metro", text: "Gayrettepe'den M11 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "KaÄŸÄ±thane", text: "M11 metrosu ile KaÄŸÄ±thane duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı'ya gidin." },
+                { type: "metro", dest: "Gayrettepe", text: "Yenikapı'dan M2 ile Gayrettepe'ye gidin." },
+                { type: "aktarim", dest: "M11 Metro", text: "Gayrettepe'den M11 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Kağıthane", text: "M11 metrosu ile Kağıthane durağında inin." }
             ]
         }
     ],
     "Kartal": [
         {
-            name: "M4 KadÄ±kÃ¶y - Sabiha GÃ¶kÃ§en Metrosu (E-5 HattÄ±)",
+            name: "M4 Kadıköy - Sabiha Gökçen Metrosu (E-5 Hattı)",
             steps: [
                 { type: "marmaray", dest: "Kartal", text: "Marmaray ile Kartal istasyonunda inin." },
-                { type: "aktarim", dest: "MinibÃ¼s / YÃ¼rÃ¼me", text: "Ä°stasyondan Ã§Ä±karak kÄ±sa bir minibÃ¼s yolculuÄŸu ile D-100 Ã¼zerindeki M4 Metro hattÄ±na (Kartal duraÄŸÄ±) Ã§Ä±kÄ±n." },
-                { type: "metro", dest: "Kartal / SoÄŸanlÄ±k", text: "M4 metrosuna binerek E-5 Ã¼zerindeki Kartal, SoÄŸanlÄ±k veya YakacÄ±k duraklarÄ±nda inin." }
+                { type: "aktarim", dest: "Minibüs / Yürüme", text: "İstasyondan çıkarak kısa bir minibüs yolculuğu ile D-100 üzerindeki M4 Metro hattına (Kartal durağı) çıkın." },
+                { type: "metro", dest: "Kartal / Soğanlık", text: "M4 metrosuna binerek E-5 üzerindeki Kartal, Soğanlık veya Yakacık duraklarında inin." }
             ]
         },
         {
-            name: "Kartal Merkez Sahil (YÃ¼rÃ¼me)",
+            name: "Kartal Merkez Sahil (Yürüme)",
             steps: [
-                { type: "marmaray", dest: "Kartal", text: "Marmaray ile doÄŸrudan Kartal istasyonunda inin." },
-                { type: "walk", dest: "Kartal Merkez", text: "Ä°stasyondan Ã§Ä±karak Kartal Ã§arÅŸÄ±ya ve sahile doÄŸrudan yÃ¼rÃ¼yÃ¼n." }
+                { type: "marmaray", dest: "Kartal", text: "Marmaray ile doğrudan Kartal istasyonunda inin." },
+                { type: "walk", dest: "Kartal Merkez", text: "İstasyondan çıkarak Kartal çarşıya ve sahile doğrudan yürüyün." }
             ]
         }
     ],
-    "KÃ¼Ã§Ã¼kÃ§ekmece": [
+    "Küçükçekmece": [
         {
-            name: "KÃ¼Ã§Ã¼kÃ§ekmece Merkez (Marmaray / YÃ¼rÃ¼me)",
+            name: "Küçükçekmece Merkez (Marmaray / Yürüme)",
             steps: [
-                { type: "marmaray", dest: "KÃ¼Ã§Ã¼kÃ§ekmece", text: "Marmaray ile doÄŸrudan KÃ¼Ã§Ã¼kÃ§ekmece istasyonunda inin." },
-                { type: "walk", dest: "KÃ¼Ã§Ã¼kÃ§ekmece Sahil", text: "Ä°stasyondan Ã§Ä±karak gÃ¶l kenarÄ±na veya merkez Ã§arÅŸÄ±ya doÄŸrudan yÃ¼rÃ¼yÃ¼n." }
+                { type: "marmaray", dest: "Küçükçekmece", text: "Marmaray ile doğrudan Küçükçekmece istasyonunda inin." },
+                { type: "walk", dest: "Küçükçekmece Sahil", text: "İstasyondan çıkarak göl kenarına veya merkez çarşıya doğrudan yürüyün." }
             ]
         },
         {
-            name: "MetrobÃ¼s (Cennet Mah. / SefakÃ¶y)",
+            name: "Metrobüs (Cennet Mah. / Sefaköy)",
             steps: [
-                { type: "marmaray", dest: "KÃ¼Ã§Ã¼kÃ§ekmece", text: "Marmaray ile KÃ¼Ã§Ã¼kÃ§ekmece istasyonunda inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "Turnikelerden Ã§Ä±karak KÃ¼Ã§Ã¼kÃ§ekmece MetrobÃ¼s duraÄŸÄ±na geÃ§iÅŸ yapÄ±n." },
-                { type: "metrobus", dest: "SefakÃ¶y", text: "ÅiÅŸli yÃ¶nÃ¼ne giden MetrobÃ¼se binip Cennet Mahallesi, Florya veya SefakÃ¶y duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Küçükçekmece", text: "Marmaray ile Küçükçekmece istasyonunda inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Turnikelerden çıkarak Küçükçekmece Metrobüs durağına geçiş yapın." },
+                { type: "metrobus", dest: "Sefaköy", text: "Åişli yönüne giden Metrobüse binip Cennet Mahallesi, Florya veya Sefaköy durağında inin." }
             ]
         },
         {
-            name: "M9 AtakÃ¶y - Olimpiyat Metrosu (HalkalÄ± Caddesi)",
+            name: "M9 Ataköy - Olimpiyat Metrosu (Halkalı Caddesi)",
             steps: [
-                { type: "marmaray", dest: "AtakÃ¶y", text: "Marmaray ile AtakÃ¶y istasyonunda inin." },
-                { type: "aktarim", dest: "M9 Metro", text: "AtakÃ¶y'den doÄŸrudan M9 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "HalkalÄ± Caddesi", text: "M9 metrosu ile 15 Temmuz veya HalkalÄ± Caddesi duraklarÄ±nda inin." }
+                { type: "marmaray", dest: "Ataköy", text: "Marmaray ile Ataköy istasyonunda inin." },
+                { type: "aktarim", dest: "M9 Metro", text: "Ataköy'den doğrudan M9 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Halkalı Caddesi", text: "M9 metrosu ile 15 Temmuz veya Halkalı Caddesi duraklarında inin." }
             ]
         }
     ],
     "Maltepe": [
         {
-            name: "M4 KadÄ±kÃ¶y - Sabiha GÃ¶kÃ§en Metrosu (E-5 HattÄ±)",
+            name: "M4 Kadıköy - Sabiha Gökçen Metrosu (E-5 Hattı)",
             steps: [
                 { type: "marmaray", dest: "Maltepe", text: "Marmaray ile Maltepe istasyonunda inin." },
-                { type: "aktarim", dest: "MinibÃ¼s", text: "Maltepe merkezden minibÃ¼sler ile D-100 Ã¼zerindeki M4 Metro hattÄ±na (Maltepe veya Huzurevi duraÄŸÄ±) Ã§Ä±kÄ±n." },
-                { type: "metro", dest: "Maltepe E-5", text: "M4 metrosuna binerek E-5 Ã¼zerindeki Maltepe, Huzurevi veya KÃ¼Ã§Ã¼kyalÄ± duraklarÄ±nda inin." }
+                { type: "aktarim", dest: "Minibüs", text: "Maltepe merkezden minibüsler ile D-100 üzerindeki M4 Metro hattına (Maltepe veya Huzurevi durağı) çıkın." },
+                { type: "metro", dest: "Maltepe E-5", text: "M4 metrosuna binerek E-5 üzerindeki Maltepe, Huzurevi veya Küçükyalı duraklarında inin." }
             ]
         },
         {
-            name: "M8 BostancÄ± - Parseller Metrosu",
+            name: "M8 Bostancı - Parseller Metrosu",
             steps: [
-                { type: "marmaray", dest: "BostancÄ±", text: "Marmaray ile BostancÄ± istasyonunda inin." },
-                { type: "aktarim", dest: "M8 Metro", text: "BostancÄ± istasyonundan doÄŸrudan M8 Metrosuna geÃ§iÅŸ yapÄ±n." },
-                { type: "metro", dest: "Emin Ali PaÅŸa", text: "M8 metrosu ile Emin Ali PaÅŸa veya AyÅŸe KadÄ±n duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Bostancı", text: "Marmaray ile Bostancı istasyonunda inin." },
+                { type: "aktarim", dest: "M8 Metro", text: "Bostancı istasyonundan doğrudan M8 Metrosuna geçiş yapın." },
+                { type: "metro", dest: "Emin Ali Paşa", text: "M8 metrosu ile Emin Ali Paşa veya Ayşe Kadın durağında inin." }
             ]
         },
         {
-            name: "Maltepe Merkez (Marmaray / YÃ¼rÃ¼me)",
+            name: "Maltepe Merkez (Marmaray / Yürüme)",
             steps: [
-                { type: "marmaray", dest: "Maltepe", text: "Marmaray ile doÄŸrudan Maltepe istasyonunda inin." },
-                { type: "walk", dest: "Maltepe Sahil", text: "Ä°stasyondan Ã§Ä±karak Maltepe Ã§arÅŸÄ±ya ve sahile doÄŸrudan yÃ¼rÃ¼yÃ¼n." }
+                { type: "marmaray", dest: "Maltepe", text: "Marmaray ile doğrudan Maltepe istasyonunda inin." },
+                { type: "walk", dest: "Maltepe Sahil", text: "İstasyondan çıkarak Maltepe çarşıya ve sahile doğrudan yürüyün." }
             ]
         }
     ],
     "Pendik": [
         {
-            name: "M4 KadÄ±kÃ¶y - Sabiha GÃ¶kÃ§en Metrosu (E-5 / KurtkÃ¶y)",
+            name: "M4 Kadıköy - Sabiha Gökçen Metrosu (E-5 / Kurtköy)",
             steps: [
                 { type: "marmaray", dest: "Pendik", text: "Marmaray ile Pendik istasyonunda inin." },
-                { type: "aktarim", dest: "M10 Metro", text: "Pendik Merkez'den doÄŸrudan metro aÄŸÄ±na geÃ§iÅŸ yapÄ±n." },
-                { type: "metro", dest: "Pendik (M4 AktarmasÄ±)", text: "Metro ile E-5 hattÄ±na (Pendik M4 veya TavÅŸantepe) geÃ§in." }
+                { type: "aktarim", dest: "M10 Metro", text: "Pendik Merkez'den doğrudan metro ağına geçiş yapın." },
+                { type: "metro", dest: "Pendik (M4 Aktarması)", text: "Metro ile E-5 hattına (Pendik M4 veya Tavşantepe) geçin." }
             ]
         },
         {
-            name: "M10 Pendik Merkez - Sabiha GÃ¶kÃ§en Metrosu",
+            name: "M10 Pendik Merkez - Sabiha Gökçen Metrosu",
             steps: [
                 { type: "marmaray", dest: "Pendik", text: "Marmaray ile Pendik istasyonunda inin." },
-                { type: "aktarim", dest: "M10 Metro", text: "Pendik istasyonundan doÄŸrudan M10 Metrosuna geÃ§iÅŸ yapÄ±n." },
-                { type: "metro", dest: "Sabiha GÃ¶kÃ§en", text: "M10 metrosu ile doÄŸrudan kuzey yÃ¶nÃ¼ne (Fevzi Ã‡akmak, Sabiha GÃ¶kÃ§en HavalimanÄ±) gidin." }
+                { type: "aktarim", dest: "M10 Metro", text: "Pendik istasyonundan doğrudan M10 Metrosuna geçiş yapın." },
+                { type: "metro", dest: "Sabiha Gökçen", text: "M10 metrosu ile doğrudan kuzey yönüne (Fevzi Çakmak, Sabiha Gökçen Havalimanı) gidin." }
             ]
         },
         {
-            name: "Pendik Merkez Sahil (YÃ¼rÃ¼me)",
+            name: "Pendik Merkez Sahil (Yürüme)",
             steps: [
-                { type: "marmaray", dest: "Pendik", text: "Marmaray ile doÄŸrudan Pendik istasyonunda inin." },
-                { type: "walk", dest: "Pendik Ã‡arÅŸÄ±", text: "Ä°stasyondan Ã§Ä±karak Pendik Ã§arÅŸÄ±ya ve sahile (Ä°DO Ä°skelesi) yÃ¼rÃ¼yÃ¼n." }
+                { type: "marmaray", dest: "Pendik", text: "Marmaray ile doğrudan Pendik istasyonunda inin." },
+                { type: "walk", dest: "Pendik Çarşı", text: "İstasyondan çıkarak Pendik çarşıya ve sahile (İDO İskelesi) yürüyün." }
             ]
         }
     ],
     "Sancaktepe": [
         {
-            name: "M5 ÃœskÃ¼dar - Ã‡ekmekÃ¶y Metrosu (SarÄ±gazi/Sancaktepe)",
+            name: "M5 Üsküdar - Çekmeköy Metrosu (Sarıgazi/Sancaktepe)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "aktarim", dest: "M5 Metro", text: "ÃœskÃ¼dar istasyonundan M5 Metrosuna doÄŸrudan aktarma yapÄ±n." },
-                { type: "metro", dest: "SarÄ±gazi / Sancaktepe", text: "M5 metrosu ile Madenler, SarÄ±gazi veya Sancaktepe duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "aktarim", dest: "M5 Metro", text: "Üsküdar istasyonundan M5 Metrosuna doğrudan aktarma yapın." },
+                { type: "metro", dest: "Sarıgazi / Sancaktepe", text: "M5 metrosu ile Madenler, Sarıgazi veya Sancaktepe durağında inin." }
             ]
         }
     ],
-    "SarÄ±yer": [
+    "Sarıyer": [
         {
-            name: "M2 YenikapÄ± - HacÄ±osman Metrosu (HacÄ±osman / AyazaÄŸa)",
+            name: "M2 Yenikapı - Hacıosman Metrosu (Hacıosman / Ayazağa)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "aktarim", dest: "M2 Metro", text: "YenikapÄ±'da inip M2 HacÄ±osman metrosu katÄ±na geÃ§in." },
-                { type: "metro", dest: "HacÄ±osman", text: "M2 metrosuna binip Ä°TÃœ AyazaÄŸa veya son durak HacÄ±osman'da inerek oradan SarÄ±yer otobÃ¼slerine binin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "aktarim", dest: "M2 Metro", text: "Yenikapı'da inip M2 Hacıosman metrosu katına geçin." },
+                { type: "metro", dest: "Hacıosman", text: "M2 metrosuna binip İTÜ Ayazağa veya son durak Hacıosman'da inerek oradan Sarıyer otobüslerine binin." }
             ]
         },
         {
-            name: "Åehir HatlarÄ± Vapuru (Ä°stinye / SarÄ±yer Ä°skelesi)",
+            name: "Åehir Hatları Vapuru (İstinye / Sarıyer İskelesi)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar veya Sirkeci'de inin." },
-                { type: "aktarim", dest: "Åehir HatlarÄ±", text: "Sahildeki iskelelere yÃ¼rÃ¼yÃ¼n." },
-                { type: "vapur", dest: "BoÄŸaz HattÄ±", text: "BoÄŸaz hattÄ± vapurlarÄ±na binerek Emirgan, Ä°stinye veya SarÄ±yer iskelelerinde inin." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar veya Sirkeci'de inin." },
+                { type: "aktarim", dest: "Åehir Hatları", text: "Sahildeki iskelelere yürüyün." },
+                { type: "vapur", dest: "Boğaz Hattı", text: "Boğaz hattı vapurlarına binerek Emirgan, İstinye veya Sarıyer iskelelerinde inin." }
             ]
         }
     ],
     "Silivri": [
         {
-            name: "MetrobÃ¼s (TÃœYAP) SonrasÄ± OtobÃ¼s",
+            name: "Metrobüs (TÜYAP) Sonrası Otobüs",
             steps: [
-                { type: "marmaray", dest: "KÃ¼Ã§Ã¼kÃ§ekmece", text: "Marmaray ile KÃ¼Ã§Ã¼kÃ§ekmece'de inin." },
-                { type: "metrobus", dest: "TÃœYAP", text: "MetrobÃ¼s ile TÃœYAP son duraÄŸa gidin." },
-                { type: "walk", dest: "Silivri", text: "TÃœYAP'tan Silivri yÃ¶nÃ¼ne giden 300 serisi Ä°ETT otobÃ¼sleri veya minibÃ¼slere aktarma yapÄ±n." }
+                { type: "marmaray", dest: "Küçükçekmece", text: "Marmaray ile Küçükçekmece'de inin." },
+                { type: "metrobus", dest: "TÜYAP", text: "Metrobüs ile TÜYAP son durağa gidin." },
+                { type: "walk", dest: "Silivri", text: "TÜYAP'tan Silivri yönüne giden 300 serisi İETT otobüsleri veya minibüslere aktarma yapın." }
             ]
         }
     ],
     "Sultanbeyli": [
         {
-            name: "M5 Metrosu SonrasÄ± OtobÃ¼s",
+            name: "M5 Metrosu Sonrası Otobüs",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "metro", dest: "Sancaktepe", text: "M5 Metrosuna aktarma yapÄ±p Sancaktepe son durakta inin." },
-                { type: "walk", dest: "Sultanbeyli Merkez", text: "Sancaktepe duraÄŸÄ±ndan kalkan otobÃ¼s veya minibÃ¼slerle Sultanbeyli merkeze geÃ§in." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "metro", dest: "Sancaktepe", text: "M5 Metrosuna aktarma yapıp Sancaktepe son durakta inin." },
+                { type: "walk", dest: "Sultanbeyli Merkez", text: "Sancaktepe durağından kalkan otobüs veya minibüslerle Sultanbeyli merkeze geçin." }
             ]
         }
     ],
     "Sultangazi": [
         {
-            name: "T4 TopkapÄ± - Mescid-i Selam TramvayÄ±",
+            name: "T4 Topkapı - Mescid-i Selam Tramvayı",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "metro", dest: "TopkapÄ±", text: "M1A/M1B Metrosuna binip TopkapÄ± duraÄŸÄ±nda inin." },
-                { type: "aktarim", dest: "T4 Tramvay", text: "TopkapÄ±'dan yÃ¼rÃ¼yerek T4 Tramvay Ä°stasyonuna geÃ§iÅŸ yapÄ±n." },
-                { type: "metro", dest: "Mescid-i Selam", text: "T4 TramvayÄ± ile SultanÃ§iftliÄŸi veya Mescid-i Selam duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "metro", dest: "Topkapı", text: "M1A/M1B Metrosuna binip Topkapı durağında inin." },
+                { type: "aktarim", dest: "T4 Tramvay", text: "Topkapı'dan yürüyerek T4 Tramvay İstasyonuna geçiş yapın." },
+                { type: "metro", dest: "Mescid-i Selam", text: "T4 Tramvayı ile Sultançiftliği veya Mescid-i Selam durağında inin." }
             ]
         },
         {
-            name: "M7 YÄ±ldÄ±z - Mahmutbey Metrosu (Mahmutbey)",
+            name: "M7 Yıldız - Mahmutbey Metrosu (Mahmutbey)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ±'ya gidin." },
-                { type: "metro", dest: "MecidiyekÃ¶y", text: "YenikapÄ±'dan M2 ile MecidiyekÃ¶y'e geÃ§in." },
-                { type: "aktarim", dest: "M7 Metro", text: "MecidiyekÃ¶y'den M7 Metrosuna aktarma yapÄ±n." },
-                { type: "metro", dest: "Mahmutbey", text: "M7 ile Mahmutbey son durakta inip Sultangazi yÃ¶nÃ¼ne giden ulaÅŸÄ±m araÃ§larÄ±na binin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı'ya gidin." },
+                { type: "metro", dest: "Mecidiyeköy", text: "Yenikapı'dan M2 ile Mecidiyeköy'e geçin." },
+                { type: "aktarim", dest: "M7 Metro", text: "Mecidiyeköy'den M7 Metrosuna aktarma yapın." },
+                { type: "metro", dest: "Mahmutbey", text: "M7 ile Mahmutbey son durakta inip Sultangazi yönüne giden ulaşım araçlarına binin." }
             ]
         }
     ],
     "Åile": [
         {
-            name: "M5 Metrosu SonrasÄ± Ä°ETT (139 Serisi)",
+            name: "M5 Metrosu Sonrası İETT (139 Serisi)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "metro", dest: "Ã‡ekmekÃ¶y", text: "M5 Metrosuna aktarma yapÄ±p Ã‡ekmekÃ¶y duraÄŸÄ±nda inin." },
-                { type: "walk", dest: "Åile Yolu", text: "Ã‡ekmekÃ¶y'den kalkan 139A / 139T otobÃ¼sleri ile Åile veya AÄŸva'ya devam edin." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "metro", dest: "Çekmeköy", text: "M5 Metrosuna aktarma yapıp Çekmeköy durağında inin." },
+                { type: "walk", dest: "Åile Yolu", text: "Çekmeköy'den kalkan 139A / 139T otobüsleri ile Åile veya Ağva'ya devam edin." }
             ]
         }
     ],
-    "ÅiÅŸli": [
+    "Åişli": [
         {
-            name: "M2 YenikapÄ± - HacÄ±osman Metrosu (MecidiyekÃ¶y / ÅiÅŸli)",
+            name: "M2 Yenikapı - Hacıosman Metrosu (Mecidiyeköy / Åişli)",
             steps: [
-                { type: "marmaray", dest: "YenikapÄ±", text: "Marmaray ile YenikapÄ± istasyonuna gidin." },
-                { type: "aktarim", dest: "M2 Metro", text: "YenikapÄ±'da inip M2 HacÄ±osman metrosu katÄ±na geÃ§in." },
-                { type: "metro", dest: "ÅiÅŸli / MecidiyekÃ¶y", text: "M2 metrosuna binip Osmanbey veya ÅiÅŸli-MecidiyekÃ¶y duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Yenikapı", text: "Marmaray ile Yenikapı istasyonuna gidin." },
+                { type: "aktarim", dest: "M2 Metro", text: "Yenikapı'da inip M2 Hacıosman metrosu katına geçin." },
+                { type: "metro", dest: "Åişli / Mecidiyeköy", text: "M2 metrosuna binip Osmanbey veya Åişli-Mecidiyeköy durağında inin." }
             ]
         },
         {
-            name: "MetrobÃ¼s (MecidiyekÃ¶y / Zincirlikuyu)",
+            name: "Metrobüs (Mecidiyeköy / Zincirlikuyu)",
             steps: [
-                { type: "marmaray", dest: "SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme", text: "EÄŸer Anadolu YakasÄ±'ndan geliyorsanÄ±z, Marmaray ile SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme'ye gidin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "SÃ¶ÄŸÃ¼tlÃ¼Ã§eÅŸme'den MetrobÃ¼s aktarmasÄ± yapÄ±n." },
-                { type: "metrobus", dest: "MecidiyekÃ¶y / Zincirlikuyu", text: "MetrobÃ¼s ile Zincirlikuyu, MecidiyekÃ¶y veya Ã‡aÄŸlayan duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Söğütlüçeşme", text: "Eğer Anadolu Yakası'ndan geliyorsanız, Marmaray ile Söğütlüçeşme'ye gidin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Söğütlüçeşme'den Metrobüs aktarması yapın." },
+                { type: "metrobus", dest: "Mecidiyeköy / Zincirlikuyu", text: "Metrobüs ile Zincirlikuyu, Mecidiyeköy veya Çağlayan durağında inin." }
             ]
         }
     ],
     "Tuzla": [
         {
-            name: "Tuzla Merkez Sahil (Marmaray / YÃ¼rÃ¼me)",
+            name: "Tuzla Merkez Sahil (Marmaray / Yürüme)",
             steps: [
-                { type: "marmaray", dest: "Tuzla", text: "Marmaray ile doÄŸrudan Tuzla istasyonunda inin." },
-                { type: "walk", dest: "Tuzla Sahil", text: "Ä°stasyondan Ã§Ä±karak Tuzla Marina, Ã§arÅŸÄ± ve sahile otobÃ¼s/minibÃ¼s ile ulaÅŸÄ±n." }
+                { type: "marmaray", dest: "Tuzla", text: "Marmaray ile doğrudan Tuzla istasyonunda inin." },
+                { type: "walk", dest: "Tuzla Sahil", text: "İstasyondan çıkarak Tuzla Marina, çarşı ve sahile otobüs/minibüs ile ulaşın." }
             ]
         },
         {
-            name: "Ä°Ã§meler / AydÄ±ntepe (Marmaray)",
+            name: "İçmeler / Aydıntepe (Marmaray)",
             steps: [
-                { type: "marmaray", dest: "Ä°Ã§meler", text: "Marmaray ile Ä°Ã§meler veya AydÄ±ntepe istasyonlarÄ±nda inerek sanayi ve iÅŸ merkezlerine ulaÅŸÄ±n." }
+                { type: "marmaray", dest: "İçmeler", text: "Marmaray ile İçmeler veya Aydıntepe istasyonlarında inerek sanayi ve iş merkezlerine ulaşın." }
             ]
         }
     ],
-    "Ãœmraniye": [
+    "Ümraniye": [
         {
-            name: "M5 ÃœskÃ¼dar - Ã‡ekmekÃ¶y Metrosu (Ãœmraniye / Ã‡arÅŸÄ±)",
+            name: "M5 Üsküdar - Çekmeköy Metrosu (Ümraniye / Çarşı)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "aktarim", dest: "M5 Metro", text: "ÃœskÃ¼dar istasyonundan M5 Metrosuna doÄŸrudan aktarma yapÄ±n." },
-                { type: "metro", dest: "Ãœmraniye / Ã‡arÅŸÄ±", text: "M5 metrosu ile Ãœmraniye, Ã‡arÅŸÄ± veya Yamanevler duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "aktarim", dest: "M5 Metro", text: "Üsküdar istasyonundan M5 Metrosuna doğrudan aktarma yapın." },
+                { type: "metro", dest: "Ümraniye / Çarşı", text: "M5 metrosu ile Ümraniye, Çarşı veya Yamanevler durağında inin." }
             ]
         },
         {
-            name: "M8 BostancÄ± - Parseller Metrosu (Dudullu)",
+            name: "M8 Bostancı - Parseller Metrosu (Dudullu)",
             steps: [
-                { type: "marmaray", dest: "BostancÄ±", text: "Marmaray ile BostancÄ± istasyonunda inin." },
-                { type: "aktarim", dest: "M8 Metro", text: "BostancÄ± istasyonundan doÄŸrudan M8 Metrosuna geÃ§iÅŸ yapÄ±n." },
-                { type: "metro", dest: "Dudullu / Parseller", text: "M8 metrosu ile Dudullu veya Parseller duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Bostancı", text: "Marmaray ile Bostancı istasyonunda inin." },
+                { type: "aktarim", dest: "M8 Metro", text: "Bostancı istasyonundan doğrudan M8 Metrosuna geçiş yapın." },
+                { type: "metro", dest: "Dudullu / Parseller", text: "M8 metrosu ile Dudullu veya Parseller durağında inin." }
             ]
         }
     ],
-    "ÃœskÃ¼dar": [
+    "Üsküdar": [
         {
-            name: "M5 ÃœskÃ¼dar - Ã‡ekmekÃ¶y Metrosu (Altunizade / BaÄŸlarbaÅŸÄ±)",
+            name: "M5 Üsküdar - Çekmeköy Metrosu (Altunizade / Bağlarbaşı)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "aktarim", dest: "M5 Metro", text: "ÃœskÃ¼dar istasyonundan M5 Metrosuna doÄŸrudan aktarma yapÄ±n." },
-                { type: "metro", dest: "Altunizade", text: "M5 metrosuyla FÄ±stÄ±kaÄŸacÄ±, BaÄŸlarbaÅŸÄ± veya Altunizade duraÄŸÄ±nda inin." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "aktarim", dest: "M5 Metro", text: "Üsküdar istasyonundan M5 Metrosuna doğrudan aktarma yapın." },
+                { type: "metro", dest: "Altunizade", text: "M5 metrosuyla Fıstıkağacı, Bağlarbaşı veya Altunizade durağında inin." }
             ]
         },
         {
-            name: "Åehir HatlarÄ± Vapuru (ÃœskÃ¼dar Ä°skelesi)",
+            name: "Åehir Hatları Vapuru (Üsküdar İskelesi)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "walk", dest: "ÃœskÃ¼dar Sahil", text: "Ä°stasyondan Ã§Ä±kÄ±p sahile yÃ¼rÃ¼yerek BoÄŸaz hatlarÄ±na veya merkez iÃ§i ulaÅŸÄ±ma geÃ§in." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "walk", dest: "Üsküdar Sahil", text: "İstasyondan çıkıp sahile yürüyerek Boğaz hatlarına veya merkez içi ulaşıma geçin." }
             ]
         },
         {
-            name: "MetrobÃ¼s (Altunizade)",
+            name: "Metrobüs (Altunizade)",
             steps: [
-                { type: "marmaray", dest: "ÃœskÃ¼dar", text: "Marmaray ile ÃœskÃ¼dar istasyonunda inin." },
-                { type: "metro", dest: "Altunizade", text: "M5 Metrosuna aktarma yapÄ±p Altunizade duraÄŸÄ±nda inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "Altunizade'den MetrobÃ¼s hattÄ±na geÃ§iÅŸ yapÄ±n." }
+                { type: "marmaray", dest: "Üsküdar", text: "Marmaray ile Üsküdar istasyonunda inin." },
+                { type: "metro", dest: "Altunizade", text: "M5 Metrosuna aktarma yapıp Altunizade durağında inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Altunizade'den Metrobüs hattına geçiş yapın." }
             ]
         }
     ],
     "Zeytinburnu": [
         {
-            name: "T1 KabataÅŸ - BaÄŸcÄ±lar TramvayÄ± (Zeytinburnu Merkez)",
+            name: "T1 Kabataş - Bağcılar Tramvayı (Zeytinburnu Merkez)",
             steps: [
-                { type: "marmaray", dest: "Zeytinburnu", text: "Marmaray ile Zeytinburnu duraÄŸÄ±nda inin (veya KazlÄ±Ã§eÅŸme'de)." },
-                { type: "aktarim", dest: "T1 Tramvay", text: "Ä°stasyondan Ã§Ä±kÄ±p T1 TramvayÄ±na aktarma yapÄ±n." },
-                { type: "metro", dest: "MithatpaÅŸa", text: "T1 TramvayÄ± ile MithatpaÅŸa veya AkÄ±ncÄ±lar duraÄŸÄ±nda inerek Zeytinburnu iÃ§lerine ulaÅŸÄ±n." }
+                { type: "marmaray", dest: "Zeytinburnu", text: "Marmaray ile Zeytinburnu durağında inin (veya Kazlıçeşme'de)." },
+                { type: "aktarim", dest: "T1 Tramvay", text: "İstasyondan çıkıp T1 Tramvayına aktarma yapın." },
+                { type: "metro", dest: "Mithatpaşa", text: "T1 Tramvayı ile Mithatpaşa veya Akıncılar durağında inerek Zeytinburnu içlerine ulaşın." }
             ]
         },
         {
-            name: "MetrobÃ¼s (CevizlibaÄŸ / Zeytinburnu)",
+            name: "Metrobüs (Cevizlibağ / Zeytinburnu)",
             steps: [
-                { type: "marmaray", dest: "Zeytinburnu", text: "Marmaray ile Zeytinburnu duraÄŸÄ±nda inin." },
-                { type: "aktarim", dest: "MetrobÃ¼s", text: "Zeytinburnu'ndan dÄ±ÅŸarÄ± Ã§Ä±kÄ±p MetrobÃ¼se aktarma yapÄ±n." },
-                { type: "metrobus", dest: "CevizlibaÄŸ", text: "MetrobÃ¼s ile CevizlibaÄŸ veya Merter duraklarÄ±nda inin." }
+                { type: "marmaray", dest: "Zeytinburnu", text: "Marmaray ile Zeytinburnu durağında inin." },
+                { type: "aktarim", dest: "Metrobüs", text: "Zeytinburnu'ndan dışarı çıkıp Metrobüse aktarma yapın." },
+                { type: "metrobus", dest: "Cevizlibağ", text: "Metrobüs ile Cevizlibağ veya Merter duraklarında inin." }
             ]
         }
     ]
 };
 
     const ALL_DISTRICTS = [
-        "Adalar", "ArnavutkÃ¶y", "AtaÅŸehir", "AvcÄ±lar", "BaÄŸcÄ±lar", "BahÃ§elievler", "BakÄ±rkÃ¶y",
-        "BaÅŸakÅŸehir", "BayrampaÅŸa", "BeÅŸiktaÅŸ", "Beykoz", "BeylikdÃ¼zÃ¼", "BeyoÄŸlu", "BÃ¼yÃ¼kÃ§ekmece",
-        "Ã‡atalca", "Ã‡ekmekÃ¶y", "Esenler", "Esenyurt", "EyÃ¼psultan", "Fatih", "GaziosmanpaÅŸa",
-        "GÃ¼ngÃ¶ren", "KadÄ±kÃ¶y", "KaÄŸÄ±thane", "Kartal", "KÃ¼Ã§Ã¼kÃ§ekmece", "Maltepe", "Pendik",
-        "Sancaktepe", "SarÄ±yer", "Silivri", "Sultanbeyli", "Sultangazi", "Åile", "ÅiÅŸli",
-        "Tuzla", "Ãœmraniye", "ÃœskÃ¼dar", "Zeytinburnu"
+        "Adalar", "Arnavutköy", "Ataşehir", "Avcılar", "Bağcılar", "Bahçelievler", "Bakırköy",
+        "Başakşehir", "Bayrampaşa", "Beşiktaş", "Beykoz", "Beylikdüzü", "Beyoğlu", "Büyükçekmece",
+        "Çatalca", "Çekmeköy", "Esenler", "Esenyurt", "Eyüpsultan", "Fatih", "Gaziosmanpaşa",
+        "Güngören", "Kadıköy", "Kağıthane", "Kartal", "Küçükçekmece", "Maltepe", "Pendik",
+        "Sancaktepe", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Åile", "Åişli",
+        "Tuzla", "Ümraniye", "Üsküdar", "Zeytinburnu"
     ];
     
     ALL_DISTRICTS.forEach(d => {
         if(!DISTRICT_MAP[d]) {
             DISTRICT_MAP[d] = [
                 { 
-                    name: d + " Merkez (En Uygun Ä°stasyon AktarmasÄ±)", 
+                    name: d + " Merkez (En Uygun İstasyon Aktarması)", 
                     steps: [
-                        { type: "marmaray", dest: "En Uygun Ä°stasyon", text: "Marmaray'a binerek " + d + " ilÃ§esine coÄŸrafi olarak en yakÄ±n istasyonda inin." },
-                        { type: "aktarim", dest: "Yerel UlaÅŸÄ±m", text: "Ä°stasyondan Ã§Ä±karak otobÃ¼s (Ä°ETT) veya minibÃ¼s duraklarÄ±na yÃ¶nelin." },
-                        { type: "walk", dest: d, text: "Toplu taÅŸÄ±ma ile " + d + " hedefinize rahatÃ§a ulaÅŸÄ±n." }
+                        { type: "marmaray", dest: "En Uygun İstasyon", text: "Marmaray'a binerek " + d + " ilçesine coğrafi olarak en yakın istasyonda inin." },
+                        { type: "aktarim", dest: "Yerel Ulaşım", text: "İstasyondan çıkarak otobüs (İETT) veya minibüs duraklarına yönelin." },
+                        { type: "walk", dest: d, text: "Toplu taşıma ile " + d + " hedefinize rahatça ulaşın." }
                     ]
                 }
             ];
@@ -787,7 +787,7 @@
     
     rotaDistSel.addEventListener('change', () => {
         const dist = rotaDistSel.value;
-        rotaNeighSel.innerHTML = '<option value="">Uygun rota seÃ§iniz...</option>';
+        rotaNeighSel.innerHTML = '<option value="">Uygun rota seçiniz...</option>';
         if(dist && DISTRICT_MAP[dist]) {
             DISTRICT_MAP[dist].forEach(n => {
                 rotaNeighSel.innerHTML += `<option value="${n.name}">${n.name}</option>`;
@@ -804,7 +804,7 @@
         const neigh = rotaNeighSel.value;
         
         if(!start || !dist || !neigh) {
-            alert('LÃ¼tfen baÅŸlangÄ±Ã§ istasyonu, ilÃ§e ve hedefi eksiksiz seÃ§iniz.');
+            alert('Lütfen başlangıç istasyonu, ilçe ve hedefi eksiksiz seçiniz.');
             return;
         }
         
@@ -813,12 +813,12 @@
         
         let html = '';
         
-        // Dinamik AdÄ±m DÃ¶ngÃ¼sÃ¼
+        // Dinamik Adım Döngüsü
         neighData.steps.forEach((step, index) => {
             const isLast = (index === neighData.steps.length - 1);
             let logoSrc = LOGOS[step.type]; if(!logoSrc) { logoSrc = step.type.toLowerCase().includes('metro') ? LOGOS.metro : LOGOS.walk; }
             
-            // AktarÄ±m Ã¶zel opacity ve style
+            // Aktarım özel opacity ve style
             let iconClass = 'step-icon';
             if(step.type === 'walk' || step.type === 'aktarim') iconClass += ' walk';
             

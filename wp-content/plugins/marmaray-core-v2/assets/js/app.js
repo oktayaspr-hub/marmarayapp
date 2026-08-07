@@ -279,36 +279,36 @@ let selectedIdx = null;
     const countHtml = (m) => {
         m = parseInt(m, 10) || 0;
         if (m <= 0) {
-            return '<div class="mrt-next__count"><strong class="mrt-next__now">Şimdi</strong><span class="mrt-next__sub">peronda</span></div>';
+            return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">Şimdi</strong><span class="marmarayapp-next__sub">peronda</span></div>';
         }
         if (m < 60) {
-            return '<div class="mrt-next__count"><strong>' + m + '<span class="mrt-next__unit">dk</span></strong><span class="mrt-next__sub">' + (m <= 2 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
+            return '<div class="marmarayapp-next__count"><strong>' + m + '<span class="marmarayapp-next__unit">dk</span></strong><span class="marmarayapp-next__sub">' + (m <= 2 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
         }
-        return '<div class="mrt-next__count mrt-next__count--long"><strong>' + fmtShort(m) + '</strong><span class="mrt-next__sub">sonra kalkıyor</span></div>';
+        return '<div class="marmarayapp-next__count marmarayapp-next__count--long"><strong>' + fmtShort(m) + '</strong><span class="marmarayapp-next__sub">sonra kalkıyor</span></div>';
     };
 
     const buildTrainsHtml = (trains) => {
         if (!trains || !trains.length) {
-            return '<div class="mrt-empty mrt-empty--error"><p class="mrt-empty__txt">Şu anda yaklaşan sefer görünmüyor.</p></div>';
+            return '<div class="marmarayapp-empty marmarayapp-empty--error"><p class="marmarayapp-empty__txt">Şu anda yaklaşan sefer görünmüyor.</p></div>';
         }
         const first = trains[0];
         const rest = trains.slice(1, 5);
         const soon = (parseInt(first.remainingMin, 10) || 0) <= 2;
-        let html = '<div class="mrt-next' + (soon ? ' is-soon' : '') + '">' +
-            '<span class="mrt-next__tag">Sıradaki tren</span>' +
-            '<div class="mrt-next__body">' +
+        let html = '<div class="marmarayapp-next' + (soon ? ' is-soon' : '') + '">' +
+            '<span class="marmarayapp-next__tag">Sıradaki tren</span>' +
+            '<div class="marmarayapp-next__body">' +
             countHtml(first.remainingMin) +
-            '<div class="mrt-next__clock"><strong>' + first.timeStr + '</strong><span class="mrt-next__sub">kalkış saati</span></div>' +
+            '<div class="marmarayapp-next__clock"><strong>' + first.timeStr + '</strong><span class="marmarayapp-next__sub">kalkış saati</span></div>' +
             '</div>' +
-            '<div class="mrt-next__dest">Son durak <b>' + first.destination + '</b></div>' +
+            '<div class="marmarayapp-next__dest">Son durak <b>' + first.destination + '</b></div>' +
             '</div>';
         if (rest.length) {
-            html += '<div class="mrt-rows__head">Sonraki seferler</div><ul class="mrt-rows">';
+            html += '<div class="marmarayapp-rows__head">Sonraki seferler</div><ul class="marmarayapp-rows">';
             rest.forEach(t => {
-                html += '<li class="mrt-row">' +
-                    '<span class="mrt-row__dest">' + t.destination + '</span>' +
-                    '<span class="mrt-row__min">' + fmtShort(t.remainingMin) + '</span>' +
-                    '<span class="mrt-row__at">' + t.timeStr + '</span>' +
+                html += '<li class="marmarayapp-row">' +
+                    '<span class="marmarayapp-row__dest">' + t.destination + '</span>' +
+                    '<span class="marmarayapp-row__min">' + fmtShort(t.remainingMin) + '</span>' +
+                    '<span class="marmarayapp-row__at">' + t.timeStr + '</span>' +
                     '</li>';
             });
             html += '</ul>';
@@ -316,32 +316,32 @@ let selectedIdx = null;
         return html;
     };
 
-    el.innerHTML = `<div class="mrt" style="margin-top: 20px;">
-        <div class="mrt__panel">
-            <div class="mrt__head" style="border-bottom: 0;">
-                <div class="mrt__topline">
-                    <h2 class="mrt__station">${name}</h2>
-                    <div class="mrt__live">
-                        <div class="mrt__pulse"></div> CANLI
+    el.innerHTML = `<div class="marmarayapp" style="margin-top: 20px;">
+        <div class="marmarayapp__panel">
+            <div class="marmarayapp__head" style="border-bottom: 0;">
+                <div class="marmarayapp__topline">
+                    <h2 class="marmarayapp__station">${name}</h2>
+                    <div class="marmarayapp__live">
+                        <div class="marmarayapp__pulse"></div> CANLI
                     </div>
                 </div>
             </div>
-            <div class="mrt__grid">
-                <div class="mrt__dir mrt__dir--h">
-                    <div class="mrt__dirhead">
-                        <svg class="mrt__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                        <div class="mrt__dirname">Halkalı Yönü</div>
+            <div class="marmarayapp__grid">
+                <div class="marmarayapp__dir marmarayapp__dir--h">
+                    <div class="marmarayapp__dirhead">
+                        <svg class="marmarayapp__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        <div class="marmarayapp__dirname">Halkalı Yönü</div>
                     </div>
-                    <div class="mrt__list" id="halkali-trains">
+                    <div class="marmarayapp__list" id="halkali-trains">
                         ${buildTrainsHtml(g2h)}
                     </div>
                 </div>
-                <div class="mrt__dir mrt__dir--g">
-                    <div class="mrt__dirhead">
-                        <div class="mrt__dirname">Gebze Yönü</div>
-                        <svg class="mrt__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <div class="marmarayapp__dir marmarayapp__dir--g">
+                    <div class="marmarayapp__dirhead">
+                        <div class="marmarayapp__dirname">Gebze Yönü</div>
+                        <svg class="marmarayapp__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </div>
-                    <div class="mrt__list" id="gebze-trains">
+                    <div class="marmarayapp__list" id="gebze-trains">
                         ${buildTrainsHtml(h2g)}
                     </div>
                 </div>

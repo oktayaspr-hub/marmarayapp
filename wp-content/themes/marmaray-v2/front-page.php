@@ -38,8 +38,9 @@ get_header(); ?>
             <div id="station-cards" style="display:none;"></div>
         </div>
 
-        <div class="ad-slot">
-            REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
+        <div class="ad-slot" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 20px;">
+            <strong style="font-size: 1.6rem; font-weight: 800;">SPONSORLU REKLAM ALANI</strong>
+            <span style="font-size: 1.1rem; font-weight: 300; letter-spacing: 2px;">BU ALANA REKLAM VEREBİLİRSİNİZ</span>
         </div>
 
 
@@ -129,8 +130,9 @@ get_header(); ?>
             </div>
         </div>
         
-        <div class="ad-slot">
-            REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
+        <div class="ad-slot" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 20px;">
+            <strong style="font-size: 1.6rem; font-weight: 800;">SPONSORLU REKLAM ALANI</strong>
+            <span style="font-size: 1.1rem; font-weight: 300; letter-spacing: 2px;">BU ALANA REKLAM VEREBİLİRSİNİZ</span>
         </div>
 
     </main>
