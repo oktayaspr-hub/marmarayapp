@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    MarmarayApp - Full Premium CSS v3
    ============================================================ */
 
@@ -576,7 +576,8 @@ body {
     padding: 25px;
     margin-bottom: 35px;
 }
-.station-picker-header { padding: 0 10%; 
+.station-picker-header {
+    padding: 0 10%;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -749,7 +750,7 @@ body {
 .up-time { color: var(--text-muted); font-variant-numeric: tabular-nums; font-family: monospace; font-size: 0.85rem; }
 .no-train { color: var(--text-muted); font-style: italic; text-align: center; padding: 25px 0; font-size: 0.9rem; }
 
-/* ============ TRANSFER SECTION (TÃœM 43 DURAK) ============ */
+/* ============ TRANSFER SECTION (TÜM 43 DURAK) ============ */
 .transfer-section {
     background: var(--panel-bg);
     border: 1px solid var(--border);
@@ -998,8 +999,8 @@ body {
         gap: 12px;
     }
     
-    /* Mobil Simetri ve Estetik DÃ¼zeltmeleri */
-    .station-picker-header { padding: 0 10%; 
+    /* Mobil Simetri ve Estetik Düzeltmeleri */
+    .station-picker-header {
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
