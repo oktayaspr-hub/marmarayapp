@@ -1,4 +1,4 @@
-﻿
+
 <style>
 .app-module-card {
     background: var(--glass-bg);
@@ -1592,6 +1592,17 @@
         if(!neighData) return;
         
         let html = '';
+        
+        // Başlangıç Adımı
+        html += `
+        <div class="route-step">
+            <div class="step-icon marmaray"><img src="${LOGOS.marmaray}" alt="marmaray"></div>
+            <div class="step-content">
+                <div class="step-title">Başlangıç: ${start}</div>
+                <div class="step-desc">Seçtiğiniz istasyondan Marmaray'a binerek yolculuğunuza başlayın.</div>
+            </div>
+        </div>
+        `;
         
         // Dinamik Adım Döngüsü
         neighData.steps.forEach((step, index) => {
