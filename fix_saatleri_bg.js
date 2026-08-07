@@ -1,4 +1,8 @@
+const fs = require('fs');
+let content = fs.readFileSync('wp-content/plugins/marmaray-core-v2/marmaray_saatleri_view.php', 'latin1'); 
+// The file might be corrupted, let's just rewrite the whole file cleanly.
 
+const newContent = `
 <style>
 .app-module-card { background: var(--glass-bg, #ffffff); border-radius: 20px; padding: 30px; border: 1px solid var(--glass-border, rgba(0,0,0,0.1)); box-shadow: var(--shadow-lg, 0 8px 32px rgba(0,0,0,0.05)); backdrop-filter: blur(20px); }
 .app-module-card label { display: block; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; font-size: 1.05rem; }
@@ -49,7 +53,7 @@
 
     const saatOrigin = document.getElementById('saat-origin');
     ROTA_STATIONS.forEach((s) => {
-        saatOrigin.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+        saatOrigin.innerHTML += \`<option value="\${s.id}">\${s.name}</option>\`;
     });
 
     saatOrigin.addEventListener('change', () => {
@@ -73,8 +77,8 @@
             let hStr = hTime.getHours().toString().padStart(2,'0') + ':' + hTime.getMinutes().toString().padStart(2,'0');
             let gStr = gTime.getHours().toString().padStart(2,'0') + ':' + gTime.getMinutes().toString().padStart(2,'0');
             
-            hList += `<div class="schedule-item">${hStr}</div>`;
-            gList += `<div class="schedule-item">${gStr}</div>`;
+            hList += \`<div class="schedule-item">\${hStr}</div>\`;
+            gList += \`<div class="schedule-item">\${gStr}</div>\`;
         }
         
         document.getElementById('halkali-list').innerHTML = hList;
@@ -82,3 +86,6 @@
         document.getElementById('schedule-container').style.display = 'flex';
     });
 </script>
+`;
+
+fs.writeFileSync('wp-content/plugins/marmaray-core-v2/marmaray_saatleri_view.php', newContent, 'utf8');
