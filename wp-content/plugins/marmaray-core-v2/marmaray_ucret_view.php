@@ -67,8 +67,8 @@
       "İçmeler", "Tuzla", "Çayırova", "Fatih", "Osmangazi", "Darıca", "Gebze"
     ];
 
-    const TAM_TIERS = [17.70, 22.68, 26.15, 30.12, 35.32, 39.18];
-    const IND_TIERS = [8.64, 10.74, 12.65, 14.54, 16.92, 18.81];
+    const TAM_TIERS = [37.40, 48.00, 56.50, 65.20, 74.00, 82.17];
+    const IND_TIERS = [18.13, 23.00, 27.50, 31.00, 34.50, 37.13];
 
     const originSel = document.getElementById('ucret-origin');
     const destSel = document.getElementById('ucret-dest');
