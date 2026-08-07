@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Front Page Template
  */
@@ -9,14 +9,14 @@ get_header(); ?>
 
         <!-- HERO -->
         <div class="hero">
-            <h1>Marmaray <span class="highlight">Canlı Takip</span> Panosu</h1>
+            <h1>Marmaray <span class="highlight">CanlÄ± Takip</span> Panosu</h1>
             <p class="subtitle">
-                Tüm duraklar için anlık tren kalkış saatleri ve güzergah durumu.
-                Durak seçerek Halkalı ve Gebze yönü saatlerini görün.
+                TÃ¼m duraklar iÃ§in anlÄ±k tren kalkÄ±ÅŸ saatleri ve gÃ¼zergah durumu.
+                Durak seÃ§erek HalkalÄ± ve Gebze yÃ¶nÃ¼ saatlerini gÃ¶rÃ¼n.
             </p>
         </div>
 
-        <!-- İSTASYON SEÇİCİ & KARTLAR (haritanın üstünde) -->
+        <!-- Ä°STASYON SEÃ‡Ä°CÄ° & KARTLAR (haritanÄ±n Ã¼stÃ¼nde) -->
         <div class="station-picker-section">
             <div class="station-picker-header">
                 <div class="picker-left">
@@ -25,9 +25,9 @@ get_header(); ?>
                             <circle cx="11" cy="11" r="8"/>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                         </svg>
-                       <label for="station-dropdown">İstasyon Seçin:</label>
+                       <label for="station-dropdown">Ä°stasyon SeÃ§in:</label>
                     <select class="station-dropdown" id="station-dropdown">
-                        <option value="">Durak Seçiniz</option>
+                        <option value="">Durak SeÃ§iniz</option>
                     </select>
                 </div>
                 <div class="live-badge-pill" id="global-live-badge">
@@ -39,17 +39,17 @@ get_header(); ?>
         </div>
 
         <div class="ad-slot">
-            REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
+            REKLAM ALANI (BU ALANA REKLAM VEREBÄ°LÄ°RSÄ°NÄ°Z.)
         </div>
 
 
         <!-- ===================== S-MAP GLASS PANEL ===================== -->
         <div class="map-glass-panel">
 
-            <!-- TCDD Kırmızı Başlık Bandı -->
+            <!-- TCDD KÄ±rmÄ±zÄ± BaÅŸlÄ±k BandÄ± -->
             <div class="map-tcdd-header">
                 <div class="tcdd-logos">
-                    <img src="/wp-content/plugins/marmaray-core-v2/assets/images/trainx.png" alt="TrainX Logo" onerror="this.style.display='none'" style="max-height: 40px; margin-left: 10px;">
+                    <img src="/wp-content/plugins/marmaray-core-v2/assets/images/trainx.png" alt="TrainX Logo" onerror="this.style.display='none'" style="max-height: 40px; margin-left: 10px; filter: invert(1) brightness(2); mix-blend-mode: screen;">
                 </div>
                 <div class="map-live-info" style="display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.4;">
                     <span id="current-date" style="display: flex; align-items: center; gap: 6px;">
@@ -62,11 +62,11 @@ get_header(); ?>
                     </span>
                 </div>
                 <div class="map-destination-badge" id="map-dest-badge">
-                    CANLI MARMARAY TAKİBİ
+                    CANLI MARMARAY TAKÄ°BÄ°
                 </div>
             </div>
 
-            <!-- Harita hint + zoom kontrolü -->
+            <!-- Harita hint + zoom kontrolÃ¼ -->
             <div class="map-hint-bar">
                 <span style="display: flex; align-items: center;">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
@@ -74,28 +74,28 @@ get_header(); ?>
                         <line x1="12" y1="16" x2="12" y2="12"></line>
                         <line x1="12" y1="8" x2="12.01" y2="8"></line>
                     </svg>
-                    İstasyona tıklayarak veya aşağıdan seçerek seferleri görüntüleyin.
+                    Ä°stasyona tÄ±klayarak veya aÅŸaÄŸÄ±dan seÃ§erek seferleri gÃ¶rÃ¼ntÃ¼leyin.
                 </span>
-                <span class="legend-item"><span class="legend-dot red-dot"></span> Gebze Yönü</span>
-                <span class="legend-item"><span class="legend-dot blue-dot"></span> Halkalıı Yönü</span>
+                <span class="legend-item"><span class="legend-dot red-dot"></span> Gebze YÃ¶nÃ¼</span>
+                <span class="legend-item"><span class="legend-dot blue-dot"></span> HalkalÄ±Ä± YÃ¶nÃ¼</span>
             </div>
 
-            <!-- S-Şekilli Harita (zoom/pan destekli) -->
+            <!-- S-Åekilli Harita (zoom/pan destekli) -->
             <div class="map-wrapper" id="map-wrapper">
                 <div id="marmaray-map-scale">
                     <div id="marmaray-map"></div>
                 </div>
                 <!-- Station Hover Tooltip -->
                 <div class="station-tooltip" id="station-tooltip">
-                    <div class="tooltip-name" id="tooltip-name">İstasyon</div>
+                    <div class="tooltip-name" id="tooltip-name">Ä°stasyon</div>
                     <div class="tooltip-dirs">
-                        <span class="tooltip-dir blue-dir" id="tooltip-halkali">← Halkalıı: -- dk</span>
-                        <span class="tooltip-dir red-dir" id="tooltip-gebze">Gebze: -- dk →</span>
+                        <span class="tooltip-dir blue-dir" id="tooltip-halkali">â† HalkalÄ±Ä±: -- dk</span>
+                        <span class="tooltip-dir red-dir" id="tooltip-gebze">Gebze: -- dk â†’</span>
                     </div>
                 </div>
                 <!-- Train Click Popup -->
                 <div class="train-popup" id="train-popup">
-                    <button class="train-popup-close" id="train-popup-close">✕</button>
+                    <button class="train-popup-close" id="train-popup-close">âœ•</button>
                     <div class="train-popup-body" id="train-popup-body">
                         <!-- Doldurulacak -->
                     </div>
@@ -103,9 +103,9 @@ get_header(); ?>
             </div>
         </div>
 
-        <!-- GÜZERGAH HATTI ALT HARİTA - TÜM 43 DURAK -->
+        <!-- GÃœZERGAH HATTI ALT HARÄ°TA - TÃœM 43 DURAK -->
         <div class="transfer-section">
-            <h2 class="section-title">Marmaray Güzergah Hattıı</h2>
+            <h2 class="section-title">Marmaray GÃ¼zergah HattÄ±Ä±</h2>
             <div class="transfer-map-scroll" id="transfer-map-scroll">
                 <div class="transfer-stations-row" id="transfer-row">
                     <!-- JS ile doldurulur -->
@@ -113,27 +113,27 @@ get_header(); ?>
             </div>
         </div>
 
-        <!-- İSTANBUL HIZLI ULAŞIM SİSTEMİ HARİTASI -->
+        <!-- Ä°STANBUL HIZLI ULAÅIM SÄ°STEMÄ° HARÄ°TASI -->
         <div class="transfer-section">
-            <h2 class="section-title">İstanbul Hızlı Ulaşım Sistemi</h2>
+            <h2 class="section-title">Ä°stanbul HÄ±zlÄ± UlaÅŸÄ±m Sistemi</h2>
             <div class="map-wrapper" id="istanbul-map-wrapper" style="height: 600px; background: white; border-radius: 8px; overflow: hidden; position: relative; cursor: grab;">
                 <div id="istanbul-map-scale" style="width: 100%; height: 100%; transform-origin: top left; display: flex; align-items: center; justify-content: center;">
-                    <img src="<?php echo esc_url( plugins_url( '/assets/images/', WP_PLUGIN_DIR . '/marmaray-core-v2/marmaray-core.php' ) ); ?>istanbul-hizli-ulasim-agi.png" alt="İstanbul Hızlı Ulaşım Sistemi Haritası" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;" id="istanbul-map-img">
+                    <img src="<?php echo esc_url( plugins_url( '/assets/images/', WP_PLUGIN_DIR . '/marmaray-core-v2/marmaray-core.php' ) ); ?>istanbul-hizli-ulasim-agi.png" alt="Ä°stanbul HÄ±zlÄ± UlaÅŸÄ±m Sistemi HaritasÄ±" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;" id="istanbul-map-img">
                 </div>
                 <div class="map-controls" style="position: absolute; bottom: 15px; right: 15px;">
-                    <button class="map-ctrl-btn" id="ist-zoom-out" title="Uzaklaştır">−</button>
-                    <button class="map-ctrl-btn" id="ist-zoom-reset" title="Sıfırla">
+                    <button class="map-ctrl-btn" id="ist-zoom-out" title="UzaklaÅŸtÄ±r">âˆ’</button>
+                    <button class="map-ctrl-btn" id="ist-zoom-reset" title="SÄ±fÄ±rla">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                         </svg>
                     </button>
-                    <button class="map-ctrl-btn" id="ist-zoom-in" title="Yakınlaştır">+</button>
+                    <button class="map-ctrl-btn" id="ist-zoom-in" title="YakÄ±nlaÅŸtÄ±r">+</button>
                 </div>
             </div>
         </div>
         
         <div class="ad-slot">
-            REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
+            REKLAM ALANI (BU ALANA REKLAM VEREBÄ°LÄ°RSÄ°NÄ°Z.)
         </div>
 
     </main>
