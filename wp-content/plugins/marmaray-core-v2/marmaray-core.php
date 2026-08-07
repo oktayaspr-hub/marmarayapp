@@ -58,15 +58,15 @@ function marmarayapp_activate() {
         ],
         'iletisim' => [
             'title' => 'İletişim',
-            'content' => 'Bize ulaşmak için lütfen iletisim@marmarayapp.com adresini kullanın.'
+            'content' => '<h2>Kurumsal İletişim Kanalları</h2><p>MarmarayApp hizmetleriyle ilgili her türlü görüş, öneri, hata bildirimi ve işbirliği teklifleri için bizimle iletişime geçebilirsiniz.</p><h3>Destek ve İletişim Formu</h3><p>Şu an için tüm taleplerinizi <strong>iletisim@marmarayapp.com</strong> e-posta adresi üzerinden yazılı olarak kabul etmekteyiz. Gelen tüm e-postalar destek ekibimiz tarafından 48 saat içerisinde değerlendirilerek yanıtlanmaktadır.</p><h3>Basın ve Medya</h3><p>Basın bültenleri, röportaj talepleri ve medya kitimiz için lütfen <strong>basin@marmarayapp.com</strong> adresi üzerinden iletişime geçiniz.</p>'
         ],
         'hakkimizda' => [
             'title' => 'Hakkımızda',
-            'content' => 'MarmarayApp, yolcuların seferleri canlı takip etmesi için geliştirilmiş bağımsız bir platformdur.'
+            'content' => '<h2>MarmarayApp Hakkında</h2><p>MarmarayApp, Türkiye\'nin en çok kullanılan raylı sistem hatlarından biri olan Marmaray\'ın kullanıcılarına daha şeffaf, hızlı ve güvenilir bilgi sağlamak amacıyla bağımsız geliştiriciler tarafından hayata geçirilmiş bir projedir.</p><h3>Misyonumuz</h3><p>Günlük milyonlarca yolcunun kullandığı bu devasa ağda, sefer saatlerini, istasyonlar arası süreleri ve anlık konumlandırmaları en pratik şekilde sunarak yolcu deneyimini dijitalleştirmeyi hedefliyoruz.</p><h3>Bağımsızlık Beyanı</h3><p>Platformumuz hiçbir resmi kurum, TCDD veya yerel yönetim ile organik veya inorganik bir bağa sahip değildir. Tamamen kamuya açık verilerin matematiksel modellemeler ve algoritmalar ile işlenerek son kullanıcıya sunulmasından ibarettir.</p>'
         ],
         'sponsorluk' => [
             'title' => 'Sponsorluk',
-            'content' => 'Uygulama içi sponsorluk ve reklam fırsatları için bizimle iletişime geçin.'
+            'content' => '<h2>Sponsorluk ve Reklam Anlaşmaları</h2><p>MarmarayApp, aylık yüz binlerce tekil kullanıcının ziyaret ettiği, spesifik ve hedef kitle odaklı bir platformdur. Markanızın bilinirliğini artırmak ve doğru kitleye ulaşmak için çeşitli sponsorluk modelleri sunmaktayız.</p><h3>Reklam Alanları</h3><p>Platformumuzda, ana sayfa afiş alanları, istasyon detay sayfalarındaki özel bannerlar ve uygulama içi duyuru panoları gibi çeşitli reklam yerleşimleri bulunmaktadır. Her bir reklam alanı, kullanıcı deneyimini bozmayacak şekilde özenle konumlandırılmıştır.</p><p>Sponsorluk dosyası ve fiyatlandırma detayları için lütfen <strong>sponsorluk@marmarayapp.com</strong> adresine kurum bilgilerinizi içeren bir e-posta gönderiniz.</p>'
         ],
         'gizlilik-sozlesmesi' => [
             'title' => 'Gizlilik Sözleşmesi',
@@ -82,19 +82,40 @@ function marmarayapp_activate() {
         ],
         'uygulamayi-indir' => [
             'title' => 'Uygulamayı İndir',
-            'content' => 'MarmarayApp uygulamasını Google Play Store ve Apple App Store üzerinden indirebilirsiniz.'
+            'content' => '<h2>MarmarayApp Mobil Uygulaması</h2><p>Web sitemizde sunduğumuz tüm özellikleri, hatta daha fazlasını mobil cihazınızda deneyimlemek için MarmarayApp uygulamasını indirebilirsiniz.</p><h3>Neden Mobil Uygulama?</h3><ul><li><strong>Anlık Bildirimler:</strong> Sefer iptalleri, gecikmeler ve önemli duyurulardan anında haberdar olun.</li><li><strong>Çevrimdışı Mod:</strong> Sık kullandığınız rotaları ve saatleri internet bağlantınız olmadan da görüntüleyin.</li><li><strong>Daha Hızlı Performans:</strong> Cihazınızın yerel donanımını kullanarak çok daha akıcı bir harita deneyimi yaşayın.</li></ul><p>Uygulamamız çok yakında Google Play Store ve Apple App Store\'da yerini alacaktır. Gelişmelerden haberdar olmak için sitemizi takipte kalın.</p>'
         ],
         'sikca-sorulan-sorular' => [
             'title' => 'Sıkça Sorulan Sorular',
-            'content' => '<h3>Canlı takip nasıl çalışır?</h3><p>TCDD verileri ve algoritmalarımızla anlık hesaplanır.</p>'
+            'content' => '<h2>Sıkça Sorulan Sorular (S.S.S)</h2><h3>Canlı takip nasıl çalışır?</h3><p>Sistemimiz, iki istasyon arasındaki ortalama seyahat süresini ve trenlerin bilinen kalkış saatlerini baz alarak algoritmik bir konum tahmini yapar. Bu veriler anlık GPS verisi değildir.</p><h3>Uygulamanız ücretli mi?</h3><p>Hayır, MarmarayApp hem web sitesi hem de mobil uygulama olarak tamamen ücretsizdir. Sunucu maliyetleri uygulamada ve sitede gösterilen reklamlar aracılığıyla karşılanmaktadır.</p><h3>Neden bazı saatlerde farklılıklar oluyor?</h3><p>Marmaray hattındaki yolcu biniş/iniş yoğunluğu, kapıların kapanma süresi, makinist değişimleri veya teknik aksaklıklar trenin planlanan saatinden birkaç dakika sapmasına neden olabilir.</p>'
         ],
         'sorumluluk-reddi-beyani' => [
             'title' => 'Sorumluluk Reddi Beyanı',
             'content' => '<h2>Yasal Uyarı ve Sorumluluk Reddi Beyanı</h2><p>MarmarayApp üzerinde görüntülenen sefer saatleri ve varış süreleri, duraklar arası mesafelere ve ortalama tren hızlarına dayalı olarak oluşturulan bir algoritma ile hesaplanmaktadır.</p><p>İstasyon yoğunluğu, ray trafiği, teknik aksaklıklar ve yolcu hareketleri gibi anlık değişkenlere bağlı olarak öngörülen sürelerde farklılıklar ve gecikmeler yaşanabilir.</p><p>Uygulamamızdaki veriler, resmi TCDD (Türkiye Cumhuriyeti Devlet Demiryolları) verisi değildir ve uygulamamız TCDD\'nin resmi bir uygulaması değildir. Sitemizi ve uygulamamızı kullanan tüm kullanıcılar, bu verilerin sadece tahmini bilgi amaçlı olduğunu kabul eder ve doğabilecek tüm risklerin kendi sorumluluğunda olduğunu beyan eder.</p>'
+        ],
+        'marmaray-saatleri' => [
+            'title' => 'Marmaray Saatleri',
+            'content' => '[marmaray_saatleri]'
+        ],
+        'ucret-hesapla' => [
+            'title' => 'Ücret Hesapla',
+            'content' => '[marmaray_ucret]'
+        ],
+        'rota-planla' => [
+            'title' => 'Rota Planla',
+            'content' => '[marmaray_rota_planla]'
+        ],
+        'bize-ulasin' => [
+            'title' => 'Bize Ulaşın',
+            'content' => '<h2>Bize Ulaşın</h2><p>Destek ve iletişim için: <a href="mailto:destek@marmarayapp.com">destek@marmarayapp.com</a></p><p>Reklam ve Sponsorluk için: <a href="mailto:info@marmarayapp.com">info@marmarayapp.com</a></p><p>MarmarayApp ekibiyle doğrudan iletişime geçebilirsiniz.</p>'
         ]
     ];
     foreach ($pages as $slug => $page) {
-        if (!get_page_by_path($slug)) {
+        $existing_page = get_page_by_path($slug);
+        if ($existing_page) {
+            $existing_page->post_title = $page['title'];
+            $existing_page->post_content = $page['content'];
+            wp_update_post($existing_page);
+        } else {
             wp_insert_post([
                 'post_title' => $page['title'],
                 'post_content' => $page['content'],
@@ -367,8 +388,8 @@ function marmarayapp_script_yukle() {
         'nonce'        => wp_create_nonce( 'marmarayapp_nonce' ),
     ] );
 
-    wp_enqueue_script( 'marmarayapp-data' );
-    wp_enqueue_script( 'marmarayapp-app'  );
+    wp_enqueue_style('marmaray-app-css', plugins_url('assets/css/app.css', __FILE__), array(), time());
+    wp_enqueue_script('marmaray-app-js', plugins_url('assets/js/app.js', __FILE__), array(), time(), true);
 }
 
 // ============================================================
@@ -501,3 +522,15 @@ function marmarayapp_add_type_module($tag, $handle, $src) {
     }
     return $tag;
 }
+
+add_action('init', function() {
+    if (isset($_GET['force_update_pages']) || !get_option('marmarayapp_v2_4_force_updated')) {
+        marmarayapp_activate();
+        update_option('marmarayapp_v2_4_force_updated', 1);
+        if (isset($_GET['force_update_pages'])) {
+            echo "<h1 style='color:green; text-align:center; margin-top:50px;'>SAYFALAR BASARIYLA GUNCELLENDI! Lutfen sayfayi yenileyin.</h1>";
+            exit;
+        }
+    }
+});
+

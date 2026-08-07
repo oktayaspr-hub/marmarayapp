@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html <?php language_attributes(); ?> data-theme="light">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -8,7 +8,6 @@
 </head>
 <body <?php body_class( 'light-theme' ); ?>>
 <?php wp_body_open(); ?>
-<div class="app-container">
     <!-- ===================== APP DOWNLOAD BANNER ===================== -->
     <div class="app-download-banner">
         <div class="app-banner-content">
@@ -42,7 +41,7 @@
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="active">Ana Sayfa</a>
             <a href="<?php echo esc_url( home_url( '/marmaray-saatleri' ) ); ?>">Marmaray Saatleri</a>
             <a href="<?php echo esc_url( home_url( '/rota-planla' ) ); ?>">Rota Planla</a>
-            <a href="<?php echo esc_url( home_url( '/ucret-hesapla' ) ); ?>">Ücret Hesapla</a>
+            <a href="<?php echo esc_url( home_url( '/ucret-hesapla' ) ); ?>">ÜÜÜcret Hesapla</a>
             <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>">Blog</a>
             <a href="<?php echo esc_url( home_url( '/iletisim' ) ); ?>">İletişim</a>
         </nav>
@@ -83,3 +82,13 @@
             </button>
         </div>
     </header>
+
+    <!-- ===================== LIVE ANNOUNCEMENT BANNER ===================== -->
+    <div class="announcement-banner">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" style="font-weight: bold;">
+            <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <marquee scrollamount="4" style="max-width:800px;">
+            <strong style="font-weight:900;">Duyuru:</strong> Tren hızı, istasyon trafiği ve yolcu yoğunluğuna bağlı olarak sefer saatlerinde mikro farklılıklar olabilir. İyi yolculuklar dileriz.
+        </marquee>
+    </div>

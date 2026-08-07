@@ -30,7 +30,6 @@
             <p class="footer-copy">&copy; <?php echo date('Y'); ?> MarmarayApp. Tüm hakları saklıdır.</p>
         </div>
     </footer>
-</div><!-- .app-container -->
     <?php wp_footer(); ?>
 </body>
 </html>

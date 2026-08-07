@@ -4,24 +4,23 @@
  */
 get_header(); ?>
 
-    <!-- ===================== LIVE ANNOUNCEMENT BANNER ===================== -->
-    <div class="announcement-banner">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" style="font-weight: bold;">
-            <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/>
-        </svg>
-        <marquee scrollamount="4" style="max-width:800px;">
-            <strong style="font-weight:900;">Duyuru:</strong> Tren hızı, istasyon trafiği ve yolcu yoğunluğuna bağlı olarak sefer saatlerinde mikro farklılıklar olabilir. İyi yolculuklar dileriz.
-        </marquee>
-    </div>
-
     <!-- ===================== MAIN ===================== -->
-    <main class="app-main">
-        
-        <!-- İSTASYON SEÇİCİ & CANLI SAAT -->
+    <main class="app-container">
+
+        <!-- HERO -->
+        <div class="hero">
+            <h1>Marmaray <span class="highlight">Canlı Takip</span> Panosu</h1>
+            <p class="subtitle">
+                Tüm duraklar için anlık tren kalkış saatleri ve güzergah durumu.
+                Durak seçerek Halkalı ve Gebze yönü saatlerini görün.
+            </p>
+        </div>
+
+        <!-- İSTASYON SEÇİCİ & KARTLAR (haritanın üstünde) -->
         <div class="station-picker-section">
             <div class="station-picker-header">
                 <div class="picker-left">
-                    <label for="station-dropdown">
+                    <label for="station-select">
                         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"/>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -32,13 +31,28 @@ get_header(); ?>
                     </select>
                 </div>
                 <div class="live-badge-pill" id="global-live-badge">
-                    <span class="live-dot"></span> CANLI
+                    <span class="live-dot-anim"></span>
+                    <span class="live-badge-label">CANLI</span>
                 </div>
-                <div class="map-live-info" id="live-time">
-                    <div class="tcdd-logos">
-                        <img src="<?php echo esc_url( plugins_url( 'assets/images/tc_ulastirma_bakanligi_logo.png', WP_PLUGIN_DIR . '/marmaray-core-v2/marmaray-core.php' ) ); ?>" alt="TC Ulaştırma Bakanlığı">
-                        <img src="<?php echo esc_url( plugins_url( 'assets/images/tcdd_logo.png', WP_PLUGIN_DIR . '/marmaray-core-v2/marmaray-core.php' ) ); ?>" alt="TCDD">
-                    </div>
+            </div>
+            <div id="station-cards" style="display:none;"></div>
+        </div>
+
+        <div class="ad-slot">
+            REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
+        </div>
+
+
+        <!-- ===================== S-MAP GLASS PANEL ===================== -->
+        <div class="map-glass-panel">
+
+            <!-- TCDD Kırmızı Başlık Bandı -->
+            <div class="map-tcdd-header">
+                <div class="tcdd-logos">
+                    <img src="https://marmarayadminapi.tcddtasimacilik.gov.tr/imgmarmaray/Ula%C5%9Ft%C4%B1rma_Bakanl%C4%B1%C4%9F%C4%B1_Hover.png" alt="T.C. Ulaştırma Bakanlığı" onerror="this.style.display='none'">
+                    <img src="https://marmarayadminapi.tcddtasimacilik.gov.tr/imgmarmaray/Tcdd_Hover.png" alt="TCDD" onerror="this.style.display='none'">
+                </div>
+                <div class="map-live-info">
                     <span id="current-date-time">--.--.---- --:--:--</span>
                 </div>
                 <div class="map-destination-badge" id="map-dest-badge">
@@ -46,37 +60,30 @@ get_header(); ?>
                 </div>
             </div>
 
-            <!-- SEFERLER TABLOSU -->
-            <div class="departures-board" id="departures-board">
-                <div class="board-header">
-                    <div class="col-time">Zaman</div>
-                    <div class="col-dest">Yön</div>
-                    <div class="col-countdown">Kalan</div>
-                </div>
-                <div class="board-body" id="board-body">
-                    <!-- İstasyon seçilmediğinde varsayılan mesaj -->
-                    <div class="empty-state">Lütfen seferleri görüntülemek için bir istasyon seçin.</div>
-                </div>
+            <!-- Harita hint + zoom kontrolü -->
+            <div class="map-hint-bar">
+                <span style="display: flex; align-items: center;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    İstasyona tıklayarak veya aşağıdan seçerek seferleri görüntüleyin.
+                </span>
+                <span class="legend-item"><span class="legend-dot red-dot"></span> Gebze Yönü</span>
+                <span class="legend-item"><span class="legend-dot blue-dot"></span> Halkalıı Yönü</span>
             </div>
-        </div>
 
-        <div class="ad-slot">
-            REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
-        </div>
-
-        <!-- YENİ İNTERAKTİF HARİTA (SVG) -->
-        <div class="transfer-section">
-            <h2 class="section-title">Canlı Marmaray Haritası</h2>
-            <div class="interactive-map-container" id="interactive-map-container">
-                <div class="map-loading" id="map-loading">Harita Yükleniyor...</div>
-                
-                <svg id="marmaray-svg-map" width="100%" height="100%"></svg>
-                
+            <!-- S-Şekilli Harita (zoom/pan destekli) -->
+            <div class="map-wrapper" id="map-wrapper">
+                <div id="marmaray-map-scale">
+                    <div id="marmaray-map"></div>
+                </div>
                 <!-- Station Hover Tooltip -->
                 <div class="station-tooltip" id="station-tooltip">
                     <div class="tooltip-name" id="tooltip-name">İstasyon</div>
                     <div class="tooltip-dirs">
-                        <span class="tooltip-dir blue-dir" id="tooltip-halkali">← Halkalı: -- dk</span>
+                        <span class="tooltip-dir blue-dir" id="tooltip-halkali">← Halkalıı: -- dk</span>
                         <span class="tooltip-dir red-dir" id="tooltip-gebze">Gebze: -- dk →</span>
                     </div>
                 </div>
@@ -92,7 +99,7 @@ get_header(); ?>
 
         <!-- GÜZERGAH HATTI ALT HARİTA - TÜM 43 DURAK -->
         <div class="transfer-section">
-            <h2 class="section-title">Marmaray Güzergah Hattı</h2>
+            <h2 class="section-title">Marmaray Güzergah Hattıı</h2>
             <div class="transfer-map-scroll" id="transfer-map-scroll">
                 <div class="transfer-stations-row" id="transfer-row">
                     <!-- JS ile doldurulur -->
@@ -105,7 +112,7 @@ get_header(); ?>
             <h2 class="section-title">İstanbul Hızlı Ulaşım Sistemi</h2>
             <div class="map-wrapper" id="istanbul-map-wrapper" style="height: 600px; background: white; border-radius: 8px; overflow: hidden; position: relative; cursor: grab;">
                 <div id="istanbul-map-scale" style="width: 100%; height: 100%; transform-origin: top left; display: flex; align-items: center; justify-content: center;">
-                    <img src="<?php echo esc_url( plugins_url( 'assets/images/istanbul-hizli-ulasim-agi.png', WP_PLUGIN_DIR . '/marmaray-core-v2/marmaray-core.php' ) ); ?>" alt="İstanbul Hızlı Ulaşım Sistemi Haritası" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;" id="istanbul-map-img">
+                    <img src="<?php echo esc_url( plugins_url( '/assets/images/', WP_PLUGIN_DIR . '/marmaray-core-v2/marmaray-core.php' ) ); ?>istanbul-hizli-ulasim-agi.png" alt="İstanbul Hızlı Ulaşım Sistemi Haritası" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;" id="istanbul-map-img">
                 </div>
                 <div class="map-controls" style="position: absolute; bottom: 15px; right: 15px;">
                     <button class="map-ctrl-btn" id="ist-zoom-out" title="Uzaklaştır">−</button>
@@ -118,7 +125,7 @@ get_header(); ?>
                 </div>
             </div>
         </div>
-
+        
         <div class="ad-slot">
             REKLAM ALANI (BU ALANA REKLAM VEREBİLİRSİNİZ.)
         </div>

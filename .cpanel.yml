@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/poncixon/www.marmarayapp.com/wp-content
+    - /bin/cp -R wp-content/plugins/marmaray-core-v2 $DEPLOYPATH/plugins/
+    - /bin/cp -R wp-content/themes/marmaray-v2 $DEPLOYPATH/themes/

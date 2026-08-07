@@ -1063,3 +1063,66 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
+
+/* ============ STICKY FOOTER & PAGE WRAPPER ============ */
+body { display: flex; flex-direction: column; }
+.app-container, .app-main, .page-wrapper { flex: 1 0 auto; width: 100%; }
+.site-footer { flex-shrink: 0; }
+
+.page-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+.page-wrapper h1.page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+    text-align: center;
+    border-bottom: 3px solid var(--accent-red);
+    padding-bottom: 15px;
+    display: inline-block;
+}
+.page-wrapper h2, .page-wrapper h3 { margin-top: 30px; margin-bottom: 15px; color: var(--text-primary); }
+.page-wrapper p, .page-wrapper li { font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; color: var(--text-secondary); }
+.page-wrapper-center { display: flex; flex-direction: column; align-items: center; }
+
+
+/* ============ V2.2 STICKY FOOTER & PAGE LAYOUT ============ */
+html, body { margin: 0; padding: 0; }
+body { display: flex; flex-direction: column; min-height: 100vh; }
+#page { flex: 1; display: flex; flex-direction: column; }
+.site-main { flex: 1; }
+.site-footer { flex-shrink: 0; margin-top: auto; }
+
+.page-wrapper {
+    max-width: 900px;
+    width: 100%;
+    margin: 60px auto;
+    padding: 40px;
+    background: var(--bg-card);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+}
+.page-wrapper .entry-content > p {
+    text-align: justify;
+}
+.page-wrapper h1.page-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 4px solid var(--accent-red);
+    padding-bottom: 15px;
+    display: inline-block;
+}
+.page-wrapper h2 { margin-top: 40px; margin-bottom: 20px; color: var(--text-primary); font-size: 1.8rem; font-weight: 700; }
+.page-wrapper h3 { margin-top: 30px; margin-bottom: 15px; color: var(--text-primary); font-size: 1.4rem; }
+.page-wrapper p, .page-wrapper li { font-size: 1.15rem; line-height: 1.9; margin-bottom: 20px; color: var(--text-secondary); }
