@@ -1784,3 +1784,11 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 
 .station-picker-header-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 20px; padding: 0; margin-bottom: 25px; }
 @media (max-width: 768px) { .station-picker-header-grid { display: flex !important; flex-direction: column !important; justify-content: center !important; text-align: center; padding: 0 5%; } }
+
+@media (max-width: 768px) {
+    .picker-col.picker-left { align-items: center !important; margin-bottom: 15px; }
+    .picker-col.picker-middle { margin-bottom: 15px; }
+    .picker-col.picker-right { justify-content: center !important; margin-top: 10px; }
+    #global-live-badge { transform: scale(1.5) !important; transform-origin: center center !important; }
+}
+
