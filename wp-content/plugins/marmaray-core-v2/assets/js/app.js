@@ -23,9 +23,9 @@ const MAP_W  = 1200, MAP_H = 440;
 const ROW1_Y = 80,  ROW2_Y = 220, ROW3_Y = 360;
 const LX = 80, RX = 1120;
 
-const ROW1 = Array.from({length:15}, (_,i) => 42-i); // 42..28
-const ROW2 = Array.from({length:14}, (_,i) => 29-i); // 29..16
-const ROW3 = Array.from({length:17}, (_,i) => 17-i).concat([0]); // 17..0
+const ROW1 = Array.from({length:15}, (_,i) => 42-i); // 42..28 (Halkalı - Üsküdar)
+const ROW2 = Array.from({length:14}, (_,i) => 27-i); // 27..14 (Ayrılıkçeşmesi - Başak)
+const ROW3 = Array.from({length:14}, (_,i) => 13-i); // 13..0  (Kartal - Gebze)
 
 const getCoord = (idx) => {
   let p = ROW1.indexOf(idx);
@@ -38,16 +38,16 @@ const getCoord = (idx) => {
 };
 
 const lerp = (fromIdx, toIdx, t) => {
-  // Sağ kavis: idx 28↔29
-  if ((fromIdx===28&&toIdx===29)||(fromIdx===29&&toIdx===28)) {
-    const cx=RX+75, cy=(ROW1_Y+ROW2_Y)/2, r=75;
+  // Sağ kavis: idx 28 27 (Üsküdar - Ayrılıkçeşmesi)
+  if ((fromIdx===28&&toIdx===27)||(fromIdx===27&&toIdx===28)) {
+    const cx=RX, cy=(ROW1_Y+ROW2_Y)/2, r=(ROW2_Y-ROW1_Y)/2; // cx=RX ensures it connects to line at RX
     const a = fromIdx===28 ? -Math.PI/2 + t*Math.PI : Math.PI/2 - t*Math.PI;
     return { x: cx+r*Math.cos(a), y: cy+r*Math.sin(a) };
   }
-  // Sol kavis: idx 16↔17
-  if ((fromIdx===16&&toIdx===17)||(fromIdx===17&&toIdx===16)) {
-    const cx=LX-75, cy=(ROW2_Y+ROW3_Y)/2, r=75;
-    const a = fromIdx===16 ? Math.PI/2+t*Math.PI : 1.5*Math.PI - t*Math.PI;
+  // Sol kavis: idx 14 13 (Başak - Kartal)
+  if ((fromIdx===14&&toIdx===13)||(fromIdx===13&&toIdx===14)) {
+    const cx=LX, cy=(ROW2_Y+ROW3_Y)/2, r=(ROW3_Y-ROW2_Y)/2; // cx=LX ensures it connects to line at LX
+    const a = fromIdx===14 ? Math.PI/2 + t*Math.PI : 1.5*Math.PI - t*Math.PI;
     return { x: cx+r*Math.cos(a), y: cy+r*Math.sin(a) };
   }
   const p1=getCoord(fromIdx), p2=getCoord(toIdx);
@@ -64,9 +64,9 @@ const buildSVG = () => {
   const r3s=getCoord(ROW3[0]), r3e=getCoord(ROW3[ROW3.length-1]);
   return `<svg width="${MAP_W}" height="${MAP_H}" style="position:absolute;top:0;left:0;pointer-events:none;" id="track-svg">
     <line x1="${r1s.x}" y1="${ROW1_Y}" x2="${r1e.x}" y2="${ROW1_Y}" stroke="${c}" stroke-width="7" stroke-linecap="round"/>
-    <path d="M${r1e.x} ${ROW1_Y} Q${RX+90} ${(ROW1_Y+ROW2_Y)/2} ${r2s.x} ${ROW2_Y}" fill="none" stroke="${c}" stroke-width="7"/>
+    <path d="M${r1e.x} ${ROW1_Y} A70 70 0 0 1 ${r2s.x} ${ROW2_Y}" fill="none" stroke="${c}" stroke-width="7"/>
     <line x1="${r2s.x}" y1="${ROW2_Y}" x2="${r2e.x}" y2="${ROW2_Y}" stroke="${c}" stroke-width="7" stroke-linecap="round"/>
-    <path d="M${r2e.x} ${ROW2_Y} Q${LX-90} ${(ROW2_Y+ROW3_Y)/2} ${r3s.x} ${ROW3_Y}" fill="none" stroke="${c}" stroke-width="7"/>
+    <path d="M${r2e.x} ${ROW2_Y} A70 70 0 0 0 ${r3s.x} ${ROW3_Y}" fill="none" stroke="${c}" stroke-width="7"/>
     <line x1="${r3s.x}" y1="${ROW3_Y}" x2="${r3e.x}" y2="${ROW3_Y}" stroke="${c}" stroke-width="7" stroke-linecap="round"/>
   </svg>`;
 };
