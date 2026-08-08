@@ -303,7 +303,7 @@ export const getTrainPosition = (direction, elapsedMins) => {
   return { stationIdx: cum.length - 2, progress: 1 };
 };
 
-export const G2H_WEEKDAY = [];
-export const H2G_WEEKDAY = [];
-export const G2H_WEEKEND = [];
-export const H2G_WEEKEND = [];
+export const G2H_WEEKDAY = getCalendarDayTrainRuns(1, 'Halkalı').filter(r => !r.isIntermediate).map(r => r.depMinutes);
+export const H2G_WEEKDAY = getCalendarDayTrainRuns(1, 'Gebze').filter(r => !r.isIntermediate).map(r => r.depMinutes);
+export const G2H_WEEKEND = getCalendarDayTrainRuns(0, 'Halkalı').filter(r => !r.isIntermediate).map(r => r.depMinutes);
+export const H2G_WEEKEND = getCalendarDayTrainRuns(0, 'Gebze').filter(r => !r.isIntermediate).map(r => r.depMinutes);
