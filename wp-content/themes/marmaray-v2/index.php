@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 get_header();
 ?>
 
@@ -14,6 +14,7 @@ get_header();
                 }
                 ?>
             </h1>
+            <p style="color: #666; font-size: 1.1rem; margin-top: 10px;">Marmaray yolculuğunuzu kolaylaştıracak rehberler, aktarma noktaları ve güncel sefer bilgileri.</p>
             <?php if ( category_description() ) : ?>
                 <div class="archive-description" style="color: #666; font-size: 1.1rem; margin-top: 10px;">
                     <?php echo category_description(); ?>
