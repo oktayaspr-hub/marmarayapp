@@ -218,5 +218,3 @@ function marmaray_blog_importer_v10() {
         exit;
     }
 }
-?>
-
