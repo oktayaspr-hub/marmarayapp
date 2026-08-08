@@ -100,7 +100,8 @@ const showStationTooltip = (idx, el) => {
   const halNextStation = idx < STATIONS.length-1 ? STATIONS[idx+1] : '(Son durak)';
   const gebNextStation = idx > 0                  ? STATIONS[idx-1] : '(Son durak)';
 
-  document.getElementById('tooltip-name').textContent = name;
+  const isSelected = el && el.classList.contains('station-selected');
+  document.getElementById('tooltip-name').textContent = isSelected ? `Başlangıç Noktanız: ${name}` : name;
   document.getElementById('tooltip-halkali').textContent =
     g2h.length ? `← Halkalı  •  ${g2h[0].remainingMin} dk  •  Sonraki: ${halNextStation}` : '← Halkalı: sefer yok';
   document.getElementById('tooltip-gebze').textContent =

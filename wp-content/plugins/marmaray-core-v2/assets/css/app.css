@@ -1792,3 +1792,18 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     #global-live-badge { transform: scale(1.5) !important; transform-origin: center center !important; }
 }
 
+
+.station-node.station-selected::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: white;
+    border-radius: 50%;
+}
+@media (max-width: 768px) {
+    .marmarayapp { padding: 5px !important; }
+    .marmarayapp__panel { padding: 12px !important; }
+    .marmarayapp__grid { padding-top: 5px !important; gap: 10px !important; }
+    .station-picker-header-grid { margin-bottom: 10px !important; }
+}
+
