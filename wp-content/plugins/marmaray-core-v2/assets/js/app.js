@@ -298,7 +298,7 @@ let selectedIdx = null;
             '<span class="marmarayapp-next__tag">Sıradaki tren</span>' +
             '<div class="marmarayapp-next__body">' +
             countHtml(first.remainingMin) +
-            '<div class="marmarayapp-next__clock"><strong>' + first.timeStr + '</strong><span class="marmarayapp-next__sub">kalkış saati</span></div>' +
+            '<div class="marmarayapp-next__clock"><strong>' + first.timeStr + '</strong></div>' +
             '</div>' +
             '<div class="marmarayapp-next__dest">Son durak <b>' + first.destination + '</b></div>' +
             '</div>';
@@ -319,10 +319,10 @@ let selectedIdx = null;
     el.innerHTML = `<div class="marmarayapp" style="margin-top: 20px;">
         <div class="marmarayapp__panel">
             <div class="marmarayapp__head" style="border-bottom: 0;">
-                <div class="marmarayapp__topline">
-                    <h2 class="marmarayapp__station">${name}</h2>
-                    <div class="marmarayapp__live">
-                        <div class="marmarayapp__pulse"></div> CANLI
+                <div class="marmarayapp__topline" style="justify-content: flex-end; padding-top: 15px; padding-right: 15px;">
+                    <div class="live-badge-pill" id="global-live-badge" style="transform: scale(1.1); margin: 0;">
+                        <span class="live-dot-anim"></span>
+                        <span class="live-badge-label" style="font-weight: 800; letter-spacing: 1px;">CANLI</span>
                     </div>
                 </div>
             </div>

@@ -1217,7 +1217,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
    1. PANEL (kart)
    ============================================================ */
 .marmarayapp__panel {
-    max-width: 920px;
+    max-width: 100%;
     margin: 0 auto;
     background: var(--marmarayapp-panel);
     border: 1px solid var(--marmarayapp-line);
@@ -1228,7 +1228,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 }
 
 /* ============================================================
-   2. BAÅLIK
+   2. BAŞLIK
    ============================================================ */
 .marmarayapp__head {
     display: flex;
