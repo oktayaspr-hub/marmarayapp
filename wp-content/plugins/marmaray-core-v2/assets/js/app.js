@@ -318,28 +318,32 @@ let selectedIdx = null;
 
     el.innerHTML = `<div class="marmarayapp" style="margin-top: 20px;">
         <div class="marmarayapp__panel">
-            <div class="marmarayapp__head" style="border-bottom: 0;">
-                <div class="marmarayapp__topline" style="justify-content: flex-end; padding-top: 15px; padding-right: 15px;">
-                    <div class="live-badge-pill" id="global-live-badge" style="transform: scale(1.1); margin: 0;">
-                        <span class="live-dot-anim"></span>
-                        <span class="live-badge-label" style="font-weight: 800; letter-spacing: 1px;">CANLI</span>
-                    </div>
-                </div>
-            </div>
             <div class="marmarayapp__grid">
                 <div class="marmarayapp__dir marmarayapp__dir--h">
-                    <div class="marmarayapp__dirhead">
-                        <svg class="marmarayapp__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                        <div class="marmarayapp__dirname">Halkalı Yönü</div>
+                    <div class="marmarayapp__dirhead" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center;">
+                            <svg class="marmarayapp__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                            <div class="marmarayapp__dirname">Halkalı Yönü</div>
+                        </div>
+                        <div class="live-badge-pill" style="transform: scale(0.9); margin: 0; padding: 4px 12px; height: 28px;">
+                            <span class="live-dot-anim"></span>
+                            <span class="live-badge-label" style="font-weight: 800; letter-spacing: 1px;">CANLI</span>
+                        </div>
                     </div>
                     <div class="marmarayapp__list" id="halkali-trains">
                         ${buildTrainsHtml(g2h)}
                     </div>
                 </div>
                 <div class="marmarayapp__dir marmarayapp__dir--g">
-                    <div class="marmarayapp__dirhead">
-                        <div class="marmarayapp__dirname">Gebze Yönü</div>
-                        <svg class="marmarayapp__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    <div class="marmarayapp__dirhead" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="live-badge-pill" style="transform: scale(0.9); margin: 0; padding: 4px 12px; height: 28px;">
+                            <span class="live-dot-anim"></span>
+                            <span class="live-badge-label" style="font-weight: 800; letter-spacing: 1px;">CANLI</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div class="marmarayapp__dirname">Gebze Yönü</div>
+                            <svg class="marmarayapp__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: 8px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
                     </div>
                     <div class="marmarayapp__list" id="gebze-trains">
                         ${buildTrainsHtml(h2g)}
