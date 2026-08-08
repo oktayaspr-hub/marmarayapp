@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 if (!defined('ABSPATH')) exit;
 
 add_action('init', 'marmaray_blog_importer_trigger');
@@ -6,7 +6,7 @@ add_action('init', 'marmaray_blog_importer_trigger');
 function marmaray_blog_importer_trigger() {
     if (isset($_GET['insert_blog_demo']) && $_GET['insert_blog_demo'] === 'oktay') {
         marmaray_create_sample_blogs();
-        echo "<h1>Ã–rnek Blog YazÄ±larÄ± BaÅŸarÄ±yla Eklendi!</h1><a href='/wp-admin/edit.php'>YazÄ±lara Git</a>";
+        echo "<h1>Örnek Blog Yazıları Başarıyla Eklendi!</h1><a href='/wp-admin/edit.php'>Yazılara Git</a>";
         exit;
     }
 }
@@ -18,48 +18,48 @@ function marmaray_create_sample_blogs() {
 
     $posts = [
         [
-            'title'   => 'YenikapÄ± Marmaray Ä°stasyonu: Saatler, Aktarmalar ve Ã‡evre Rehberi',
-            'content' => '<h2>YenikapÄ± Ä°stasyonu HakkÄ±nda Genel Bilgi</h2>
-                          <p>Marmaray\'Ä±n en yoÄŸun geÃ§iÅŸ noktalarÄ±ndan biri olan <strong>YenikapÄ± Ä°stasyonu</strong>, Avrupa YakasÄ±\'nÄ±n kalbinde yer alÄ±r. Hem Gebze yÃ¶nÃ¼ne hem de HalkalÄ± yÃ¶nÃ¼ne giden trenlerin kesiÅŸim noktasÄ±dÄ±r. YenikapÄ± Marmaray saatleri her gÃ¼n 06:00 ile gece 23:59 arasÄ±nda dÃ¼zenli seferler sunar.</p>
-                          <h3>M1 ve M2 Metro AktarmasÄ± NasÄ±l YapÄ±lÄ±r?</h3>
-                          <p>YenikapÄ±\'nÄ±n en bÃ¼yÃ¼k avantajÄ±, Ä°stanbul metrosuna olan kolay baÄŸlantÄ±sÄ±dÄ±r:</p>
+            'title'   => 'Yenikapı Marmaray İstasyonu: Saatler, Aktarmalar ve Çevre Rehberi',
+            'content' => '<h2>Yenikapı İstasyonu Hakkında Genel Bilgi</h2>
+                          <p>Marmaray\'ın en yoğun geçiş noktalarından biri olan <strong>Yenikapı İstasyonu</strong>, Avrupa Yakası\'nın kalbinde yer alır. Hem Gebze yönüne hem de Halkalı yönüne giden trenlerin kesişim noktasıdır. Yenikapı Marmaray saatleri her gün 06:00 ile gece 23:59 arasında düzenli seferler sunar.</p>
+                          <h3>M1 ve M2 Metro Aktarması Nasıl Yapılır?</h3>
+                          <p>Yenikapı\'nın en büyük avantajı, İstanbul metrosuna olan kolay bağlantısıdır:</p>
                           <ul>
-                              <li><strong>M2 YenikapÄ± - HacÄ±osman Metrosu:</strong> Taksim, ÅiÅŸli, Levent gibi iÅŸ merkezlerine doÄŸrudan ulaÅŸÄ±m.</li>
-                              <li><strong>M1A (AtatÃ¼rk HavalimanÄ±) ve M1B (KirazlÄ±) Metrosu:</strong> Esenler OtogarÄ±, BakÄ±rkÃ¶y ve BaÄŸcÄ±lar yÃ¶nÃ¼ne hÄ±zlÄ± aktarma.</li>
+                              <li><strong>M2 Yenikapı - Hacıosman Metrosu:</strong> Taksim, Şişli, Levent gibi iş merkezlerine doğrudan ulaşım.</li>
+                              <li><strong>M1A (Atatürk Havalimanı) ve M1B (Kirazlı) Metrosu:</strong> Esenler Otogarı, Bakırköy ve Bağcılar yönüne hızlı aktarma.</li>
                           </ul>
-                          <h3>YenikapÄ± Ä°DO Feribot BaÄŸlantÄ±sÄ±</h3>
-                          <p>YenikapÄ± Marmaray Ã§Ä±kÄ±ÅŸÄ±ndan sadece 5 dakikalÄ±k yÃ¼rÃ¼me mesafesinde bulunan Ä°DO iskelesi sayesinde, Yalova, Bursa ve BandÄ±rma feribotlarÄ±na kolayca ulaÅŸabilirsiniz.</p>
-                          <p><em>Not:</em> Ä°lk ve son tren saatlerini sitemizdeki canlÄ± harita Ã¼zerinden takip edebilir, biniÅŸ Ã¶ncesi yoÄŸunluk durumunu kontrol edebilirsiniz.</p>',
+                          <h3>Yenikapı İDO Feribot Bağlantısı</h3>
+                          <p>Yenikapı Marmaray çıkışından sadece 5 dakikalık yürüme mesafesinde bulunan İDO iskelesi sayesinde, Yalova, Bursa ve Bandırma feribotlarına kolayca ulaşabilirsiniz.</p>
+                          <p><em>Not:</em> İlk ve son tren saatlerini sitemizdeki canlı harita üzerinden takip edebilir, biniş öncesi yoğunluk durumunu kontrol edebilirsiniz.</p>',
             'image'   => MARMARAYAPP_DIR . 'assets/images/blog/yenikapi.jpg',
-            'tags'    => 'yenikapÄ± marmaray, yenikapÄ± saatleri, m2 metro aktarma, marmaray ilk tren',
+            'tags'    => 'yenikapı marmaray, yenikapı saatleri, m2 metro aktarma, marmaray ilk tren',
             'slug'    => 'yenikapi-marmaray-istasyonu-saatler-ve-aktarmalar'
         ],
         [
-            'title'   => 'Pendik Marmaray Ä°stasyonu: HÄ±zlÄ± Tren (YHT) AktarmasÄ± ve Sefer Saatleri',
-            'content' => '<h2>Pendik Ä°stasyonu ve UlaÅŸÄ±m Ã–nemi</h2>
-                          <p>Anadolu YakasÄ±\'nÄ±n kilit merkezlerinden biri olan <strong>Pendik Marmaray Ä°stasyonu</strong>, sadece Ä°stanbul iÃ§i ulaÅŸÄ±mda deÄŸil, ÅŸehirler arasÄ± yolculuklarda da devasa bir Ã¶neme sahiptir. Gebze\'ye giden trenler ve HalkalÄ± yÃ¶nÃ¼ne giden ana hat trenleri Pendik\'te mutlaka durur.</p>
-                          <h3>Pendik YHT (YÃ¼ksek HÄ±zlÄ± Tren) AktarmasÄ±</h3>
-                          <p>Ankara, Konya, EskiÅŸehir ve Sivas yÃ¶nÃ¼ne seyahat edecekseniz, Pendik Marmaray istasyonunda inerek doÄŸrudan YHT garÄ±na aktarma yapabilirsiniz. Pendik YHT istasyonu, Marmaray peronlarÄ± ile entegredir. YÃ¶nlendirme tabelalarÄ±nÄ± takip ederek YHT bilet giÅŸelerine 2 dakikada ulaÅŸabilirsiniz.</p>
+            'title'   => 'Pendik Marmaray İstasyonu: Hızlı Tren (YHT) Aktarması ve Sefer Saatleri',
+            'content' => '<h2>Pendik İstasyonu ve Ulaşım Önemi</h2>
+                          <p>Anadolu Yakası\'nın kilit merkezlerinden biri olan <strong>Pendik Marmaray İstasyonu</strong>, sadece İstanbul içi ulaşımda değil, şehirler arası yolculuklarda da devasa bir öneme sahiptir. Gebze\'ye giden trenler ve Halkalı yönüne giden ana hat trenleri Pendik\'te mutlaka durur.</p>
+                          <h3>Pendik YHT (Yüksek Hızlı Tren) Aktarması</h3>
+                          <p>Ankara, Konya, Eskişehir ve Sivas yönüne seyahat edecekseniz, Pendik Marmaray istasyonunda inerek doğrudan YHT garına aktarma yapabilirsiniz. Pendik YHT istasyonu, Marmaray peronları ile entegredir. Yönlendirme tabelalarını takip ederek YHT bilet gişelerine 2 dakikada ulaşabilirsiniz.</p>
                           <h3>Pendik Marmaray Ara Trenleri Nedir?</h3>
-                          <p>Marmaray aÄŸÄ±nda yoÄŸun saatlerde (sabah ve akÅŸam iÅŸ Ã§Ä±kÄ±ÅŸlarÄ±) <strong>Pendik - AtakÃ¶y</strong> arasÄ±nda ek seferler dÃ¼zenlenir. Bu "Ara Trenler" sayesinde Gebze veya HalkalÄ±\'dan gelen kalabalÄ±ÄŸa girmeden daha rahat bir yolculuk yapabilirsiniz. Sitemizdeki canlÄ± harita, Pendik kalkÄ±ÅŸlÄ± ara trenleri sarÄ± renkle iÅŸaretleyerek gÃ¶stermektedir.</p>',
+                          <p>Marmaray ağında yoğun saatlerde (sabah ve akşam iş çıkışları) <strong>Pendik - Ataköy</strong> arasında ek seferler düzenlenir. Bu "Ara Trenler" sayesinde Gebze veya Halkalı\'dan gelen kalabalığa girmeden daha rahat bir yolculuk yapabilirsiniz. Sitemizdeki canlı harita, Pendik kalkışlı ara trenleri sarı renkle işaretleyerek göstermektedir.</p>',
             'image'   => MARMARAYAPP_DIR . 'assets/images/blog/pendik.jpg',
-            'tags'    => 'pendik marmaray saatleri, pendik yht aktarma, pendik hÄ±zlÄ± tren, pendik atakÃ¶y seferleri',
+            'tags'    => 'pendik marmaray saatleri, pendik yht aktarma, pendik hızlı tren, pendik ataköy seferleri',
             'slug'    => 'pendik-marmaray-istasyonu-yht-aktarma-saatleri'
         ],
         [
-            'title'   => 'AyrÄ±lÄ±kÃ§eÅŸmesi Marmaray Ä°stasyonu: KadÄ±kÃ¶y Metrosuna En HÄ±zlÄ± GeÃ§iÅŸ',
-            'content' => '<h2>BoÄŸazÄ± GeÃ§tikten Sonraki Ä°lk Durak</h2>
-                          <p>Sirkeci istasyonundan sonra tÃ¼p geÃ§itle Asya KÄ±tasÄ±\'na geÃ§en Marmaray trenlerinin Anadolu YakasÄ±\'ndaki ilk duraÄŸÄ± <strong>AyrÄ±lÄ±kÃ§eÅŸmesi Ä°stasyonu</strong>\'dur. ÃœskÃ¼dar sÄ±nÄ±rlarÄ± iÃ§inde yer almasÄ±na raÄŸmen KadÄ±kÃ¶y kalabalÄ±ÄŸÄ±nÄ±n ana daÄŸÄ±tÄ±m merkezidir.</p>
-                          <h3>M4 KadÄ±kÃ¶y - Sabiha GÃ¶kÃ§en HavalimanÄ± Metrosu</h3>
-                          <p>AyrÄ±lÄ±kÃ§eÅŸmesi Marmaray Ä°stasyonu, M4 metro hattÄ± ile devasa bir yer altÄ± aktarma merkezine sahiptir. Treninizden indiÄŸinizde:</p>
+            'title'   => 'Ayrılıkçeşmesi Marmaray İstasyonu: Kadıköy Metrosuna En Hızlı Geçiş',
+            'content' => '<h2>Boğazı Geçtikten Sonraki İlk Durak</h2>
+                          <p>Sirkeci istasyonundan sonra tüp geçitle Asya Kıtası\'na geçen Marmaray trenlerinin Anadolu Yakası\'ndaki ilk durağı <strong>Ayrılıkçeşmesi İstasyonu</strong>\'dur. Üsküdar sınırları içinde yer almasına rağmen Kadıköy kalabalığının ana dağıtım merkezidir.</p>
+                          <h3>M4 Kadıköy - Sabiha Gökçen Havalimanı Metrosu</h3>
+                          <p>Ayrılıkçeşmesi Marmaray İstasyonu, M4 metro hattı ile devasa bir yer altı aktarma merkezine sahiptir. Treninizden indiğinizde:</p>
                           <ul>
-                              <li><strong>KadÄ±kÃ¶y YÃ¶nÃ¼:</strong> Merdivenlerden inip M4 metrosuna binerek tek durak sonra KadÄ±kÃ¶y Ä°skele MeydanÄ±\'na varabilirsiniz.</li>
-                              <li><strong>Sabiha GÃ¶kÃ§en HavalimanÄ± YÃ¶nÃ¼:</strong> M4 metrosunu kullanarak GÃ¶ztepe, BostancÄ±, Pendik Ã¼zerinden aktarmasÄ±z havalimanÄ±na ulaÅŸabilirsiniz.</li>
+                              <li><strong>Kadıköy Yönü:</strong> Merdivenlerden inip M4 metrosuna binerek tek durak sonra Kadıköy İskele Meydanı\'na varabilirsiniz.</li>
+                              <li><strong>Sabiha Gökçen Havalimanı Yönü:</strong> M4 metrosunu kullanarak Göztepe, Bostancı, Pendik üzerinden aktarmasız havalimanına ulaşabilirsiniz.</li>
                           </ul>
-                          <h3>AyrÄ±lÄ±kÃ§eÅŸmesi AVM ve Ã‡evre BaÄŸlantÄ±larÄ±</h3>
-                          <p>Ä°stasyon, Tepe Nautilus AVM\'nin hemen bitiÅŸiÄŸindedir. AlÄ±ÅŸveriÅŸ merkezi, AcÄ±badem ve KadÄ±kÃ¶y RÄ±htÄ±m bÃ¶lgelerine yÃ¼rÃ¼yÃ¼ÅŸ mesafesindeki bu durak, gÃ¼nÃ¼n her saati gÃ¼venli ve aktiftir. AyrÄ±lÄ±kÃ§eÅŸmesi gÃ¼ncel sefer saatlerini uygulamamÄ±zdan anlÄ±k sorgulayabilirsiniz.</p>',
+                          <h3>Ayrılıkçeşmesi AVM ve Çevre Bağlantıları</h3>
+                          <p>İstasyon, Tepe Nautilus AVM\'nin hemen bitişiğindedir. Alışveriş merkezi, Acıbadem ve Kadıköy Rıhtım bölgelerine yürüyüş mesafesindeki bu durak, günün her saati güvenli ve aktiftir. Ayrılıkçeşmesi güncel sefer saatlerini uygulamamızdan anlık sorgulayabilirsiniz.</p>',
             'image'   => MARMARAYAPP_DIR . 'assets/images/blog/ayrilikcesmesi.jpg',
-            'tags'    => 'ayrÄ±lÄ±kÃ§eÅŸmesi marmaray, kadÄ±kÃ¶y metro aktarma, m4 metro, sabiha gÃ¶kÃ§en havalimanÄ± ulaÅŸÄ±m',
+            'tags'    => 'ayrılıkçeşmesi marmaray, kadıköy metro aktarma, m4 metro, sabiha gökçen havalimanı ulaşım',
             'slug'    => 'ayrilikcesmesi-marmaray-kadikoy-metrosu-gecisi'
         ]
     ];
@@ -104,4 +104,4 @@ function marmaray_create_sample_blogs() {
         }
     }
 }
-?>
+
