@@ -31,6 +31,12 @@ get_header(); ?>
                       </select>
                   </div>
 
+                  <!-- Orta Kısım: Estetik Mesaj -->
+                  <div class="picker-col picker-middle" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                      <div style="font-size: 1.25rem; font-weight: 900; color: var(--primary-color); letter-spacing: 0.5px;">Yolculuk Planınızı Yapın</div>
+                      <div style="font-size: 0.95rem; opacity: 0.8; font-weight: 500; margin-top: 4px;">Binmek istediğiniz istasyonu seçerek canlı Marmaray saatlerini görüntüleyin.</div>
+                  </div>
+
                   <!-- Sağ Kısım: CANLI Badge -->
                   <div class="picker-col picker-right" style="display: flex; justify-content: flex-end;">
                       <div class="live-badge-pill" id="global-live-badge" style="transform: scale(1.8); transform-origin: right center;">
