@@ -26,6 +26,4 @@ function marmaray_blog_posts_per_page($query) {
     }
 }
 
-// Hide admin bar on frontend for app-like experience
-add_filter('show_admin_bar', '__return_false');
 

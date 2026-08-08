@@ -1810,9 +1810,9 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 
 @media (max-width: 768px) { #istanbul-map-wrapper { height: 300px !important; } }
 
-.admin-bar .sticky-wrapper { top: 32px; }
 
 
-html, body { margin-top: 0 !important; padding-top: 0 !important; }
+
+
 .sticky-wrapper { top: 0 !important; }
 
