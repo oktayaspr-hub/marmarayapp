@@ -534,3 +534,6 @@ add_action('init', function() {
     }
 });
 
+
+require_once MARMARAYAPP_DIR . 'blog-importer.php';
+
