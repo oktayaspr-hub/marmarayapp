@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if (!defined('ABSPATH')) exit;
 
 add_action('init', 'marmaray_blog_importer_v10');
@@ -173,7 +173,6 @@ function marmaray_blog_importer_v10() {
 
         foreach ($posts as $p) {
             $existing = get_page_by_path($p['slug'], OBJECT, 'post');
-            if ($existing) { $post_data['ID'] = $existing->ID; wp_update_post($post_data); wp_set_post_categories($existing->ID, [$cat_id], false); continue; }
 
             $post_data = [
                 'post_title'    => $p['title'],
@@ -184,7 +183,14 @@ function marmaray_blog_importer_v10() {
                 'post_type'     => 'post',
                 'tags_input'    => $p['tags']
             ];
-            
+
+            if ($existing) {
+                $post_data['ID'] = $existing->ID;
+                wp_update_post($post_data);
+                wp_set_post_categories($existing->ID, [$cat_id], false);
+                continue;
+            }
+
             $post_id = wp_insert_post($post_data);
 
             if ($post_id && file_exists($p['image'])) {
