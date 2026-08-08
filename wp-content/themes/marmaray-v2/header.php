@@ -43,7 +43,7 @@
             <a href="<?php echo esc_url( home_url( '/marmaray-saatleri' ) ); ?>">Marmaray Saatleri</a>
             <a href="<?php echo esc_url( home_url( '/rota-planla' ) ); ?>">Rota Planla</a>
             <a href="<?php echo esc_url( home_url( '/ucret-hesapla' ) ); ?>">Ücret Hesapla</a>
-            <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>">Blog</a>
+            <a href="<?php echo esc_url( home_url( '/category/blog' ) ); ?>">Blog</a>
             <a href="<?php echo esc_url( home_url( '/iletisim' ) ); ?>">İletişim</a>
         </nav>
 

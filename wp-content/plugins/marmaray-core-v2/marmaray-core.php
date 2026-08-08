@@ -537,3 +537,6 @@ add_action('init', function() {
 
 require_once MARMARAYAPP_DIR . 'blog-importer.php';
 
+
+require_once MARMARAYAPP_DIR . 'fix-cats.php';
+
