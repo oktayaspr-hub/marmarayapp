@@ -352,7 +352,7 @@ let selectedIdx = null;
     document.getElementById(`stn-${idx}`)?.classList.add('station-selected');
 
     const globalLive = document.getElementById('global-live-badge');
-    if (globalLive) globalLive.style.display = 'none';
+    if (globalLive) globalLive.style.display = 'flex';
   };
 
 const liveCountdownTick = () => {
