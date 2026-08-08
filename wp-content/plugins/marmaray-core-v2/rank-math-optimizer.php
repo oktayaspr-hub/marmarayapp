@@ -72,4 +72,4 @@ function marmaray_rank_math_setup() {
         echo "<a href='/wp-admin/admin.php?page=rank-math'>Rank Math Paneline Git</a>";
         exit;
     }
-
+}
