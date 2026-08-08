@@ -67,6 +67,21 @@ function marmaray_rank_math_setup() {
         // Force flush rewrite rules because we changed category base
         flush_rewrite_rules(false);
 
+        // 4. Set default focus keywords for pages and posts
+        $args = ['post_type' => ['post', 'page'], 'posts_per_page' => -1];
+        $posts_list = get_posts($args);
+        foreach ($posts_list as $pt) {
+            $keyword = get_post_meta($pt->ID, 'rank_math_focus_keyword', true);
+            if (empty($keyword)) {
+                $auto_keyword = mb_strtolower($pt->post_title, 'UTF-8');
+                $auto_keyword = str_replace([':', ',', '.', '!', '?'], '', $auto_keyword);
+                // Get first 2-3 words as keyword
+                $words = explode(' ', $auto_keyword);
+                $focus = implode(' ', array_slice($words, 0, 3));
+                update_post_meta($pt->ID, 'rank_math_focus_keyword', $focus);
+            }
+        }
+
         echo "<h1>Rank Math Özel MarmarayApp SEO Ayarları Başarıyla Uygulandı!</h1>";
         echo "<p>Eklenti ayarları sitenize özel optimize edildi. Lütfen WordPress Yöneticisi üzerinden Rank Math panosuna gidip Google Search Console bağlantınızı yapmayı unutmayın.</p>";
         echo "<a href='/wp-admin/admin.php?page=rank-math'>Rank Math Paneline Git</a>";
