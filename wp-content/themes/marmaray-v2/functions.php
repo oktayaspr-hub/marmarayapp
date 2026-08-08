@@ -28,8 +28,7 @@ function marmaray_blog_posts_per_page($query) {
 
 
 
-// Remove the 32px html margin bump injected by WP admin bar
-add_action('get_header', function() {
-    remove_action('wp_head', '_admin_bar_bump_cb');
-});
+// Remove the 32px html margin bump injected by WP admin bar properly
+add_theme_support('admin-bar', array('callback' => '__return_false'));
+
 
