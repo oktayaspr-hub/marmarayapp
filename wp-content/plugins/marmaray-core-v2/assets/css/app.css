@@ -1796,7 +1796,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 .station-node.station-selected::after {
     content: '';
     position: absolute;
-    inset: 4px;
+    inset: 2px;
     background: white;
     border-radius: 50%;
 }
@@ -1807,3 +1807,5 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
     .station-picker-header-grid { margin-bottom: 10px !important; }
 }
 
+
+@media (max-width: 768px) { #istanbul-map-wrapper { height: 300px !important; } }
