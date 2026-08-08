@@ -18,5 +18,10 @@ function marmaray_theme_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'marmaray_theme_enqueue_assets');
 
-$code
-
+// Enforce 12 posts per page for blog category
+add_action('pre_get_posts', 'marmaray_blog_posts_per_page');
+function marmaray_blog_posts_per_page($query) {
+    if (!is_admin() && $query->is_main_query() && ($query->is_category('blog') || $query->is_home())) {
+        $query->set('posts_per_page', 12);
+    }
+}
