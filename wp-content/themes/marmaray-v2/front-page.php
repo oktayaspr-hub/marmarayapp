@@ -31,15 +31,9 @@ get_header(); ?>
                       </select>
                   </div>
 
-                  <!-- Orta Kısım: Estetik Mesaj -->
-                  <div class="picker-col picker-middle" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                      <div style="font-size: 1.2rem; font-weight: 800; color: var(--primary-color); letter-spacing: 0.5px;">Seyahat Planınızı Yapın</div>
-                      <div style="font-size: 0.95rem; opacity: 0.7; font-weight: 500;">İstasyon seçerek tren saatlerini ve aktarmaları görüntüleyin</div>
-                  </div>
-
                   <!-- Sağ Kısım: CANLI Badge -->
                   <div class="picker-col picker-right" style="display: flex; justify-content: flex-end;">
-                      <div class="live-badge-pill" id="global-live-badge" style="transform: scale(1.1);">
+                      <div class="live-badge-pill" id="global-live-badge" style="transform: scale(1.8); transform-origin: right center;">
                           <span class="live-dot-anim"></span>
                           <span class="live-badge-label" style="font-weight: 800; letter-spacing: 1px;">CANLI</span>
                       </div>

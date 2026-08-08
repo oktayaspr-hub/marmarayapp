@@ -325,10 +325,7 @@ let selectedIdx = null;
                             <svg class="marmarayapp__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                             <div class="marmarayapp__dirname">Halkalı Yönü</div>
                         </div>
-                        <div class="live-badge-pill" style="transform: scale(0.9); margin: 0; padding: 4px 12px; height: 28px; background: white; border-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                            <span class="live-dot-anim"></span>
-                            <span class="live-badge-label" style="font-weight: 800; letter-spacing: 1px;">CANLI</span>
-                        </div>
+                        
                     </div>
                     <div class="marmarayapp__list" id="halkali-trains">
                         ${buildTrainsHtml(g2h)}
@@ -336,10 +333,7 @@ let selectedIdx = null;
                 </div>
                 <div class="marmarayapp__dir marmarayapp__dir--g">
                     <div class="marmarayapp__dirhead" style="display: flex; justify-content: space-between; align-items: center;">
-                        <div class="live-badge-pill" style="transform: scale(0.9); margin: 0; padding: 4px 12px; height: 28px; background: white; border-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                            <span class="live-dot-anim"></span>
-                            <span class="live-badge-label" style="font-weight: 800; letter-spacing: 1px;">CANLI</span>
-                        </div>
+                        
                         <div style="display: flex; align-items: center;">
                             <div class="marmarayapp__dirname">Gebze Yönü</div>
                             <svg class="marmarayapp__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: 8px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -597,6 +591,15 @@ const initDropdown = () => {
 document.addEventListener('DOMContentLoaded', ()=>{
   initMap();
   initDropdown();
+  const dropdown = document.getElementById('station-dropdown');
+  if(dropdown) {
+      // Find Yenikapı index (usually 21 in STATIONS array)
+      const yenikapiIdx = STATIONS.findIndex(s => s === "Yenikapı");
+      if(yenikapiIdx !== -1) {
+          dropdown.value = yenikapiIdx;
+          setTimeout(() => { dropdown.dispatchEvent(new Event('change')); }, 100);
+      }
+  }
   setupZoom();
   setupTheme();
   setupMenu();
