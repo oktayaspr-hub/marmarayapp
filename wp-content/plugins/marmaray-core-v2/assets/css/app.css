@@ -1816,3 +1816,8 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 
 .sticky-wrapper { top: 0 !important; }
 
+
+/* Force absolute top alignment as requested */
+html { margin-top: 0 !important; }
+body { margin-top: 0 !important; }
+
