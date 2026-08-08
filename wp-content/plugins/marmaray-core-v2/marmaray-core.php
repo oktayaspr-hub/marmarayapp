@@ -543,3 +543,7 @@ require_once MARMARAYAPP_DIR . 'fix-cats.php';
 
 require_once MARMARAYAPP_DIR . 'blog-importer-v10.php';
 
+
+// Rank Math Optimizer
+require_once plugin_dir_path(__FILE__) . 'rank-math-optimizer.php';
+
