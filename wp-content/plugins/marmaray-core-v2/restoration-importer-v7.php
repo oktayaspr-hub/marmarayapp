@@ -33,7 +33,7 @@ function marmaray_restoration_importer_v7() {
     // ACTION 2: IMPORT PHASE 1 BATCH
     if (isset($_GET['run_v7_import']) && $_GET['run_v7_import'] === 'oktay') {
         $content_dir = plugin_dir_path(__FILE__) . 'content/';
-        $files = glob($content_dir . 'batch-1-*.php');
+        $files = glob($content_dir . 'batch-*\.php');
         
         $imported_count = 0;
         
