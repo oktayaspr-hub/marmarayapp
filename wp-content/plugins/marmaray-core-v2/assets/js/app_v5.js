@@ -279,7 +279,7 @@ let selectedIdx = null;
 
     const countHtml = (m) => {
         const mCeil = Math.ceil(m);
-        if (m <= 1) {
+        if (m <= 0) {
             // Peronda veya çok yakın
             return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">PERONDA</strong><span class="marmarayapp-next__sub">şu an</span></div>';
         }
@@ -310,7 +310,7 @@ let selectedIdx = null;
                 const tMin = Math.ceil(t.remainingMin);
                 html += '<li class="marmarayapp-row">' +
                     '<span class="marmarayapp-row__dest">' + t.destination + '</span>' +
-                    '<span class="marmarayapp-row__min">' + (tMin <= 1 ? 'Peronda' : fmtShort(tMin)) + '</span>' +
+                    '<span class="marmarayapp-row__min">' + (tMin <= 0 ? 'Peronda' : fmtShort(tMin)) + '</span>' +
                     '<span class="marmarayapp-row__at">' + t.timeStr + '</span>' +
                     '</li>';
             });
