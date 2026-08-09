@@ -451,7 +451,7 @@ function marmarayapp_script_yukle() {
     ] );
 
     wp_enqueue_style('marmaray-app-css', plugins_url('assets/css/app.css', __FILE__), array(), time());
-    wp_enqueue_script('marmarayapp-app', plugins_url('assets/js/app.js', __FILE__), array(), time(), true);
+    wp_enqueue_script('marmarayapp-app', plugins_url('assets/js/app_v5.js', __FILE__), array(), time(), true);
 }
 
 // ============================================================

@@ -11,7 +11,7 @@ import {
   STATIONS, CUM_G2H, CUM_H2G, TOTAL_G2H, TOTAL_H2G,
   getNextTrains, getTrainPosition, minsToHHMM,
   G2H_WEEKDAY, H2G_WEEKDAY, G2H_WEEKEND, H2G_WEEKEND
-} from './data.js?v=2';
+} from './data_v5.js';
 
 // ============================================================
 // MAP LAYOUT (S-şekli, 1200x440)
@@ -617,6 +617,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if (!e.target.closest('.station-tooltip')&&!e.target.classList.contains('station-node')&&!e.target.classList.contains('train-node')) hideStationTooltip();
   });
 
-  // Her saniye
-  setInterval(()=>{ updateClock(); renderLiveTrains(); liveCountdownTick(); }, 1000);
+  // Her saniye - renderStationCards'ı da çağırarak listeyi canlı tut
+  setInterval(()=>{ 
+      updateClock(); 
+      renderLiveTrains(); 
+      liveCountdownTick(); 
+      if (selectedIdx !== null) renderStationCards(selectedIdx);
+  }, 1000);
 });
