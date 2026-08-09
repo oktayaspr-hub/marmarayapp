@@ -545,5 +545,5 @@ add_action('init', function() {
 require_once plugin_dir_path(__FILE__) . 'rank-math-optimizer.php';
 
 
-require_once MARMARAYAPP_DIR . 'blog-importer-v20.php';
+require_once MARMARAYAPP_DIR . 'blog-importer-v30.php';
 
