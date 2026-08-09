@@ -261,6 +261,53 @@ const renderLiveTrains = () => {
 // ============================================================
 // İSTASYON KARTI (seçili durak)
 // ============================================================
+const fmtShort = (m) => {
+  m = parseInt(m, 10) || 0;
+  if (m < 60) return m + ' dk';
+  const h = Math.floor(m / 60), r = m % 60;
+  return r ? (h + ' sa ' + r + ' dk') : (h + ' sa');
+};
+
+const countHtml = (m) => {
+  m = parseInt(m, 10) || 0;
+  if (m <= 0) {
+      return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">Şimdi</strong><span class="marmarayapp-next__sub">peronda</span></div>';
+  }
+  if (m < 60) {
+      return '<div class="marmarayapp-next__count"><strong>' + m + '<span class="marmarayapp-next__unit">dk</span></strong><span class="marmarayapp-next__sub">' + (m <= 2 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
+  }
+  return '<div class="marmarayapp-next__count marmarayapp-next__count--long"><strong>' + fmtShort(m) + '</strong><span class="marmarayapp-next__sub">sonra kalkıyor</span></div>';
+};
+
+const buildTrainsHtml = (trains) => {
+  if (!trains || !trains.length) {
+      return '<div class="marmarayapp-empty marmarayapp-empty--error"><p class="marmarayapp-empty__txt">Şu anda yaklaşan sefer görünmüyor.</p></div>';
+  }
+  const first = trains[0];
+  const rest = trains.slice(1, 5);
+  const soon = (parseInt(first.remainingMin, 10) || 0) <= 2;
+  let html = '<div class="marmarayapp-next' + (soon ? ' is-soon' : '') + '">' +
+      '<span class="marmarayapp-next__tag">Sıradaki tren</span>' +
+      '<div class="marmarayapp-next__body">' +
+      countHtml(first.remainingMin) +
+      '<div class="marmarayapp-next__clock"><strong>' + first.timeStr + '</strong></div>' +
+      '</div>' +
+      '<div class="marmarayapp-next__dest">Son durak <b>' + first.destination + '</b></div>' +
+      '</div>';
+  if (rest.length) {
+      html += '<div class="marmarayapp-rows__head">Sonraki seferler</div><ul class="marmarayapp-rows">';
+      rest.forEach(t => {
+          html += '<li class="marmarayapp-row">' +
+              '<span class="marmarayapp-row__dest">' + t.destination + '</span>' +
+              '<span class="marmarayapp-row__min">' + fmtShort(t.remainingMin) + '</span>' +
+              '<span class="marmarayapp-row__at">' + t.timeStr + '</span>' +
+              '</li>';
+      });
+      html += '</ul>';
+  }
+  return html;
+};
+
 let selectedIdx = null;
 
   const renderStationCards = (idx) => {
@@ -269,53 +316,6 @@ let selectedIdx = null;
     const name = STATIONS[idx];
     const g2h = getNextTrains(idx, 'G2H');
     const h2g = getNextTrains(idx, 'H2G');
-
-    const fmtShort = (m) => {
-        m = parseInt(m, 10) || 0;
-        if (m < 60) return m + ' dk';
-        const h = Math.floor(m / 60), r = m % 60;
-        return r ? (h + ' sa ' + r + ' dk') : (h + ' sa');
-    };
-
-    const countHtml = (m) => {
-        m = parseInt(m, 10) || 0;
-        if (m <= 0) {
-            return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">Şimdi</strong><span class="marmarayapp-next__sub">peronda</span></div>';
-        }
-        if (m < 60) {
-            return '<div class="marmarayapp-next__count"><strong>' + m + '<span class="marmarayapp-next__unit">dk</span></strong><span class="marmarayapp-next__sub">' + (m <= 2 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
-        }
-        return '<div class="marmarayapp-next__count marmarayapp-next__count--long"><strong>' + fmtShort(m) + '</strong><span class="marmarayapp-next__sub">sonra kalkıyor</span></div>';
-    };
-
-    const buildTrainsHtml = (trains) => {
-        if (!trains || !trains.length) {
-            return '<div class="marmarayapp-empty marmarayapp-empty--error"><p class="marmarayapp-empty__txt">Şu anda yaklaşan sefer görünmüyor.</p></div>';
-        }
-        const first = trains[0];
-        const rest = trains.slice(1, 5);
-        const soon = (parseInt(first.remainingMin, 10) || 0) <= 2;
-        let html = '<div class="marmarayapp-next' + (soon ? ' is-soon' : '') + '">' +
-            '<span class="marmarayapp-next__tag">Sıradaki tren</span>' +
-            '<div class="marmarayapp-next__body">' +
-            countHtml(first.remainingMin) +
-            '<div class="marmarayapp-next__clock"><strong>' + first.timeStr + '</strong></div>' +
-            '</div>' +
-            '<div class="marmarayapp-next__dest">Son durak <b>' + first.destination + '</b></div>' +
-            '</div>';
-        if (rest.length) {
-            html += '<div class="marmarayapp-rows__head">Sonraki seferler</div><ul class="marmarayapp-rows">';
-            rest.forEach(t => {
-                html += '<li class="marmarayapp-row">' +
-                    '<span class="marmarayapp-row__dest">' + t.destination + '</span>' +
-                    '<span class="marmarayapp-row__min">' + fmtShort(t.remainingMin) + '</span>' +
-                    '<span class="marmarayapp-row__at">' + t.timeStr + '</span>' +
-                    '</li>';
-            });
-            html += '</ul>';
-        }
-        return html;
-    };
 
     el.innerHTML = `<div class="marmarayapp" style="margin-top: 20px;">
         <div class="marmarayapp__panel">
@@ -358,7 +358,14 @@ let selectedIdx = null;
 
 const liveCountdownTick = () => {
   if (selectedIdx === null) return;
-  renderStationCards(selectedIdx);
+  const g2h = getNextTrains(selectedIdx, 'G2H');
+  const h2g = getNextTrains(selectedIdx, 'H2G');
+  
+  const hList = document.getElementById('halkali-trains');
+  const gList = document.getElementById('gebze-trains');
+  
+  if (hList) hList.innerHTML = buildTrainsHtml(g2h);
+  if (gList) gList.innerHTML = buildTrainsHtml(h2g);
 };
 
 // ============================================================
@@ -613,3 +620,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // Her saniye
   setInterval(()=>{ updateClock(); renderLiveTrains(); liveCountdownTick(); }, 1000);
 });
+
+
