@@ -451,7 +451,13 @@ function marmarayapp_script_yukle() {
     ] );
 
     wp_enqueue_style('marmaray-app-css', plugins_url('assets/css/app.css', __FILE__), array(), time());
-    wp_enqueue_script('marmarayapp-app', plugins_url('assets/js/app_v5.js', __FILE__), array(), time(), true);
+    wp_enqueue_script('marmarayapp-app', plugins_url('assets/js/app_v5.js', __FILE__), array(), '5.3', true);
+}
+
+function marmaray_core_enqueue_assets() {
+    wp_enqueue_style('marmaray-style', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), '1.1');
+    wp_enqueue_script('marmaray-data', plugin_dir_url(__FILE__) . 'assets/js/data_v5.js', array(), '5.3', true);
+    wp_enqueue_script('marmaray-app', plugin_dir_url(__FILE__) . 'assets/js/app_v5.js', array(), '5.3', true);
 }
 
 // ============================================================
