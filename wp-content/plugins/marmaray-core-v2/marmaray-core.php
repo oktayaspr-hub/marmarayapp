@@ -547,4 +547,4 @@ require_once plugin_dir_path(__FILE__) . 'rank-math-optimizer.php';
 
 require_once MARMARAYAPP_DIR . 'blog-importer-v31.php';
 
-require_once MARMARAYAPP_DIR . 'rank-math-content-optimizer.php';
+require_once MARMARAYAPP_DIR . 'clean-faq-blocks.php';
