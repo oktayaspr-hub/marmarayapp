@@ -103,9 +103,9 @@ const showStationTooltip = (idx, el) => {
   const isSelected = el && el.classList.contains('station-selected');
   document.getElementById('tooltip-name').textContent = isSelected ? `Başlangıç Noktanız: ${name}` : name;
   document.getElementById('tooltip-halkali').textContent =
-    g2h.length ? `← Halkalı  •  ${g2h[0].remainingMin} dk  •  Sonraki: ${halNextStation}` : '← Halkalı: sefer yok';
+    g2h.length ? `← Halkalı  •  ${Math.ceil(g2h[0].remainingMin)} dk  •  Sonraki: ${halNextStation}` : '← Halkalı: sefer yok';
   document.getElementById('tooltip-gebze').textContent =
-    h2g.length ? `Gebze →  •  ${h2g[0].remainingMin} dk  •  Sonraki: ${gebNextStation}` : 'Gebze →: sefer yok';
+    h2g.length ? `Gebze →  •  ${Math.ceil(h2g[0].remainingMin)} dk  •  Sonraki: ${gebNextStation}` : 'Gebze →: sefer yok';
 
   const wr = document.getElementById('map-wrapper').getBoundingClientRect();
   const er = el.getBoundingClientRect();
@@ -363,9 +363,9 @@ const liveCountdownTick = () => {
   const g2h = getNextTrains(selectedIdx,'G2H');
   const h2g = getNextTrains(selectedIdx,'H2G');
   document.getElementById('card-blue-mins')?.textContent != null &&
-    (document.getElementById('card-blue-mins').textContent = g2h.length ? g2h[0].remainingMin : '-');
+    (document.getElementById('card-blue-mins').textContent = g2h.length ? Math.ceil(g2h[0].remainingMin) : '-');
   document.getElementById('card-red-mins')?.textContent != null &&
-    (document.getElementById('card-red-mins').textContent = h2g.length ? h2g[0].remainingMin : '-');
+    (document.getElementById('card-red-mins').textContent = h2g.length ? Math.ceil(h2g[0].remainingMin) : '-');
 };
 
 // ============================================================
