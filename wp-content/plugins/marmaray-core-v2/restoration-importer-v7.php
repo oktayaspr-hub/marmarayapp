@@ -58,7 +58,18 @@ function marmaray_restoration_importer_v7() {
             'Ataköy' => 'atakoy_marmaray_1786294255776.jpg',
             'Bakırköy' => 'bakirkoy_marmaray_1786294267903.jpg',
             'Florya Akvaryum' => 'florya_akvaryum_marmaray_1786294277921.jpg',
-            'Halkalı' => 'halkali_marmaray_1786294290840.jpg'
+            'Halkalı' => 'halkali_marmaray_1786294290840.jpg',
+            'Ayrılık Çeşmesi' => 'ayrilikcesmesi_marmaray_1786294867794.jpg',
+            'Erenköy' => 'erenkoy_marmaray_1786294888376.jpg',
+            'Göztepe' => 'goztepe_marmaray_1786294900435.jpg',
+            'Kazlıçeşme' => 'kazlicesme_marmaray_1786294914199.jpg',
+            'Söğütlüçeşme' => 'sogutlucesme_marmaray_1786294933785.jpg',
+            'Yenikapı' => 'yenikapi_marmaray_1786294944459.jpg',
+            'Zeytinburnu' => 'zeytinburnu_marmaray_1786294956250.jpg',
+            'Kartal' => 'kartal_marmaray_1786294974210.jpg',
+            'Maltepe' => 'maltepe_marmaray_1786294984968.jpg',
+            'Suadiye' => 'suadiye_marmaray_1786294994724.jpg',
+            'Gebze' => 'gebze_marmaray_1786295013544.jpg'
         ];
 
         foreach ($station_data as $data) {
