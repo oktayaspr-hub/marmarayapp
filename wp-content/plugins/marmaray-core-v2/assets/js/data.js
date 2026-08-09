@@ -136,12 +136,11 @@ const getCalendarDayTrainRuns = (day, direction) => {
       }
     }
 
-    if (day !== 0) {
-      const startShort = 6 * 60 + 9;
-      const endShort = 21 * 60 + 54;
-      for (let m = startShort; m <= endShort; m += 15) {
-        runs.push({ depMinutes: m, destination: "Pendik", originId: 8, isIntermediate: true }); 
-      }
+    // Pendik ara treni: Pazartesi-Pazar her gün çalışır (hafta içi tarifesi)
+    const startShort_G = 6 * 60 + 9;
+    const endShort_G = 21 * 60 + 54;
+    for (let m = startShort_G; m <= endShort_G; m += 15) {
+      runs.push({ depMinutes: m, destination: "Pendik", originId: 8, isIntermediate: true }); 
     }
 
   } else {
@@ -165,13 +164,12 @@ const getCalendarDayTrainRuns = (day, direction) => {
       }
     }
 
-    if (day !== 0) {
-      const startShort = 6 * 60 + 9;
-      const endShort = 22 * 60 + 39;
-      for (let m = startShort; m <= endShort; m += 15) {
-        const destination = (m > 20 * 60 + 50) ? "Zeytinburnu" : "Ataköy";
-        runs.push({ depMinutes: m, destination: destination, originId: 32, isIntermediate: true }); 
-      }
+    // Ataköy/Zeytinburnu ara treni: Pazartesi-Pazar her gün çalışır (hafta içi tarifesi)
+    const startShort_H = 6 * 60 + 9;
+    const endShort_H = 22 * 60 + 39;
+    for (let m = startShort_H; m <= endShort_H; m += 15) {
+      const destination = (m > 20 * 60 + 50) ? "Zeytinburnu" : "Ataköy";
+      runs.push({ depMinutes: m, destination: destination, originId: 32, isIntermediate: true }); 
     }
   }
 
