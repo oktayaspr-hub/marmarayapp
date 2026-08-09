@@ -2,9 +2,9 @@
 get_header();
 
 // Ayarları Çek
-$show_comments = get_option( 'marmarayapp_blog_comments', 1 );
-$show_author   = get_option( 'marmarayapp_blog_author', 1 );
-$show_date     = get_option( 'marmarayapp_blog_date', 1 );
+$show_comments = (int) get_option( 'marmarayapp_blog_comments', 1 );
+$show_author   = (int) get_option( 'marmarayapp_blog_author', 1 );
+$show_date     = (int) get_option( 'marmarayapp_blog_date', 1 );
 ?>
 
 <main id="primary" class="site-main app-main page-wrapper-center">

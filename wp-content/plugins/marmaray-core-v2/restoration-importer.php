@@ -52,7 +52,7 @@ function marmaray_restoration_importer_v5() {
             // Görsel Yoksa Ekle
             if (!has_post_thumbnail($post_id)) {
                 $upload_dir = wp_upload_dir();
-                $artifact_path = 'C:\Users\mydev\.gemini\antigravity\brain\3aa74afa-9e57-4061-9ed4-b91269104c2b\\' . $st['image'];
+                $artifact_path = plugin_dir_path(__FILE__) . 'assets/images/' . $st['image'];
                 if (file_exists($artifact_path)) {
                     $filename = basename($artifact_path);
                     $dest_path = $upload_dir['path'] . '/' . $filename;
