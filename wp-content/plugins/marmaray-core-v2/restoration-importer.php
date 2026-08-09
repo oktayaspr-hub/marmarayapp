@@ -1,10 +1,10 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-add_action('init', 'marmaray_master_content_importer_v4');
+add_action('init', 'marmaray_restoration_importer_v5');
 
-function marmaray_master_content_importer_v4() {
-    if (isset($_GET['run_master_importer_v4']) && $_GET['run_master_importer_v4'] === 'oktay') {
+function marmaray_restoration_importer_v5() {
+    if (isset($_GET['run_restoration_v5']) && $_GET['run_restoration_v5'] === 'oktay') {
         
         $new_stations = [
             ['name' => 'Mustafa Kemal', 'slug' => 'mustafa-kemal-marmaray-istasyonu', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
@@ -12,25 +12,26 @@ function marmaray_master_content_importer_v4() {
             ['name' => 'Florya', 'slug' => 'florya-marmaray-istasyonu-sahil-keyfi', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
             ['name' => 'Yeşilköy', 'slug' => 'yesilkoy-marmaray-istasyonu-tarihi-doku', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
             ['name' => 'Yeşilyurt', 'slug' => 'yesilyurt-marmaray-istasyonu', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
-            ['name' => 'Yenimahalle', 'slug' => 'yenimahalle-marmaray-istasyonu-ulasim', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
-            ['name' => 'Küçükyalı', 'slug' => 'kucukyali-marmaray-istasyonu-tepe-nautilus', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
+            ['name' => 'Yenimahalle', 'slug' => 'yenimahalle-marmaray-istasyonu-ulasim', 'image' => 'marmaray_yenimahalle_1786282797620.jpg'],
+            ['name' => 'Küçükyalı', 'slug' => 'kucukyali-marmaray-istasyonu-tepe-nautilus', 'image' => 'marmaray_kucukyali_1786282806974.jpg'],
             ['name' => 'Güzelyalı', 'slug' => 'guzelyali-marmaray-istasyonu', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
-            ['name' => 'Aydıntepe', 'slug' => 'aydintepe-marmaray-istasyonu-tuzla-siniri', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
+            ['name' => 'Aydıntepe', 'slug' => 'aydintepe-marmaray-istasyonu-tuzla-siniri', 'image' => 'marmaray_aydintepe_1786282819136.jpg'],
             ['name' => 'İçmeler', 'slug' => 'icmeler-marmaray-istasyonu-kaplicalari', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
             ['name' => 'Tuzla', 'slug' => 'tuzla-marmaray-istasyonu-marina-ve-sahil', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
             ['name' => 'Çayırova', 'slug' => 'cayirova-marmaray-istasyonu', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
-            ['name' => 'Fatih', 'slug' => 'fatih-marmaray-istasyonu-gebze', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
+            ['name' => 'Fatih', 'slug' => 'fatih-marmaray-istasyonu-gebze', 'image' => 'marmaray_fatih_1786282832339.jpg'],
             ['name' => 'Osmangazi', 'slug' => 'osmangazi-marmaray-istasyonu', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
-            ['name' => 'Darıca', 'slug' => 'darica-marmaray-istasyonu-hayvanat-bahcesi', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
+            ['name' => 'Darıca', 'slug' => 'darica-marmaray-istasyonu-hayvanat-bahcesi', 'image' => 'marmaray_darica_1786282849741.jpg'],
             ['name' => 'Üsküdar İskelesi', 'slug' => 'uskudar-iskelesi-marmaray-aktarma', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
-            ['name' => 'Sirkeci Garı', 'slug' => 'sirkeci-gari-marmaray-tarihi', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
+            ['name' => 'Sirkeci Garı', 'slug' => 'sirkeci-gari-marmaray-tarihi', 'image' => 'marmaray_sirkeci_gari_1786282862130.jpg'],
             ['name' => 'Halkalı YHT', 'slug' => 'halkali-yht-marmaray-aktarma', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
-            ['name' => 'Bostancı İDO', 'slug' => 'bostanci-ido-marmaray-aktarma', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
+            ['name' => 'Bostancı İDO', 'slug' => 'bostanci-ido-marmaray-aktarma', 'image' => 'marmaray_bostanci_ido_1786282874601.jpg'],
             ['name' => 'Pendik Marina', 'slug' => 'pendik-marina-marmaray-istasyonu', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
         ];
 
-        // 1. Yeni 20 Makaleyi Veritabanına Ekle
+        // 1. Yeni Makaleleri Ekle (Zaten Varsa Görsel Ekle)
         foreach ($new_stations as $st) {
+            $post_id = 0;
             $existing = get_page_by_path($st['slug'], OBJECT, 'post');
             if (!$existing) {
                 $post_id = wp_insert_post([
@@ -44,8 +45,12 @@ function marmaray_master_content_importer_v4() {
                 
                 $keyword = mb_strtolower(str_replace([' İDO', ' YHT', ' Garı', ' İskelesi', ' Marina'], '', $st['name']), 'UTF-8') . ' marmaray';
                 update_post_meta($post_id, 'rank_math_focus_keyword', $keyword);
-                
-                // Görsel İşlemleri
+            } else {
+                $post_id = $existing->ID;
+            }
+            
+            // Görsel Yoksa Ekle
+            if (!has_post_thumbnail($post_id)) {
                 $upload_dir = wp_upload_dir();
                 $artifact_path = 'C:\Users\mydev\.gemini\antigravity\brain\3aa74afa-9e57-4061-9ed4-b91269104c2b\\' . $st['image'];
                 if (file_exists($artifact_path)) {
@@ -55,7 +60,7 @@ function marmaray_master_content_importer_v4() {
                         $attachment = [
                             'guid'           => $upload_dir['url'] . '/' . $filename,
                             'post_mime_type' => 'image/jpeg',
-                            'post_title'     => $st['name'] . ' Marmaray Görseli',
+                            'post_title'     => $st['name'] . ' Marmaray İstasyonu Görseli',
                             'post_content'   => '',
                             'post_status'    => 'inherit'
                         ];
@@ -69,22 +74,26 @@ function marmaray_master_content_importer_v4() {
             }
         }
 
-        // 2. Tüm 50 Makaleyi Editöryal İçerik ile Güncelle
+        // 2. Tüm 50 Makaleyi SEO ve Türkçe Kuralları İle Güncelle
         $all_posts = get_posts(['post_type' => 'post', 'posts_per_page' => -1, 'category_name' => 'blog']);
         $total_updated = 0;
         
         $links = [];
         foreach($all_posts as $p) {
-            $links[] = "<a href='" . get_permalink($p->ID) . "'>" . mb_convert_case(str_replace('-', ' ', $p->post_name), MB_CASE_TITLE, "UTF-8") . "</a>";
+            // ÖNEMLİ: Sadece post_title alarak MÜKEMMEL TÜRKÇE ile iç linkleme!
+            $links[] = "<a href='" . get_permalink($p->ID) . "'>" . $p->post_title . "</a>";
         }
         
         foreach ($all_posts as $pt) {
-            $keyword = get_post_meta($pt->ID, 'rank_math_focus_keyword', true);
-            if(empty($keyword)) {
-                $keyword = mb_strtolower(str_replace(' İstasyonu', '', $pt->post_title), 'UTF-8');
-            }
-            $title_case_keyword = mb_convert_case($keyword, MB_CASE_TITLE, "UTF-8");
             $station_name = str_replace([' İstasyonu', ' Marmaray'], '', $pt->post_title);
+            $station_name = trim($station_name);
+            
+            // Rank Math Keyword - Harfiyen küçük harf ama Türkçe destekli.
+            $keyword = mb_strtolower($station_name, 'UTF-8') . ' marmaray';
+            update_post_meta($pt->ID, 'rank_math_focus_keyword', $keyword);
+            
+            // Baş harfleri büyük format (Örn: Güzelyalı Marmaray) -> Rank Math bunu H2'lerde ve ilk paragrafta exact match sayar.
+            $title_case_keyword = mb_convert_case($keyword, MB_CASE_TITLE, "UTF-8");
             
             $random_link_1 = $links[array_rand($links)];
             $random_link_2 = $links[array_rand($links)];
@@ -94,16 +103,16 @@ function marmaray_master_content_importer_v4() {
             $content .= "<p>Günlük yaşantımızın vazgeçilmez bir parçası haline gelen raylı sistemler, mega kent İstanbul'un trafik yoğunluğuna en kalıcı çözümü sunmaktadır. Bu bağlamda, " . $title_case_keyword . " istasyonu da yolcularımıza güvenli, hızlı ve son derece konforlu bir seyahat deneyimi vadetmektedir. <strong>" . $title_case_keyword . "</strong> araması yaparak sayfamıza ulaşan siz değerli yolcularımız için, istasyonun güncel sefer saatlerinden çevre detaylarına, ulaşım kolaylığından otopark bilgilerine kadar her detayı MarmarayApp editörleri olarak özenle derledik. Yolculuğunuzu planlarken, doğru bilgilere en hızlı şekilde ulaşmanız bizim en büyük önceliğimizdir.</p>\n";
             
             $content .= "<h3>İstasyonun Bölgedeki Önemi ve Çevresi</h3>\n";
-            $content .= "<p>" . $station_name . " bölgesi, tarihi dokusu ve gün geçtikçe artan modern yapılaşmasıyla dikkat çekmektedir. İstasyondan adımınızı attığınız anda bölgenin dinamik yapısını hissedebilirsiniz. Çevrede bulunan büyük alışveriş merkezleri, sahil parkları, yürüyüş yolları ve kaliteli restoranlar, bu istasyonu sadece bir geçiş noktası olmaktan çıkarıp başlı başına bir yaşam merkezi haline getirmektedir. İşe, okula veya gezmeye giderken bu durağı tercih eden yolcularımız, zamanı en verimli şekilde kullanmanın ayrıcalığını yaşarlar. Ayrıca, seyahat planlamanızı yaparken " . $random_link_1 . " gibi diğer önemli merkezlere olan yakınlığını da göz önünde bulundurabilirsiniz. Bu sayede gününüzü çok daha efektif planlama şansına sahip olursunuz.</p>\n";
+            $content .= "<p>" . $station_name . " bölgesi, tarihi dokusu ve gün geçtikçe artan modern yapılaşmasıyla dikkat çekmektedir. İstasyondan adımınızı attığınız anda bölgenin dinamik yapısını hissedebilirsiniz. Çevrede bulunan büyük alışveriş merkezleri, sahil parkları, yürüyüş yolları ve kaliteli restoranlar, bu istasyonu sadece bir geçiş noktası olmaktan çıkarıp başlı başına bir yaşam merkezi haline getirmektedir. İşe, okula veya gezmeye giderken bu durağı tercih eden yolcularımız, zamanı en verimli şekilde kullanmanın ayrıcalığını yaşarlar. Ayrıca, seyahat planlamanızı yaparken " . $random_link_1 . " yönüne olan yakınlığını da göz önünde bulundurabilirsiniz. Bu sayede gününüzü çok daha efektif planlama şansına sahip olursunuz.</p>\n";
 
             $content .= "<h3>MarmarayApp Mobil Uygulamamız ve Dijital Asistanımız</h3>\n";
-            $content .= "<p>Ulaşım planlamanın ne kadar stresli olabileceğini biliyoruz. Tam da bu yüzden, istasyonda ne kadar bekleyeceğinizi veya bir sonraki trenin kaçta geleceğini anlık olarak görebilmeniz için büyük bir teknolojik adım attık. Seyahatinizi saniye saniye planlamak, gecikmelerden anında haberdar olmak ve dijital asistanımızdan faydalanmak için yakında yayınlanacak olan MarmarayApp mobil uygulamamız üzerinden tüm " . $title_case_keyword . " saatlerini takip edebileceksiniz. Şimdilik güncel duyurular ve yenilikler için MarmarayApp web sitemiz üzerinden bizi düzenli olarak ziyaret etmeyi unutmayın! Uzman editörlerimiz içerikleri her gün güncelleyerek sizlere en doğru bilgiyi ulaştırmaktadır.</p>\n";
+            $content .= "<p>Ulaşım planlamanın ne kadar stresli olabileceğini biliyoruz. Tam da bu yüzden, istasyonda ne kadar bekleyeceğinizi veya bir sonraki trenin kaçta geleceğini anlık olarak görebilmeniz için büyük bir teknolojik adım attık. Seyahatinizi saniye saniye planlamak, gecikmelerden anında haberdar olmak ve dijital asistanımızdan faydalanmak için yakında yayınlanacak olan <strong>MarmarayApp mobil uygulamamız</strong> üzerinden tüm " . $title_case_keyword . " seferlerini takip edebileceksiniz. Şimdilik güncel duyurular ve yenilikler için <strong>MarmarayApp web sitemiz</strong> üzerinden bizi düzenli olarak ziyaret etmeyi unutmayın! Uzman editörlerimiz içerikleri her gün güncelleyerek sizlere en doğru bilgiyi ulaştırmaktadır.</p>\n";
 
             $content .= "<h3>Sosyo-Kültürel Etki ve Gelecek Vizyonu</h3>\n";
-            $content .= "<p>Marmaray'ın hizmete girmesiyle birlikte " . $station_name . " bölgesi sadece bir ulaşım aksı olmaktan çıkmış, adeta sosyo-kültürel bir buluşma noktasına dönüşmüştür. Bölgedeki emlak değerlerindeki artış, yeni açılan ticari işletmeler ve artan yaya trafiği, istasyonun ne kadar stratejik bir konumda olduğunu kanıtlamaktadır. Hafta sonlarında ailelerin, öğrencilerin ve turistlerin bu istasyonu kullanarak İstanbul'un dört bir yanına, örneğin " . $random_link_3 . " yönüne kolayca dağılması, şehir içi mobilitenin ulaştığı son noktayı göstermektedir. Ayrıca, gelecekte planlanan yeni metro entegrasyon projeleri ile bu durağın değerinin ve kullanım kapasitesinin daha da artması beklenmektedir.</p>\n";
+            $content .= "<p>Marmaray'ın hizmete girmesiyle birlikte " . $station_name . " bölgesi sadece bir ulaşım aksı olmaktan çıkmış, adeta sosyo-kültürel bir buluşma noktasına dönüşmüştür. Bölgedeki emlak değerlerindeki artış, yeni açılan ticari işletmeler ve artan yaya trafiği, istasyonun ne kadar stratejik bir konumda olduğunu kanıtlamaktadır. Hafta sonlarında ailelerin, öğrencilerin ve turistlerin bu istasyonu kullanarak İstanbul'un dört bir yanına, örneğin " . $random_link_3 . " gibi noktalara kolayca dağılması, şehir içi mobilitenin ulaştığı son noktayı göstermektedir. Ayrıca, gelecekte planlanan yeni metro entegrasyon projeleri ile bu durağın değerinin ve kullanım kapasitesinin daha da artması beklenmektedir.</p>\n";
 
             $content .= "<h3>Aktarma Seçenekleri ve Ulaşım Kolaylığı</h3>\n";
-            $content .= "<p>Marmaray hattının en büyük avantajlarından biri, İstanbul'un diğer devasa toplu taşıma ağlarına olan kusursuz entegrasyonudur. " . $title_case_keyword . " durağında indiğinizde, bölgedeki İETT otobüs hatlarına, minibüs güzergahlarına veya varsa metro bağlantılarına sadece birkaç dakikalık yürüme mesafesinde olursunuz. Kesintisiz ulaşımın sağladığı bu rahatlık sayesinde, İstanbul'un bir ucundan diğer ucuna (örneğin " . $random_link_2 . " yönüne) trafik stresi yaşamadan seyahat edebilirsiniz. İstasyon içindeki yönlendirme tabelaları, yürüyen merdivenler ve asansörler engelli yolcularımız, yaşlılarımız ve bebek arabalı ailelerimiz için maksimum kullanım kolaylığı sağlayacak şekilde uluslararası standartlarda, ferah ve modern mimariyle tasarlanmıştır.</p>\n";
+            $content .= "<p>Marmaray hattının en büyük avantajlarından biri, İstanbul'un diğer devasa toplu taşıma ağlarına olan kusursuz entegrasyonudur. " . $title_case_keyword . " durağında indiğinizde, bölgedeki İETT otobüs hatlarına, minibüs güzergahlarına veya varsa metro bağlantılarına sadece birkaç dakikalık yürüme mesafesinde olursunuz. Kesintisiz ulaşımın sağladığı bu rahatlık sayesinde, İstanbul'un bir ucundan diğer ucuna (örneğin " . $random_link_2 . ") trafik stresi yaşamadan seyahat edebilirsiniz. İstasyon içindeki yönlendirme tabelaları, yürüyen merdivenler ve asansörler engelli yolcularımız, yaşlılarımız ve bebek arabalı ailelerimiz için maksimum kullanım kolaylığı sağlayacak şekilde uluslararası standartlarda, ferah ve modern mimariyle tasarlanmıştır.</p>\n";
 
             $content .= "<h3>Konforlu Seyahat İçin Altın Kurallar</h3>\n";
             $content .= "<p>Marmaray'ı kullanırken dikkat etmeniz gereken bazı küçük ama önemli detaylar, yolculuğunuzun kalitesini doğrudan etkiler. Öncelikle, istasyon içindeki yürüyen merdivenlerde sağda bekleme kuralına uymak, acelesi olan yolcuların soldan geçiş yapabilmesi için büyük bir medeniyet göstergesidir. Trene binerken inen yolculara öncelik vermek, kapı önlerinde yığılmayı önleyecek en temel kuraldır. Eğer yanınızda katlanabilir bisikletiniz veya evcil hayvanınız varsa, yolcu yoğunluğunun daha az olduğu ilk veya son vagonları tercih etmeniz sizin ve diğer yolcuların konforu açısından son derece faydalı olacaktır. Güvenlik ve temizlik konularında ise istasyon görevlilerinin talimatlarına uymak, herkes için daha sağlıklı bir ortam yaratır.</p>\n";
@@ -116,29 +125,29 @@ function marmaray_master_content_importer_v4() {
 </ul>\n";
             $content .= "<p>MarmarayApp editörleri tarafından özenle hazırlanan bu rehber umarız yolculuğunuzu çok daha keyifli ve planlı hale getirir. Tüm " . $title_case_keyword . " güncellemeleri, sefer arızaları ve canlı takip işlemleri için sitemizi izlemeye devam edin!</p>";
 
-            // Update Post
+            // Update Post Content
             wp_update_post([
                 'ID' => $pt->ID,
                 'post_content' => $content
             ]);
             
-            // Meta Description Update (Title Case)
-            $desc = $title_case_keyword . " saatleri, aktarma detayları ve güncel istasyon bilgileri. MarmarayApp uzman editörleri tarafından hazırlanan " . $station_name . " kapsamlı yolculuk rehberi.";
+            // Meta Description Update (Rank Math STRICT MATCH)
+            $desc = $title_case_keyword . " seferleri, güncel istasyon bilgileri ve aktarma noktaları. MarmarayApp editörleri tarafından özel olarak hazırlanan detaylı rehberi okuyun.";
             update_post_meta($pt->ID, 'rank_math_description', $desc);
-            update_post_meta($pt->ID, 'rank_math_focus_keyword', $keyword);
             
-            // Update Image ALT to Title Case
+            // Update Image ALT
             $thumb_id = get_post_thumbnail_id($pt->ID);
             if ($thumb_id) {
-                update_post_meta($thumb_id, '_wp_attachment_image_alt', $title_case_keyword . ' İstasyonu Güncel Fotoğrafı');
+                update_post_meta($thumb_id, '_wp_attachment_image_alt', $title_case_keyword . ' İstasyonu');
             }
 
             $total_updated++;
         }
         
-        echo "<h1>DEVASA EDİTÖRYAL REVİZYON TAMAMLANDI!</h1>";
-        echo "<p>Toplam Yeniden Yazılan ve SEO 100/100 Yapılan Makale: <strong>" . $total_updated . "</strong></p>";
-        echo "<p>Tüm makaleler en az 700 kelime uzunluğunda, Title Case kurallarına uyumlu, Internal Linklere sahip ve MarmarayApp editör diliyle yazıldı!</p>";
+        echo "<h1>KUSURSUZ SEO VE TÜRKÇE RESTORASYONU TAMAMLANDI!</h1>";
+        echo "<p>Yeni görseller eklendi. Toplam <strong>" . $total_updated . "</strong> makale restore edildi.</p>";
+        echo "<p>İç Linkler: Güzelyalı Marmaray İstasyonu (Başlık Formatı) olarak düzeltildi.</p>";
+        echo "<p>Odak Anahtar Kelimeler, Rank Math'i aldatmamak için kusursuz Title Case kullanılarak tüm metinlere işlendi.</p>";
         echo "<a href='/wp-admin/edit.php'>Hemen Yazıları İncele</a>";
         exit;
     }
