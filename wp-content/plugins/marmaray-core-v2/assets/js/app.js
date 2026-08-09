@@ -281,7 +281,7 @@ let selectedIdx = null;
         const mCeil = Math.ceil(m);
         if (m <= 1) {
             // Peronda veya çok yakın
-            return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">Şimdi</strong><span class="marmarayapp-next__sub">peronda</span></div>';
+            return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">PERONDA</strong><span class="marmarayapp-next__sub">şu an</span></div>';
         }
         if (mCeil < 60) {
             return '<div class="marmarayapp-next__count"><strong>' + mCeil + '<span class="marmarayapp-next__unit">dk</span></strong><span class="marmarayapp-next__sub">' + (mCeil <= 3 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
