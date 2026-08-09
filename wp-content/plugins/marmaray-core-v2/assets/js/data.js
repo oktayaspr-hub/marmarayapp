@@ -251,7 +251,7 @@ export const getNextTrains = (stationIdx, direction) => {
   const rawUpcoming = getLiveTrainsForStation(apkId, apkDirection, now);
   
   return rawUpcoming.slice(0, 5).map(t => ({
-    remainingMin: Math.ceil(t.arrivalMinutes - currentMins),
+    remainingMin: t.arrivalMinutes - currentMins, // raw float, not ceiled
     timeStr: minsToHHMM(t.arrivalMinutes),
     destination: t.destination,
     arrivalMin: t.arrivalMinutes

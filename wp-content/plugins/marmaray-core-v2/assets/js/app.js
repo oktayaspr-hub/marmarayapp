@@ -278,14 +278,15 @@ let selectedIdx = null;
     };
 
     const countHtml = (m) => {
-        m = parseInt(m, 10) || 0;
-        if (m <= 0) {
+        const mCeil = Math.ceil(m);
+        if (m <= 1) {
+            // Peronda veya çok yakın
             return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">Şimdi</strong><span class="marmarayapp-next__sub">peronda</span></div>';
         }
-        if (m < 60) {
-            return '<div class="marmarayapp-next__count"><strong>' + m + '<span class="marmarayapp-next__unit">dk</span></strong><span class="marmarayapp-next__sub">' + (m <= 2 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
+        if (mCeil < 60) {
+            return '<div class="marmarayapp-next__count"><strong>' + mCeil + '<span class="marmarayapp-next__unit">dk</span></strong><span class="marmarayapp-next__sub">' + (mCeil <= 3 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
         }
-        return '<div class="marmarayapp-next__count marmarayapp-next__count--long"><strong>' + fmtShort(m) + '</strong><span class="marmarayapp-next__sub">sonra kalkıyor</span></div>';
+        return '<div class="marmarayapp-next__count marmarayapp-next__count--long"><strong>' + fmtShort(mCeil) + '</strong><span class="marmarayapp-next__sub">sonra kalkıyor</span></div>';
     };
 
     const buildTrainsHtml = (trains) => {
@@ -294,7 +295,7 @@ let selectedIdx = null;
         }
         const first = trains[0];
         const rest = trains.slice(1, 5);
-        const soon = (parseInt(first.remainingMin, 10) || 0) <= 2;
+        const soon = first.remainingMin <= 3;
         let html = '<div class="marmarayapp-next' + (soon ? ' is-soon' : '') + '">' +
             '<span class="marmarayapp-next__tag">Sıradaki tren</span>' +
             '<div class="marmarayapp-next__body">' +
@@ -306,9 +307,10 @@ let selectedIdx = null;
         if (rest.length) {
             html += '<div class="marmarayapp-rows__head">Sonraki seferler</div><ul class="marmarayapp-rows">';
             rest.forEach(t => {
+                const tMin = Math.ceil(t.remainingMin);
                 html += '<li class="marmarayapp-row">' +
                     '<span class="marmarayapp-row__dest">' + t.destination + '</span>' +
-                    '<span class="marmarayapp-row__min">' + fmtShort(t.remainingMin) + '</span>' +
+                    '<span class="marmarayapp-row__min">' + (tMin <= 1 ? 'Peronda' : fmtShort(tMin)) + '</span>' +
                     '<span class="marmarayapp-row__at">' + t.timeStr + '</span>' +
                     '</li>';
             });
