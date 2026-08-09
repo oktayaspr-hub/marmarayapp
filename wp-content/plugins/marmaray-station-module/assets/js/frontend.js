@@ -48,14 +48,23 @@
                         upcoming.push({ arrival: arrivalMins, dest: 'Gebze' });
                     }
                     
-                    // Inner: Ataköy -> Pendik (Leaves Ataköy at 8, 23, 38, 53)
-                    // Only applicable if station is between Ataköy (idx 7) and Pendik (idx 31)
+                    // Inner 1: Ataköy -> Pendik (Leaves Ataköy at 8, 23, 38, 53)
                     if (stationIdx >= 7 && stationIdx <= 31) {
                         let innerStartMins = evalHour * 60 + min + 8 + dayOffset;
-                        let travelTime = station.offset - 17; // time from Ataköy
+                        let travelTime = station.offset - 17; // Ataköy offset is 17
                         let innerArrival = innerStartMins + travelTime;
                         if (innerArrival > currentMinutes - LINGER_MINUTES) {
                             upcoming.push({ arrival: innerArrival, dest: 'Pendik' });
+                        }
+                    }
+                    
+                    // Inner 2: Zeytinburnu -> Maltepe (Leaves Zeytinburnu at 4, 19, 34, 49)
+                    if (stationIdx >= 10 && stationIdx <= 25) {
+                        let innerStartMins = evalHour * 60 + min + 4 + dayOffset;
+                        let travelTime = station.offset - 24; // Zeytinburnu offset is 24
+                        let innerArrival = innerStartMins + travelTime;
+                        if (innerArrival > currentMinutes - LINGER_MINUTES) {
+                            upcoming.push({ arrival: innerArrival, dest: 'Maltepe' });
                         }
                     }
                 } 
@@ -68,13 +77,23 @@
                         upcoming.push({ arrival: arrivalMins, dest: 'Halkalı' });
                     }
                     
-                    // Inner: Pendik -> Ataköy (Leaves Pendik at 8, 23, 38, 53)
+                    // Inner 1: Pendik -> Ataköy (Leaves Pendik at 8, 23, 38, 53)
                     if (stationIdx >= 7 && stationIdx <= 31) {
                         let innerStartMins = evalHour * 60 + min + 8 + dayOffset;
-                        let travelTimeFromPendik = 82 - station.offset;
+                        let travelTimeFromPendik = 82 - station.offset; // Pendik offset is 82
                         let innerArrival = innerStartMins + travelTimeFromPendik;
                         if (innerArrival > currentMinutes - LINGER_MINUTES) {
                             upcoming.push({ arrival: innerArrival, dest: 'Ataköy' });
+                        }
+                    }
+                    
+                    // Inner 2: Maltepe -> Zeytinburnu (Leaves Maltepe at 4, 19, 34, 49)
+                    if (stationIdx >= 10 && stationIdx <= 25) {
+                        let innerStartMins = evalHour * 60 + min + 4 + dayOffset;
+                        let travelTimeFromMaltepe = 67 - station.offset; // Maltepe offset is 67
+                        let innerArrival = innerStartMins + travelTimeFromMaltepe;
+                        if (innerArrival > currentMinutes - LINGER_MINUTES) {
+                            upcoming.push({ arrival: innerArrival, dest: 'Zeytinburnu' });
                         }
                     }
                 }
