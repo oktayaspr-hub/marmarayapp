@@ -619,9 +619,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   // Her saniye - renderStationCards'ı da çağırarak listeyi canlı tut
   setInterval(()=>{ 
-      updateClock(); 
-      renderLiveTrains(); 
-      liveCountdownTick(); 
-      if (selectedIdx !== null) renderStationCards(selectedIdx);
+      try {
+          updateClock(); 
+          renderLiveTrains(); 
+          if (selectedIdx !== null) renderStationCards(selectedIdx);
+      } catch (e) {
+          console.error("Interval Error:", e);
+      }
   }, 1000);
 });
