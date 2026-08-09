@@ -358,12 +358,7 @@ let selectedIdx = null;
 
 const liveCountdownTick = () => {
   if (selectedIdx === null) return;
-  const g2h = getNextTrains(selectedIdx,'G2H');
-  const h2g = getNextTrains(selectedIdx,'H2G');
-  document.getElementById('card-blue-mins')?.textContent != null &&
-    (document.getElementById('card-blue-mins').textContent = g2h.length ? g2h[0].remainingMin : '-');
-  document.getElementById('card-red-mins')?.textContent != null &&
-    (document.getElementById('card-red-mins').textContent = h2g.length ? h2g[0].remainingMin : '-');
+  renderStationCards(selectedIdx);
 };
 
 // ============================================================
