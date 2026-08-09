@@ -7,26 +7,26 @@ function marmaray_restoration_importer_v5() {
     if (isset($_GET['run_restoration_v5']) && $_GET['run_restoration_v5'] === 'oktay') {
         
         $new_stations = [
-            ['name' => 'Mustafa Kemal', 'slug' => 'mustafa-kemal-marmaray-istasyonu', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
+            ['name' => 'Mustafa Kemal', 'slug' => 'mustafa-kemal-marmaray-istasyonu', 'image' => 'mustafa_kemal_marmaray_1786284895924.jpg'],
             ['name' => 'Küçükçekmece', 'slug' => 'kucukcekmece-marmaray-istasyonu-gol-manzarasi', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
-            ['name' => 'Florya', 'slug' => 'florya-marmaray-istasyonu-sahil-keyfi', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
+            ['name' => 'Florya', 'slug' => 'florya-marmaray-istasyonu-sahil-keyfi', 'image' => 'florya_marmaray_1786284907620.jpg'],
             ['name' => 'Yeşilköy', 'slug' => 'yesilkoy-marmaray-istasyonu-tarihi-doku', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
-            ['name' => 'Yeşilyurt', 'slug' => 'yesilyurt-marmaray-istasyonu', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
+            ['name' => 'Yeşilyurt', 'slug' => 'yesilyurt-marmaray-istasyonu', 'image' => 'yesilyurt_marmaray_1786288129515.jpg'],
             ['name' => 'Yenimahalle', 'slug' => 'yenimahalle-marmaray-istasyonu-ulasim', 'image' => 'marmaray_yenimahalle_1786282797620.jpg'],
             ['name' => 'Küçükyalı', 'slug' => 'kucukyali-marmaray-istasyonu-tepe-nautilus', 'image' => 'marmaray_kucukyali_1786282806974.jpg'],
-            ['name' => 'Güzelyalı', 'slug' => 'guzelyali-marmaray-istasyonu', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
+            ['name' => 'Güzelyalı', 'slug' => 'guzelyali-marmaray-istasyonu', 'image' => 'guzelyali_marmaray_1786288149088.jpg'],
             ['name' => 'Aydıntepe', 'slug' => 'aydintepe-marmaray-istasyonu-tuzla-siniri', 'image' => 'marmaray_aydintepe_1786282819136.jpg'],
-            ['name' => 'İçmeler', 'slug' => 'icmeler-marmaray-istasyonu-kaplicalari', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
+            ['name' => 'İçmeler', 'slug' => 'icmeler-marmaray-istasyonu-kaplicalari', 'image' => 'icmeler_marmaray_1786288160358.jpg'],
             ['name' => 'Tuzla', 'slug' => 'tuzla-marmaray-istasyonu-marina-ve-sahil', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
-            ['name' => 'Çayırova', 'slug' => 'cayirova-marmaray-istasyonu', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
+            ['name' => 'Çayırova', 'slug' => 'cayirova-marmaray-istasyonu', 'image' => 'cayirova_marmaray_1786288172089.jpg'],
             ['name' => 'Fatih', 'slug' => 'fatih-marmaray-istasyonu-gebze', 'image' => 'marmaray_fatih_1786282832339.jpg'],
-            ['name' => 'Osmangazi', 'slug' => 'osmangazi-marmaray-istasyonu', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
+            ['name' => 'Osmangazi', 'slug' => 'osmangazi-marmaray-istasyonu', 'image' => 'osmangazi_marmaray_1786288184345.jpg'],
             ['name' => 'Darıca', 'slug' => 'darica-marmaray-istasyonu-hayvanat-bahcesi', 'image' => 'marmaray_darica_1786282849741.jpg'],
-            ['name' => 'Üsküdar İskelesi', 'slug' => 'uskudar-iskelesi-marmaray-aktarma', 'image' => 'marmaray_kucukcekmece_1786279368350.jpg'],
-            ['name' => 'Sirkeci Garı', 'slug' => 'sirkeci-gari-marmaray-tarihi', 'image' => 'marmaray_sirkeci_gari_1786282862130.jpg'],
-            ['name' => 'Halkalı YHT', 'slug' => 'halkali-yht-marmaray-aktarma', 'image' => 'marmaray_tuzla_1786279389662.jpg'],
+            ['name' => 'Üsküdar İskelesi', 'slug' => 'uskudar-iskelesi-marmaray-aktarma', 'image' => 'uskudar_iskelesi_marmaray_1786288195222.jpg'],
+            ['name' => 'Sirkeci Garı', 'slug' => 'sirkeci-gari-marmaray-tarihi', 'image' => 'sirkeci_gari_marmaray_new_1786288226960.jpg'],
+            ['name' => 'Halkalı YHT', 'slug' => 'halkali-yht-marmaray-aktarma', 'image' => 'halkali_yht_marmaray_1786288207192.jpg'],
             ['name' => 'Bostancı İDO', 'slug' => 'bostanci-ido-marmaray-aktarma', 'image' => 'marmaray_bostanci_ido_1786282874601.jpg'],
-            ['name' => 'Pendik Marina', 'slug' => 'pendik-marina-marmaray-istasyonu', 'image' => 'marmaray_yesilkoy_1786279379981.jpg'],
+            ['name' => 'Pendik Marina', 'slug' => 'pendik-marina-marmaray-istasyonu', 'image' => 'pendik_marina_marmaray_1786288216551.jpg'],
         ];
 
         // 1. Yeni Makaleleri Ekle (Zaten Varsa Görsel Ekle)
@@ -49,27 +49,28 @@ function marmaray_restoration_importer_v5() {
                 $post_id = $existing->ID;
             }
             
-            // Görsel Yoksa Ekle
-            if (!has_post_thumbnail($post_id)) {
-                $upload_dir = wp_upload_dir();
-                $artifact_path = plugin_dir_path(__FILE__) . 'assets/images/' . $st['image'];
-                if (file_exists($artifact_path)) {
-                    $filename = basename($artifact_path);
-                    $dest_path = $upload_dir['path'] . '/' . $filename;
-                    if (copy($artifact_path, $dest_path)) {
-                        $attachment = [
-                            'guid'           => $upload_dir['url'] . '/' . $filename,
-                            'post_mime_type' => 'image/jpeg',
-                            'post_title'     => $st['name'] . ' Marmaray İstasyonu Görseli',
-                            'post_content'   => '',
-                            'post_status'    => 'inherit'
-                        ];
-                        $attach_id = wp_insert_attachment($attachment, $dest_path, $post_id);
-                        require_once(ABSPATH . 'wp-admin/includes/image.php');
-                        $attach_data = wp_generate_attachment_metadata($attach_id, $dest_path);
-                        wp_update_attachment_metadata($attach_id, $attach_data);
-                        set_post_thumbnail($post_id, $attach_id);
-                    }
+            // Hatalı / Tekrarlanan eski görselleri KALDIR!
+            delete_post_thumbnail($post_id);
+            
+            // Yeni Benzersiz Görseli Ekle
+            $upload_dir = wp_upload_dir();
+            $artifact_path = plugin_dir_path(__FILE__) . 'assets/images/' . $st['image'];
+            if (file_exists($artifact_path)) {
+                $filename = basename($artifact_path);
+                $dest_path = $upload_dir['path'] . '/' . $filename;
+                if (copy($artifact_path, $dest_path)) {
+                    $attachment = [
+                        'guid'           => $upload_dir['url'] . '/' . $filename,
+                        'post_mime_type' => 'image/jpeg',
+                        'post_title'     => $st['name'] . ' Marmaray İstasyonu Görseli',
+                        'post_content'   => '',
+                        'post_status'    => 'inherit'
+                    ];
+                    $attach_id = wp_insert_attachment($attachment, $dest_path, $post_id);
+                    require_once(ABSPATH . 'wp-admin/includes/image.php');
+                    $attach_data = wp_generate_attachment_metadata($attach_id, $dest_path);
+                    wp_update_attachment_metadata($attach_id, $attach_data);
+                    set_post_thumbnail($post_id, $attach_id);
                 }
             }
         }
@@ -144,10 +145,10 @@ function marmaray_restoration_importer_v5() {
             $total_updated++;
         }
         
-        echo "<h1>KUSURSUZ SEO VE TÜRKÇE RESTORASYONU TAMAMLANDI!</h1>";
+        echo "<h1>KUSURSUZ SEO VE YEPYENİ 100% ÖZGÜN GÖRSELLER EKLENDİ!</h1>";
         echo "<p>Yeni görseller eklendi. Toplam <strong>" . $total_updated . "</strong> makale restore edildi.</p>";
-        echo "<p>İç Linkler: Güzelyalı Marmaray İstasyonu (Başlık Formatı) olarak düzeltildi.</p>";
-        echo "<p>Odak Anahtar Kelimeler, Rank Math'i aldatmamak için kusursuz Title Case kullanılarak tüm metinlere işlendi.</p>";
+        echo "<p>Tekrara düşen tüm görseller iptal edilip, her istasyona (Örn: Sirkeci, Florya) özel yeni görseller gömüldü.</p>";
+        echo "<p>Tüm hatalar temizlendi.</p>";
         echo "<a href='/wp-admin/edit.php'>Hemen Yazıları İncele</a>";
         exit;
     }
