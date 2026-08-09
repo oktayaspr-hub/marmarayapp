@@ -450,7 +450,7 @@ function marmarayapp_script_yukle() {
         'nonce'        => wp_create_nonce( 'marmarayapp_nonce' ),
     ] );
 
-    wp_enqueue_style('marmaray-app-css', plugins_url('assets/css/app.css', __FILE__), array(), '6.1');
+    wp_enqueue_style('marmaray-app-css', plugins_url('assets/css/app.css', __FILE__), array(), time());
     wp_enqueue_script('marmarayapp-app', plugins_url('assets/js/app.js', __FILE__), array(), time(), true);
 }
 
@@ -612,5 +612,3 @@ require_once MARMARAYAPP_DIR . 'blog-importer-v31.php';
 require_once MARMARAYAPP_DIR . 'restoration-importer.php';
 
 require_once plugin_dir_path(__FILE__) . 'restoration-importer-v6.php';
-
-require_once plugin_dir_path(__FILE__) . 'restoration-importer-v7.php';
