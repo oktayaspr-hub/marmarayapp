@@ -69,7 +69,9 @@ function marmaray_restoration_importer_v7() {
             'Kartal' => 'kartal_marmaray_1786294974210.jpg',
             'Maltepe' => 'maltepe_marmaray_1786294984968.jpg',
             'Suadiye' => 'suadiye_marmaray_1786294994724.jpg',
-            'Gebze' => 'gebze_marmaray_1786295013544.jpg'
+            'Gebze' => 'gebze_marmaray_1786295013544.jpg',
+            'Fatih' => 'fatih_marmaray_new_1786296595238.jpg',
+            'Tersane' => 'tersane_marmaray_new_1786296608438.jpg'
         ];
 
         foreach ($station_data as $data) {
@@ -179,7 +181,9 @@ function marmaray_restoration_importer_v7() {
             'Maltepe' => 'maltepe_marmaray_1786294984968.jpg',
             'Suadiye' => 'suadiye_marmaray_1786294994724.jpg',
             'Gebze' => 'gebze_marmaray_1786295013544.jpg',
-            'Sirkeci' => 'marmaray_train_station_1786232407160.jpg' // ONLY Sirkeci uses this now
+            'Sirkeci' => 'marmaray_train_station_1786232407160.jpg', // ONLY Sirkeci uses this now
+            'Fatih' => 'fatih_marmaray_new_1786296595238.jpg',
+            'Tersane' => 'tersane_marmaray_new_1786296608438.jpg'
         ];
 
         $updated_count = 0;
