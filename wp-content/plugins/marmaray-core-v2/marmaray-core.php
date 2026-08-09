@@ -150,7 +150,7 @@ function marmarayapp_admin_menu() {
         'manage_options',
         'marmarayapp',
         'marmarayapp_ana_sayfa',
-        'dashicons-metro',
+        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyYy00IDAtOCAuNS04DR2OjdDNCAxNy40MyA1LjU3IDE5IDcuNSAxOUw2IDIwLjV2LjVoMTJ2LS41TDE2LjUgMTljMS45MyAwIDMuNS0xLjU3IDMuNS0zLjVWNmMwLTMuNS00LTQtOC00ek03LjUgMTdjLS44MyAwLTEuNS0uNjctMS41LTEuNVM2LjY3IDE0IDcuNSAxNHMxLjUuNjcgMS41IDEuNVM4LjMz 17 7.5 17zm3.5-7H6V6h5v4zm4 0V6h5v4h-5zm1.5 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\"/></svg>',
         30
     );
 
@@ -188,6 +188,15 @@ function marmarayapp_admin_menu() {
         'manage_options',
         'marmarayapp-harita',
         'marmarayapp_harita_sayfasi'
+    );
+
+    add_submenu_page(
+        'marmarayapp',
+        'Blog Ayarları',
+        'Blog Ayarları',
+        'manage_options',
+        'marmarayapp-blog',
+        'marmarayapp_blog_sayfasi'
     );
 }
 
@@ -334,6 +343,59 @@ function marmarayapp_harita_sayfasi() {
                 </tr>
             </table>
             <p class="submit"><input type="submit" name="marmarayapp_harita_kaydet" class="button-primary" value="Harita Ayarlarını Kaydet"></p>
+        </form>
+    </div>
+    <?php
+}
+
+function marmarayapp_blog_sayfasi() {
+    if ( ! current_user_can( 'manage_options' ) ) { wp_die( 'Bu sayfaya erişim izniniz yok.' ); }
+    if ( isset( $_POST['marmarayapp_blog_kaydet'] ) && check_admin_referer( 'marmarayapp_blog' ) ) {
+        update_option( 'marmarayapp_blog_comments', isset( $_POST['blog_comments'] ) ? 1 : 0 );
+        update_option( 'marmarayapp_blog_author',   isset( $_POST['blog_author'] ) ? 1 : 0 );
+        update_option( 'marmarayapp_blog_date',     isset( $_POST['blog_date'] ) ? 1 : 0 );
+        echo '<div class="notice notice-success is-dismissible"><p>Blog ayarları kaydedildi.</p></div>';
+    }
+
+    $comments = get_option( 'marmarayapp_blog_comments', 1 );
+    $author   = get_option( 'marmarayapp_blog_author', 1 );
+    $date     = get_option( 'marmarayapp_blog_date', 1 );
+    ?>
+    <div class="wrap">
+        <h1>Blog ve Makale Ayarları</h1>
+        <p>MarmarayApp blog sayfalarındaki yazar, tarih ve yorum modüllerini buradan yönetebilirsiniz.</p>
+        <form method="post" action="">
+            <?php wp_nonce_field( 'marmarayapp_blog' ); ?>
+            <table class="form-table">
+                <tr>
+                    <th scope="row">Yorumları Aktifleştir</th>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="blog_comments" value="1" <?php checked( $comments, 1 ); ?>>
+                            Blog yazılarının altında yorum yapma formunu göster.
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Yazar Adını Göster</th>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="blog_author" value="1" <?php checked( $author, 1 ); ?>>
+                            Makale başında "MarmarayApp Editörü" gibi yazar bilgisini göster.
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Yayın Tarihini Göster</th>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="blog_date" value="1" <?php checked( $date, 1 ); ?>>
+                            Makalenin ne zaman yayınlandığını göster.
+                        </label>
+                    </td>
+                </tr>
+            </table>
+            <p class="submit"><input type="submit" name="marmarayapp_blog_kaydet" class="button-primary" value="Ayarları Kaydet"></p>
         </form>
     </div>
     <?php
