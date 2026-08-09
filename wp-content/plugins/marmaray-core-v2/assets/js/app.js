@@ -11,7 +11,7 @@ import {
   STATIONS, CUM_G2H, CUM_H2G, TOTAL_G2H, TOTAL_H2G,
   getNextTrains, getTrainPosition, minsToHHMM,
   G2H_WEEKDAY, H2G_WEEKDAY, G2H_WEEKEND, H2G_WEEKEND
-} from './data.js';
+} from './data.js?v=7.2';
 
 // ============================================================
 // MAP LAYOUT (S-şekli, 1200x440)
@@ -279,11 +279,12 @@ let selectedIdx = null;
 
     const countHtml = (m) => {
         m = parseInt(m, 10) || 0;
-        if (m <= 0) {
-            return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">Şimdi</strong><span class="marmarayapp-next__sub">peronda</span></div>';
+        const mCeil = Math.ceil(m);
+        if (m <= 1) {
+            return '<div class="marmarayapp-next__count"><strong class="marmarayapp-next__now">İstasyon</strong><span class="marmarayapp-next__sub">peronda</span></div>';
         }
-        if (m < 60) {
-            return '<div class="marmarayapp-next__count"><strong>' + m + '<span class="marmarayapp-next__unit">dk</span></strong><span class="marmarayapp-next__sub">' + (m <= 2 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
+        if (mCeil < 60) {
+            return '<div class="marmarayapp-next__count"><strong>' + mCeil + '<span class="marmarayapp-next__unit">dk</span></strong><span class="marmarayapp-next__sub">' + (mCeil <= 3 ? 'yaklaşıyor' : 'sonra kalkıyor') + '</span></div>';
         }
         return '<div class="marmarayapp-next__count marmarayapp-next__count--long"><strong>' + fmtShort(m) + '</strong><span class="marmarayapp-next__sub">sonra kalkıyor</span></div>';
     };
