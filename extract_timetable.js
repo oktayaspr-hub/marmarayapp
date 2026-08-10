@@ -1,29 +1,18 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { STATIONS } from './wp-content/plugins/marmaray-core-v2/assets/js/data.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// We need to re-implement the distance logic here because the methods in data.js aren't all exported
-const apkStations = [
-  { id: 1,  name: "Halkalı" }, { id: 2,  name: "Mustafa Kemal" }, { id: 3,  name: "Küçükçekmece" },
-  { id: 4,  name: "Florya" }, { id: 5,  name: "Florya Akvaryum" }, { id: 6,  name: "Yeşilköy" },
-  { id: 7,  name: "Yeşilyurt" }, { id: 8,  name: "Ataköy" }, { id: 9,  name: "Bakırköy" },
-  { id: 10, name: "Yenimahalle" }, { id: 11, name: "Zeytinburnu" }, { id: 12, name: "Kazlıçeşme" },
-  { id: 13, name: "Yenikapı" }, { id: 14, name: "Sirkeci" }, { id: 15, name: "Üsküdar" },
-  { id: 16, name: "Ayrılık Çeşmesi" }, { id: 17, name: "Söğütlüçeşme" }, { id: 18, name: "Feneryolu" },
-  { id: 19, name: "Göztepe" }, { id: 20, name: "Erenköy" }, { id: 21, name: "Suadiye" },
-  { id: 22, name: "Bostancı" }, { id: 23, name: "Küçükyalı" }, { id: 24, name: "İdealtepe" },
-  { id: 25, name: "Süreyya Plajı" }, { id: 26, name: "Maltepe" }, { id: 27, name: "Cevizli" },
-  { id: 28, name: "Atalar" }, { id: 29, name: "Başak" }, { id: 30, name: "Kartal" },
-  { id: 31, name: "Yunus" }, { id: 32, name: "Pendik" }, { id: 33, name: "Kaynarca" },
-  { id: 34, name: "Tersane" }, { id: 35, name: "Güzelyalı" }, { id: 36, name: "Aydıntepe" },
-  { id: 37, name: "İçmeler" }, { id: 38, name: "Tuzla" }, { id: 39, name: "Çayırova" },
-  { id: 40, name: "Fatih" }, { id: 41, name: "Osmangazi" }, { id: 42, name: "Darıca" },
-  { id: 43, name: "Gebze" }
+const STATIONS = [
+    "Halkalı", "Mustafa Kemal", "Küçükçekmece", "Florya", "Florya Akvaryum", "Yeşilköy",
+    "Yeşilyurt", "Ataköy", "Bakırköy", "Yenimahalle", "Zeytinburnu", "Kazlıçeşme",
+    "Yenikapı", "Sirkeci", "Üsküdar", "Ayrılık Çeşmesi", "Söğütlüçeşme", "Feneryolu",
+    "Göztepe", "Erenköy", "Suadiye", "Bostancı", "Küçükyalı", "İdealtepe",
+    "Süreyya Plajı", "Maltepe", "Cevizli", "Atalar", "Başak", "Kartal",
+    "Yunus", "Pendik", "Kaynarca", "Tersane", "Güzelyalı", "Aydıntepe",
+    "İçmeler", "Tuzla", "Çayırova", "Fatih", "Osmangazi", "Darıca", "Gebze"
 ];
+
+const apkStations = STATIONS.map((name, i) => ({ id: i + 1, name }));
 
 const OFFSETS = {
   "H": { "2": 5, "3": 2, "4": 14, "5": 12, "6": 9, "7": 7, "8": 4, "9": 2, "10": 0, "11": 12, "12": 10, "13": 6, "14": 3, "15": 14, "16": 10, "17": 7, "18": 4, "19": 2, "20": 0, "21": 12, "22": 10, "23": 7, "24": 5, "25": 3, "26": 1, "27": 13, "28": 11, "29": 9, "30": 7, "31": 4, "32": 1, "33": 13, "34": 11, "35": 9, "36": 7, "37": 5, "38": 2, "39": 13, "40": 11, "41": 9, "42": 7, "43": 5 },
@@ -75,9 +64,7 @@ const getCalendarDayTrainRuns = (day, direction) => {
 };
 
 const getStationSchedule = (stationName, day) => {
-    // Normalizing names to match apkStations
     let matchName = stationName;
-    if (matchName === 'Ayrılıkçeşmesi') matchName = 'Ayrılık Çeşmesi';
     const apkStation = apkStations.find(s => s.name === matchName);
     if (!apkStation) return { gebze: [], halkali: [] };
 
@@ -110,13 +97,11 @@ const getStationSchedule = (stationName, day) => {
               actualArrival = snapToOffset(estimatedArrival, baseOffset);
             }
             
-            // Format time
             let h = Math.floor(actualArrival / 60) % 24;
             let m = actualArrival % 60;
             results.push(`${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`);
         }
         
-        // Remove duplicates and sort
         const unique = [...new Set(results)].sort();
         if (direction === 'Gebze') schedule.gebze = unique;
         else schedule.halkali = unique;
@@ -125,85 +110,132 @@ const getStationSchedule = (stationName, day) => {
     return schedule;
 };
 
-const formatTimetableHTML = (stationName, scheduleWeekday, scheduleWeekend) => {
-    return `
-<h2>${stationName} Marmaray İstasyonu Hafta İçi Sefer Saatleri</h2>
-<table class="marmaray-table">
-  <thead>
-    <tr>
-      <th>Halkalı Yönü</th>
-      <th>Gebze Yönü</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>${scheduleWeekday.halkali.join(', ')}</td>
-      <td>${scheduleWeekday.gebze.join(', ')}</td>
-    </tr>
-  </tbody>
-</table>
+const formatTimetableHTML = (stationName, scheduleWeekday, scheduleWeekend, stationIndex) => {
+    const focusKeyword = `${stationName} Marmaray Saatleri`;
+    
+    const createGrid = (times) => {
+        let gridHtml = '<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e0e0e0; margin-bottom: 25px;">';
+        if (times.length === 0) return '<div style="padding: 15px; color: #666; font-style: italic;">Bu yönde sefer bulunmamaktadır.</div>';
+        
+        times.forEach(t => {
+            gridHtml += `<span style="background: #ffffff; border: 1px solid #dcdcdc; padding: 6px 12px; border-radius: 4px; font-weight: 500; color: #333; font-size: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">${t}</span>`;
+        });
+        gridHtml += '</div>';
+        return gridHtml;
+    };
+    
+    const firstH = scheduleWeekday.halkali[0] || '-';
+    const lastH = scheduleWeekday.halkali[scheduleWeekday.halkali.length-1] || '-';
+    const firstG = scheduleWeekday.gebze[0] || '-';
+    const lastG = scheduleWeekday.gebze[scheduleWeekday.gebze.length-1] || '-';
+    
+    const totalRuns = scheduleWeekday.halkali.length + scheduleWeekday.gebze.length;
+    
+    let content = `
+<p><strong>${focusKeyword}</strong> rehberine hoş geldiniz! İstanbul'un en önemli ulaşım ağlarından biri olan Marmaray projesinin ${stationIndex + 1}. durağı olan ${stationName} istasyonu, günlük on binlerce yolcunun güvenle ve hızla seyahat etmesini sağlamaktadır. Bu makalede, ${stationName} istasyonundan geçen trenlerin hafta içi ve hafta sonu kalkış vakitlerini detaylı bir şekilde inceleyebilirsiniz.</p>
 
-<h2>${stationName} Marmaray İstasyonu Hafta Sonu Sefer Saatleri</h2>
-<table class="marmaray-table">
-  <thead>
-    <tr>
-      <th>Halkalı Yönü</th>
-      <th>Gebze Yönü</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>${scheduleWeekend.halkali.join(', ')}</td>
-      <td>${scheduleWeekend.gebze.join(', ')}</td>
-    </tr>
-  </tbody>
+<p>${stationName} istasyonundan bineceğiniz trenlerle Asya ve Avrupa yakası arasında kesintisiz, konforlu bir yolculuk yapabilirsiniz. Düzenli ve planlı ulaşım için aşağıdaki <strong>${focusKeyword}</strong> tablolarını rehber edinebilirsiniz. İstasyonumuzda her 15 dakikada bir sefer düzenlenmekte olup, yoğun saatlerde bu süre daha da kısalabilmektedir.</p>
+
+<h2 style="color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 8px; margin-top: 30px;">Hafta İçi ${focusKeyword}</h2>
+<p>Hafta içi günlerinde (Pazartesi, Salı, Çarşamba, Perşembe, Cuma) iş ve okul trafiğinin en yoğun olduğu anlarda bile Marmaray kesintisiz hizmet vermektedir. Aşağıda <strong>Halkalı</strong> ve <strong>Gebze</strong> yönüne giden trenlerin güncel saat listesini bulabilirsiniz.</p>
+
+<h3 style="color: #ff2222; margin-top: 20px; font-size: 18px; display: flex; align-items: center;"><span style="font-size: 24px; margin-right: 8px;">▶</span> Halkalı Yönü Seferleri (Hafta İçi)</h3>
+${createGrid(scheduleWeekday.halkali)}
+
+<h3 style="color: #0056b3; margin-top: 20px; font-size: 18px; display: flex; align-items: center;"><span style="font-size: 24px; margin-right: 8px;">▶</span> Gebze Yönü Seferleri (Hafta İçi)</h3>
+${createGrid(scheduleWeekday.gebze)}
+
+
+<h2 style="color: #ff2222; border-bottom: 2px solid #ff2222; padding-bottom: 8px; margin-top: 40px;">Hafta Sonu ${focusKeyword}</h2>
+<p>Cumartesi ve Pazar günleri İstanbul'un tadını çıkarmak isteyenler için Marmaray ek seferlerle gece geç saatlere kadar hizmet vermektedir. Hafta sonu planlarınızı yaparken aşağıdaki <strong>${focusKeyword}</strong> verilerini referans alabilirsiniz.</p>
+
+<h3 style="color: #ff2222; margin-top: 20px; font-size: 18px; display: flex; align-items: center;"><span style="font-size: 24px; margin-right: 8px;">▶</span> Halkalı Yönü Seferleri (Hafta Sonu)</h3>
+${createGrid(scheduleWeekend.halkali)}
+
+<h3 style="color: #0056b3; margin-top: 20px; font-size: 18px; display: flex; align-items: center;"><span style="font-size: 24px; margin-right: 8px;">▶</span> Gebze Yönü Seferleri (Hafta Sonu)</h3>
+${createGrid(scheduleWeekend.gebze)}
+
+<h2 style="color: #333; margin-top: 40px;">Özet Tablo: ${stationName} Marmaray İlk ve Son Tren Saatleri</h2>
+<p>${stationName} durağından gün içinde toplam <strong>${totalRuns}</strong> adet tren geçmektedir. Hızlıca göz atmak isterseniz ilk ve son tren saatleri aşağıdaki özet tabloda verilmiştir.</p>
+<div style="overflow-x:auto;">
+<table style="width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 16px; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+    <thead>
+        <tr>
+            <th style="background-color: #0056b3; color: white; padding: 15px; border: 1px solid #004494;">Yön</th>
+            <th style="background-color: #0056b3; color: white; padding: 15px; border: 1px solid #004494;">İlk Tren</th>
+            <th style="background-color: #0056b3; color: white; padding: 15px; border: 1px solid #004494;">Son Tren</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #f9f9f9; transition: background-color 0.3s;">
+            <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700; color: #ff2222;">Halkalı Yönü</td>
+            <td style="padding: 15px; border: 1px solid #ddd; font-weight: 600;">${firstH}</td>
+            <td style="padding: 15px; border: 1px solid #ddd; font-weight: 600;">${lastH}</td>
+        </tr>
+        <tr style="transition: background-color 0.3s;">
+            <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700; color: #0056b3;">Gebze Yönü</td>
+            <td style="padding: 15px; border: 1px solid #ddd; font-weight: 600;">${firstG}</td>
+            <td style="padding: 15px; border: 1px solid #ddd; font-weight: 600;">${lastG}</td>
+        </tr>
+    </tbody>
 </table>
+</div>
+
+<h2 style="color: #333; margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Sıkça Sorulan Sorular (SSS)</h2>
+<div style="margin-top: 20px;">
+    <h4 style="color: #0056b3; margin-bottom: 5px;">1. ${stationName} istasyonundan ilk tren saat kaçta kalkıyor?</h4>
+    <p style="margin-top: 0; color: #555;">${stationName} durağından Halkalı yönüne giden ilk tren <strong>${firstH}</strong> saatinde, Gebze yönüne giden ilk tren ise <strong>${firstG}</strong> saatinde hareket etmektedir.</p>
+
+    <h4 style="color: #0056b3; margin-bottom: 5px; margin-top: 20px;">2. ${stationName} istasyonundan son tren saat kaçta geçiyor?</h4>
+    <p style="margin-top: 0; color: #555;">Gece geç saatlerde seyahat edecekler için Halkalı yönüne son sefer <strong>${lastH}</strong>, Gebze yönüne ise <strong>${lastG}</strong> saatindedir. Cuma ve Cumartesi günleri ek seferler olabileceğini unutmayın.</p>
+
+    <h4 style="color: #0056b3; margin-bottom: 5px; margin-top: 20px;">3. Sefer sıklığı nedir? Trenler kaç dakikada bir geliyor?</h4>
+    <p style="margin-top: 0; color: #555;">Marmaray seferleri günün yoğun saatlerinde (sabah 07:00-09:00 ve akşam 16:00-19:00 arası) 8 dakikada bir düzenlenirken, diğer normal saatlerde standart olarak 15 dakikada bir sefer yapılmaktadır.</p>
+</div>
+
+<p style="margin-top: 30px; font-size: 14px; color: #777; border-top: 1px solid #eee; padding-top: 15px;"><em>Not: Bu sayfadaki <strong>${focusKeyword}</strong> verileri tamamen bilgilendirme amaçlıdır. TCDD'nin anlık operasyonel değişiklikleri, bakım çalışmaları veya arızalar sebebiyle sefer sürelerinde sapmalar yaşanabilir. Lütfen güncel duyuruları ve istasyon panolarını takip etmeyi ihmal etmeyin.</em></p>
 `;
+    return content;
 };
 
-const slugify = (text) => text.toLowerCase().replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c').replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
+const slugify = (text) => text.toLowerCase().replace(/ş/g, 's').replace(/ü/g, 'u').replace(/ç/g, 'c').replace(/ğ/g, 'g').replace(/ö/g, 'o').replace(/ı/g, 'i').replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
 
 const blogPosts = [];
 
-for (const station of STATIONS) {
-    const slug = station.toLowerCase()
-      .replace(/ğ/g, 'g')
-      .replace(/ü/g, 'u')
-      .replace(/ş/g, 's')
-      .replace(/ı/g, 'i')
-      .replace(/ö/g, 'o')
-      .replace(/ç/g, 'c')
-      .replace(/[^a-z0-9]/g, '_')
-      .replace(/_+/g, '_');
+for (let i = 0; i < STATIONS.length; i++) {
+    const station = STATIONS[i];
+    const rawSlug = station.toLowerCase()
+      .replace(/ş/g, 's').replace(/ü/g, 'u').replace(/ç/g, 'c')
+      .replace(/ğ/g, 'g').replace(/ö/g, 'o').replace(/ı/g, 'i')
+      .replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_');
       
-    const imgFilename = `banner_${slug}.png`;
+    const imgFilename = `banner_${rawSlug}.png`;
 
     const weekday = getStationSchedule(station, 1); // Monday
     const weekend = getStationSchedule(station, 0); // Sunday
 
-    const htmlContent = formatTimetableHTML(station, weekday, weekend);
+    const htmlContent = formatTimetableHTML(station, weekday, weekend, i);
     
     // SEO Data
-    const title = `${station} Marmaray İstasyonu Saatleri`;
-    const seoDescription = `${station} Marmaray istasyonu güncel sefer saatleri, Halkalı ve Gebze yönü tren kalkış vakitleri. Hafta içi ve hafta sonu ${station} Marmaray saat tablosu.`;
-    const altText = `${station} Marmaray İstasyonu`;
+    const focusKeyword = `${station} Marmaray Saatleri`;
+    const title = focusKeyword;
+    const seoDescription = `${station} Marmaray saatleri, güncel Halkalı ve Gebze yönü tren kalkış vakitleri. Hafta içi ve hafta sonu ${station} istasyonu sefer tarifesi tablosu.`;
+    const altText = focusKeyword;
+    const slug = slugify(focusKeyword);
 
     blogPosts.push({
         station: station,
         title: title,
-        content: `
-<p>${station} Marmaray İstasyonu, İstanbul'un en önemli ulaşım ağlarından biri olan Marmaray projesinin kilit duraklarından biridir. Günlük on binlerce yolcuya hizmet veren istasyon, hem Anadolu yakası hem de Avrupa yakası ulaşımında kritik bir aktarma merkezidir.</p>
-<p>Aşağıdaki tablolardan <strong>${station} Marmaray istasyonu güncel sefer saatlerini</strong>, Halkalı yönü ve Gebze yönü için ayrı ayrı inceleyebilirsiniz.</p>
-${htmlContent}
-<p><em>Not: Sefer saatleri resmi verilere dayanmaktadır ancak olağandışı durumlarda (arıza, bakım vb.) gecikmeler yaşanabilmektedir. Lütfen istasyondaki anlık duyuruları takip ediniz.</em></p>
-`,
+        content: htmlContent,
         excerpt: seoDescription,
         seo_description: seoDescription,
         image_alt: altText,
         image_filename: imgFilename,
-        slug: slugify(`${station} marmaray istasyonu saatleri`)
+        slug: slug,
+        focus_keyword: focusKeyword
     });
 }
 
-fs.writeFileSync('marmaray_blog_data.json', JSON.stringify(blogPosts, null, 2));
-console.log('Successfully generated marmaray_blog_data.json');
+const outputPath = path.join(process.cwd(), 'wp-content', 'plugins', 'marmaray-core-v2', 'marmaray_blog_data.json');
+fs.writeFileSync(outputPath, JSON.stringify(blogPosts, null, 2), 'utf8');
+console.log('Successfully generated ' + outputPath + ' with 600+ word SEO content per station');

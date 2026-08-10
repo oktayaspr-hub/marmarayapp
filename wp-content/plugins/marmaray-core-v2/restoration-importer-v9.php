@@ -59,6 +59,7 @@ function marmaray_run_batch_importer_v9() {
         $image_alt = $data['image_alt'];
         $image_filename = $data['image_filename'];
         $slug = $data['slug'];
+        $focus_keyword = isset($data['focus_keyword']) ? $data['focus_keyword'] : $title;
 
         $image_path = plugin_dir_path(__FILE__) . 'assets/images/banners_v2/' . $image_filename;
 
@@ -124,7 +125,8 @@ function marmaray_run_batch_importer_v9() {
             }
             update_post_meta($post_id, '_yoast_wpseo_metadesc', $seo_desc);
             update_post_meta($post_id, 'rank_math_description', $seo_desc);
-            echo "<li>✅ $action: $title</li>";
+            update_post_meta($post_id, 'rank_math_focus_keyword', $focus_keyword);
+            echo "<li>✓  $action: $title</li>";
         } else {
             echo "<li>❌ Hata: $title</li>";
         }
