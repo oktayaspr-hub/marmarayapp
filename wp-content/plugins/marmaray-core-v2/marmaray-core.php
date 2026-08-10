@@ -609,6 +609,6 @@ require_once plugin_dir_path(__FILE__) . 'rank-math-optimizer.php';
 
 require_once MARMARAYAPP_DIR . 'blog-importer-v31.php';
 
-require_once plugin_dir_path( __FILE__ ) . 'marmaray_rota_view.php';
-require_once plugin_dir_path( __FILE__ ) . 'restoration-importer-v7.php';
-require_once plugin_dir_path( __FILE__ ) . 'restoration-importer-v8.php';
+require_once MARMARAYAPP_DIR . 'restoration-importer.php';
+
+require_once plugin_dir_path(__FILE__) . 'restoration-importer-v7.php';
