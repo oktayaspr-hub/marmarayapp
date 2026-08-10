@@ -2,7 +2,7 @@
 return [
     'name' => 'Erenköy',
     'slug' => 'erenkoy-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'erenkoy_marmaray_1786294888376.jpg',
     'title' => 'Erenköy Marmaray İstasyonu Rehberi: Bağdat Caddesi ve Ethem Efendi',
     'keyword' => 'erenköy marmaray',
     'content' => <<<HTML

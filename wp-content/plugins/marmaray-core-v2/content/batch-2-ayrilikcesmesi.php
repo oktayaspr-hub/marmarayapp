@@ -2,7 +2,7 @@
 return [
     'name' => 'Ayrılık Çeşmesi',
     'slug' => 'ayrilik-cesmesi-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'ayrilikcesmesi_marmaray_1786294867794.jpg',
     'title' => 'Ayrılık Çeşmesi Marmaray İstasyonu Rehberi: M4 Metrosu ve Kadıköy Aktarması',
     'keyword' => 'ayrılık çeşmesi marmaray',
     'content' => <<<HTML

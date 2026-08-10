@@ -2,7 +2,7 @@
 return [
     'name' => 'Kazlıçeşme',
     'slug' => 'kazlicesme-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'kazlicesme_marmaray_1786294914199.jpg',
     'title' => 'Kazlıçeşme Marmaray İstasyonu Rehberi: Otopark, Etkinlik ve Ulaşım Merkezi',
     'keyword' => 'kazlıçeşme marmaray',
     'content' => <<<HTML

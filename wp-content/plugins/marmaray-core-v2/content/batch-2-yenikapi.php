@@ -2,7 +2,7 @@
 return [
     'name' => 'Yenikapı',
     'slug' => 'yenikapi-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'yenikapi_marmaray_1786294944459.jpg',
     'title' => 'Yenikapı Marmaray İstasyonu Rehberi: Metro, İDO ve Tarihin Kesişim Noktası',
     'keyword' => 'yenikapı marmaray',
     'content' => <<<HTML

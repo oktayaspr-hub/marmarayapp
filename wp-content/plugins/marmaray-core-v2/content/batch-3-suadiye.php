@@ -2,7 +2,7 @@
 return [
     'name' => 'Suadiye',
     'slug' => 'suadiye-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'suadiye_marmaray_1786294994724.jpg',
     'title' => 'Suadiye Marmaray İstasyonu Rehberi: Bağdat Caddesi ve Eğlence Merkezi',
     'keyword' => 'suadiye marmaray',
     'content' => <<<HTML

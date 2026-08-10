@@ -2,7 +2,7 @@
 return [
     'name' => 'Zeytinburnu',
     'slug' => 'zeytinburnu-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'zeytinburnu_marmaray_1786294956250.jpg',
     'title' => 'Zeytinburnu Marmaray İstasyonu Rehberi: Sefer Saatleri ve Ulaşım Rehberi',
     'keyword' => 'zeytinburnu marmaray',
     'content' => <<<HTML

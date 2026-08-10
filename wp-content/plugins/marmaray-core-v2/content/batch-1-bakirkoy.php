@@ -2,7 +2,7 @@
 return [
     'name' => 'Bakırköy',
     'slug' => 'bakirkoy-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'bakirkoy_marmaray_1786294267903.jpg',
     'title' => 'Bakırköy Marmaray İstasyonu Rehberi: Sefer Saatleri, Metro ve İDO Aktarması',
     'keyword' => 'bakırköy marmaray',
     'content' => <<<HTML

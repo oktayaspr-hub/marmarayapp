@@ -2,7 +2,7 @@
 return [
     'name' => 'Göztepe',
     'slug' => 'goztepe-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'goztepe_marmaray_1786294900435.jpg',
     'title' => 'Göztepe Marmaray İstasyonu Rehberi: Bağdat Caddesi ve Dev Parklara Ulaşım',
     'keyword' => 'göztepe marmaray',
     'content' => <<<HTML

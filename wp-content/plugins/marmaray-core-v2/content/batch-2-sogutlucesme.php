@@ -2,7 +2,7 @@
 return [
     'name' => 'Söğütlüçeşme',
     'slug' => 'sogutlucesme-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'sogutlucesme_marmaray_1786294933785.jpg',
     'title' => 'Söğütlüçeşme Marmaray İstasyonu Rehberi: Metrobüs, YHT ve Fenerbahçe',
     'keyword' => 'söğütlüçeşme marmaray',
     'content' => <<<HTML

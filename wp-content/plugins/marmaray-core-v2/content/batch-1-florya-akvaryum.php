@@ -2,7 +2,7 @@
 return [
     'name' => 'Florya Akvaryum',
     'slug' => 'florya-akvaryum-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'florya_akvaryum_marmaray_1786294277921.jpg',
     'title' => 'Florya Akvaryum Marmaray İstasyonu Rehberi: Sefer Saatleri ve Ulaşım Rehberi',
     'keyword' => 'florya akvaryum marmaray',
     'content' => <<<HTML

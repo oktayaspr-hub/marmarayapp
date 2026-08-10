@@ -2,7 +2,7 @@
 return [
     'name' => 'Halkalı',
     'slug' => 'halkali-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'halkali_marmaray_1786294290840.jpg',
     'title' => 'Halkalı Marmaray İstasyonu Rehberi: Sefer Saatleri ve Ulaşım Rehberi',
     'keyword' => 'halkalı marmaray',
     'content' => <<<HTML

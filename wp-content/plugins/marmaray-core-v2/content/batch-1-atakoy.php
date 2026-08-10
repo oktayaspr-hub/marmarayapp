@@ -2,7 +2,7 @@
 return [
     'name' => 'Ataköy',
     'slug' => 'atakoy-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'atakoy_marmaray_1786294255776.jpg',
     'title' => 'Ataköy Marmaray İstasyonu Rehberi: Sefer Saatleri ve M9 Metro Aktarma Rehberi',
     'keyword' => 'ataköy marmaray',
     'content' => <<<HTML

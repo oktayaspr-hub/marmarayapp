@@ -148,7 +148,7 @@ function marmaray_restoration_importer_v7() {
                     $attach_data = wp_generate_attachment_metadata($attach_id, $dest_path);
                     wp_update_attachment_metadata($attach_id, $attach_data);
                     set_post_thumbnail($post_id, $attach_id);
-                    update_post_meta($attach_id, '_wp_attachment_image_alt', $data['name'] . ' İstasyonu');
+                    update_post_meta($attach_id, '_wp_attachment_image_alt', $data['name'] . ' Marmaray İstasyonu');
                 }
             }
             $imported_count++;
@@ -230,7 +230,7 @@ function marmaray_restoration_importer_v7() {
                             $attach_data = wp_generate_attachment_metadata($attach_id, $dest_path);
                             wp_update_attachment_metadata($attach_id, $attach_data);
                             set_post_thumbnail($post_id, $attach_id);
-                            update_post_meta($attach_id, '_wp_attachment_image_alt', $station_name . ' İstasyonu');
+                            update_post_meta($attach_id, '_wp_attachment_image_alt', $station_name . ' Marmaray İstasyonu');
                             $updated_count++;
                         }
                     }

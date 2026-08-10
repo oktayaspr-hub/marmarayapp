@@ -2,7 +2,7 @@
 return [
     'name' => 'Kartal',
     'slug' => 'kartal-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'kartal_marmaray_1786294974210.jpg',
     'title' => 'Kartal Marmaray İstasyonu Rehberi: İDO Aktarması, Meydan ve Dev Sahil',
     'keyword' => 'kartal marmaray',
     'content' => <<<HTML

@@ -2,7 +2,7 @@
 return [
     'name' => 'Maltepe',
     'slug' => 'maltepe-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'maltepe_marmaray_1786294984968.jpg',
     'title' => 'Maltepe Marmaray İstasyonu Rehberi: Meydan, Çarşı ve Tarihi Doku',
     'keyword' => 'maltepe marmaray',
     'content' => <<<HTML

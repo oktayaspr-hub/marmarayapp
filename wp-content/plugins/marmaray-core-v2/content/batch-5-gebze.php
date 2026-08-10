@@ -2,7 +2,7 @@
 return [
     'name' => 'Gebze',
     'slug' => 'gebze-marmaray-istasyonu',
-    'image' => 'marmaray_train_station_1786232407160.jpg',
+    'image' => 'gebze_marmaray_1786295013544.jpg',
     'title' => 'Gebze Marmaray İstasyonu Rehberi: YHT ve Anadolu Yakasının Son Durağı',
     'keyword' => 'gebze marmaray',
     'content' => <<<HTML
