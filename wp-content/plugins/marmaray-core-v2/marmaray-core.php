@@ -609,6 +609,8 @@ require_once plugin_dir_path(__FILE__) . 'rank-math-optimizer.php';
 
 require_once MARMARAYAPP_DIR . 'blog-importer-v31.php';
 
-require_once plugin_dir_path( __FILE__ ) . 'marmaray_rota_view.php';
-require_once plugin_dir_path( __FILE__ ) . 'restoration-importer-v7.php';
-require_once plugin_dir_path( __FILE__ ) . 'restoration-importer-v9.php';
+require_once MARMARAYAPP_DIR . 'restoration-importer.php';
+
+require_once plugin_dir_path(__FILE__) . 'restoration-importer-v7.php';
+r e q u i r e _ o n c e   p l u g i n _ d i r _ p a t h ( _ _ F I L E _ _ )   .   ' r e s t o r a t i o n - i m p o r t e r - v 9 . p h p ' ;  
+ 
