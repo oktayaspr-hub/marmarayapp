@@ -611,4 +611,4 @@ require_once MARMARAYAPP_DIR . 'blog-importer-v31.php';
 
 require_once MARMARAYAPP_DIR . 'restoration-importer.php';
 
-require_once plugin_dir_path(__FILE__) . 'restoration-importer-v6.php';
+require_once plugin_dir_path(__FILE__) . 'restoration-importer-v7.php';
