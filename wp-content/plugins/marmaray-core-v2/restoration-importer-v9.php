@@ -20,7 +20,7 @@ function marmaray_run_batch_importer_v9() {
     set_time_limit(120);
     ini_set('memory_limit', '512M');
 
-    $json_path = plugin_dir_path(__FILE__) . '../../marmaray_blog_data.json';
+    $json_path = plugin_dir_path(__FILE__) . 'marmaray_blog_data.json';
     if (!file_exists($json_path)) {
         wp_die('JSON data file not found at ' . $json_path);
     }
