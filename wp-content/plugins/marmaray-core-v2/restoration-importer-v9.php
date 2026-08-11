@@ -126,9 +126,9 @@ function marmaray_run_batch_importer_v9() {
             update_post_meta($post_id, '_yoast_wpseo_metadesc', $seo_desc);
             update_post_meta($post_id, 'rank_math_description', $seo_desc);
             update_post_meta($post_id, 'rank_math_focus_keyword', $focus_keyword);
-            echo "<li>✓  $action: $title</li>";
+            echo "<li>OK  $action: $title</li>";
         } else {
-            echo "<li>❌ Hata: $title</li>";
+            echo "<li>ERROR: $title</li>";
         }
     }
     echo "</ul>";
