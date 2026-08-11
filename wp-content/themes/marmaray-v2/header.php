@@ -4,9 +4,37 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
+    <style>
+        body { top: 0 !important; }
+        .goog-te-banner-frame { display: none !important; }
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
+    </style>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'tr', 
+                includedLanguages: 'tr,en', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+        function doGTranslate(lang) {
+            var teCombo = document.querySelector('select.goog-te-combo');
+            if (teCombo) {
+                teCombo.value = lang;
+                teCombo.dispatchEvent(new Event('change'));
+            } else {
+                document.cookie = "googtrans=/tr/" + lang + "; path=/; domain=" + window.location.hostname;
+                document.cookie = "googtrans=/tr/" + lang + "; path=/";
+                window.location.reload();
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body <?php body_class( 'light-theme' ); ?>>
 <?php wp_body_open(); ?>
+<div id="google_translate_element" style="display:none;"></div>
 <div class="sticky-wrapper">
     <!-- ===================== APP DOWNLOAD BANNER ===================== -->
     <div class="app-download-banner">
@@ -52,10 +80,10 @@
                     <img src="https://flagcdn.com/tr.svg" alt="TR"> <span>TR</span>
                 </div>
                 <div class="lang-options">
-                    <div class="lang-option" onclick="document.querySelector('.lang-current img').src='https://flagcdn.com/tr.svg'; document.querySelector('.lang-current span').innerText='TR'">
+                    <div class="lang-option" onclick="document.querySelector('.lang-current img').src='https://flagcdn.com/tr.svg'; document.querySelector('.lang-current span').innerText='TR'; doGTranslate('tr');">
                         <img src="https://flagcdn.com/tr.svg" alt="TR"> <span>TR</span>
                     </div>
-                    <div class="lang-option" onclick="document.querySelector('.lang-current img').src='https://flagcdn.com/gb.svg'; document.querySelector('.lang-current span').innerText='EN'">
+                    <div class="lang-option" onclick="document.querySelector('.lang-current img').src='https://flagcdn.com/gb.svg'; document.querySelector('.lang-current span').innerText='EN'; doGTranslate('en');">
                         <img src="https://flagcdn.com/gb.svg" alt="EN"> <span>EN</span>
                     </div>
                 </div>
