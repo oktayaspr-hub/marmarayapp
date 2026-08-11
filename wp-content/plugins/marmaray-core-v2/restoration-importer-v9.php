@@ -101,17 +101,9 @@ function marmaray_run_batch_importer_v9() {
         // 2. Create or Update Post
         $existing_post = get_page_by_path($slug, OBJECT, 'post');
         
-        $final_content = $content;
-        if ($attachment_id && !is_wp_error($attachment_id)) {
-            $img_url = wp_get_attachment_url($attachment_id);
-            if ($img_url) {
-                $final_content = '<div style="margin-bottom: 20px;"><img src="' . esc_url($img_url) . '" alt="' . esc_attr($image_alt) . '" style="width:100%; max-width:800px; height:auto; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></div>' . "\n" . $content;
-            }
-        }
-
         $post_arr = array(
             'post_title'   => $title,
-            'post_content' => $final_content,
+            'post_content' => $content,
             'post_excerpt' => $excerpt,
             'post_status'  => 'publish',
             'post_type'    => 'post',
