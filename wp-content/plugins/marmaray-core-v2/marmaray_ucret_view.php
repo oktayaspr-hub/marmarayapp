@@ -2,20 +2,20 @@
 <style>
 .app-module-card { background: var(--glass-bg, #ffffff); border-radius: 20px; padding: 30px; border: 1px solid var(--glass-border, rgba(0,0,0,0.1)); box-shadow: var(--shadow-lg, 0 8px 32px rgba(0,0,0,0.05)); backdrop-filter: blur(20px); }
 .app-module-card label { display: block; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; font-size: 1.05rem; }
-.app-module-card select { width: 100%; padding: 16px; border: 2px solid var(--border, rgba(0,0,0,0.08)); border-radius: 12px; background: #ffffff; font-size: 1.1rem; color: var(--text-primary); transition: all 0.3s; font-family: 'Outfit', sans-serif; margin-bottom: 20px; }
-.app-module-card select:focus { border-color: var(--accent-blue); outline: none; box-shadow: 0 0 0 3px rgba(0,86,179,0.1); }
-.primary-btn { width: 100%; padding: 18px; background: var(--accent-blue, #0056b3); color: white; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: 800; cursor: pointer; margin-top: 10px; transition: all 0.3s; font-family: 'Outfit', sans-serif; }
+.app-module-card select { width: 100%; padding: 16px; border: 2px solid var(--border, rgba(0,0,0,0.08)); border-radius: 12px; background: var(--panel-bg); font-size: 1.1rem; color: var(--text-primary); transition: all 0.3s; font-family: 'Outfit', sans-serif; margin-bottom: 20px; }
+.app-module-card select:focus { border-color: #0056b3; outline: none; box-shadow: 0 0 0 3px rgba(0,86,179,0.1); }
+.primary-btn { width: 100%; padding: 18px; background: #0056b3; color: white; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: 800; cursor: pointer; margin-top: 10px; transition: all 0.3s; font-family: 'Outfit', sans-serif; }
 .primary-btn:hover { background: #004494; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,86,179,0.3); }
 
-.route-result-card { background: #ffffff; border-radius: 16px; padding: 25px; margin-top: 30px; border: 1px solid var(--border, rgba(0,0,0,0.08)); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+.route-result-card { background: var(--panel-bg); border-radius: 16px; padding: 25px; margin-top: 30px; border: 1px solid var(--border, rgba(0,0,0,0.08)); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
 .fare-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border, rgba(0,0,0,0.05)); font-size: 1.15rem; }
-.fare-row:last-child { border-bottom: none; font-size: 1.3rem; font-weight: 800; color: var(--accent-blue, #0056b3); }
+.fare-row:last-child { border-bottom: none; font-size: 1.3rem; font-weight: 800; color: #0056b3; }
 .fare-label { font-weight: 600; color: var(--text-secondary); }
 .fare-value { font-weight: 800; color: var(--text-primary); }
 .fare-value.free { color: #28a745; font-size: 1.5rem; }
 
-.module-alert { background: rgba(0, 86, 179, 0.05); border-left: 4px solid var(--accent-blue, #0056b3); padding: 15px 20px; border-radius: 0 12px 12px 0; font-size: 0.95rem; margin-top: 25px; color: var(--text-secondary); line-height: 1.6; }
-.module-alert strong { color: var(--accent-blue, #0056b3); }
+.module-alert { background: rgba(0, 86, 179, 0.05); border-left: 4px solid #0056b3; padding: 15px 20px; border-radius: 0 12px 12px 0; font-size: 0.95rem; margin-top: 25px; color: var(--text-secondary); line-height: 1.6; }
+.module-alert strong { color: #0056b3; }
 </style>
 
 <div class="app-module-card">

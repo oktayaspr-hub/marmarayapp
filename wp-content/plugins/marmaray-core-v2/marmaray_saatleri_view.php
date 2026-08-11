@@ -1,16 +1,15 @@
-
 <style>
 .app-module-card { background: var(--glass-bg, #ffffff); border-radius: 20px; padding: 30px; border: 1px solid var(--glass-border, rgba(0,0,0,0.1)); box-shadow: var(--shadow-lg, 0 8px 32px rgba(0,0,0,0.05)); backdrop-filter: blur(20px); }
 .app-module-card label { display: block; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; font-size: 1.05rem; }
-.app-module-card select { width: 100%; padding: 16px; border: 2px solid var(--border, rgba(0,0,0,0.08)); border-radius: 12px; background: #ffffff; font-size: 1.1rem; color: var(--text-primary); transition: all 0.3s; font-family: 'Outfit', sans-serif; }
+.app-module-card select { width: 100%; padding: 16px; border: 2px solid var(--border, rgba(0,0,0,0.08)); border-radius: 12px; background: var(--panel-bg); font-size: 1.1rem; color: var(--text-primary); transition: all 0.3s; font-family: 'Outfit', sans-serif; }
 .app-module-card select:focus { border-color: var(--accent-blue); outline: none; box-shadow: 0 0 0 3px rgba(0,86,179,0.1); }
 .schedule-tables { display: flex; gap: 20px; margin-top: 30px; }
-.schedule-col { flex: 1; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--border, rgba(0,0,0,0.08)); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+.schedule-col { flex: 1; background: var(--panel-bg); border-radius: 16px; overflow: hidden; border: 1px solid var(--border, rgba(0,0,0,0.08)); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
 .schedule-header { color: white; padding: 15px; text-align: center; font-weight: 800; font-size: 1.2rem; }
-.schedule-list { max-height: 400px; overflow-y: auto; background: #ffffff; }
-.schedule-item { padding: 12px; border-bottom: 1px solid var(--border, rgba(0,0,0,0.05)); text-align: center; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); background: #ffffff; }
+.schedule-list { max-height: 400px; overflow-y: auto; background: var(--panel-bg); }
+.schedule-item { padding: 12px; border-bottom: 1px solid var(--border, rgba(0,0,0,0.05)); text-align: center; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); background: var(--panel-bg); }
 .schedule-item:last-child { border-bottom: none; }
-.schedule-item:nth-child(even) { background: #f8f9fa; }
+.schedule-item:nth-child(even) { background: var(--panel-bg2, #f8f9fa); }
 .module-alert { background: rgba(0, 86, 179, 0.05); border-left: 4px solid var(--accent-blue); padding: 15px 20px; border-radius: 0 12px 12px 0; font-size: 0.95rem; margin-top: 25px; color: var(--text-secondary); line-height: 1.6; }
 .module-alert strong { color: var(--accent-blue); }
 @media (max-width: 768px) { .schedule-tables { flex-direction: column; } }
