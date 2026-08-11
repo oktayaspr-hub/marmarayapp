@@ -111,7 +111,7 @@ const getStationSchedule = (stationName, day) => {
 };
 
 const formatTimetableHTML = (stationName, scheduleWeekday, scheduleWeekend, stationIndex) => {
-    const focusKeyword = `${stationName} Marmaray Saatleri`;
+    const focusKeyword = `${stationName} Marmaray İstasyonu Saatleri`;
     
     const createGrid = (times) => {
         let gridHtml = '<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e0e0e0; margin-bottom: 25px;">';
@@ -217,9 +217,9 @@ for (let i = 0; i < STATIONS.length; i++) {
     const htmlContent = formatTimetableHTML(station, weekday, weekend, i);
     
     // SEO Data
-    const focusKeyword = `${station} Marmaray Saatleri`;
+    const focusKeyword = `${station} Marmaray İstasyonu Saatleri`;
     const title = focusKeyword;
-    const seoDescription = `${station} Marmaray saatleri, güncel Halkalı ve Gebze yönü tren kalkış vakitleri. Hafta içi ve hafta sonu ${station} istasyonu sefer tarifesi tablosu.`;
+    const seoDescription = `${station} Marmaray İstasyonu saatleri, güncel Halkalı ve Gebze yönü tren kalkış vakitleri. Hafta içi ve hafta sonu ${station} istasyonu sefer tarifesi tablosu.`;
     const altText = focusKeyword;
     const slug = slugify(focusKeyword);
 
