@@ -11,7 +11,7 @@ import {
   STATIONS, CUM_G2H, CUM_H2G, TOTAL_G2H, TOTAL_H2G,
   getNextTrains, getTrainPosition, minsToHHMM,
   G2H_WEEKDAY, H2G_WEEKDAY, G2H_WEEKEND, H2G_WEEKEND
-} from './data.js?v=1.9.4';
+} from './data.js?v=1.9.6';
 
 // ============================================================
 // MAP LAYOUT (S-şekli, 1200x440)
@@ -596,11 +596,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
   initDropdown();
   const dropdown = document.getElementById('station-dropdown');
   if(dropdown) {
-      // Find Yenikapı index (usually 21 in STATIONS array)
-      const yenikapiIdx = STATIONS.findIndex(s => s === "Yenikapı");
-      if(yenikapiIdx !== -1) {
-          dropdown.value = yenikapiIdx;
-          setTimeout(() => { dropdown.dispatchEvent(new Event('change')); }, 100);
+      const urlParams = new URLSearchParams(window.location.search);
+      const hasIstasyon = urlParams.has('istasyon');
+      
+      if (!hasIstasyon) {
+          const yenikapiIdx = STATIONS.findIndex(s => s === "Yenikapı");
+          if(yenikapiIdx !== -1) {
+              dropdown.value = yenikapiIdx;
+              setTimeout(() => { dropdown.dispatchEvent(new Event('change')); }, 100);
+          }
+      } else {
+          dropdown.value = selectedIdx !== null ? selectedIdx : 14;
       }
   }
   setupZoom();

@@ -141,12 +141,6 @@ const getCalendarDayTrainRuns = (day, direction) => {
     for (let m = startShort; m <= endShort; m += 15) {
       runs.push({ depMinutes: m, destination: "Pendik", originId: 8, isIntermediate: true }); 
     }
-    
-    const startInner2 = 6 * 60 + 5; 
-    const endInner2 = 21 * 60 + 50; 
-    for (let m = startInner2; m <= endInner2; m += 15) {
-      runs.push({ depMinutes: m, destination: "Maltepe", originId: 11, isIntermediate: true }); 
-    }
 
   } else {
     runs.push({ depMinutes: 6 * 60 + 0, destination: "Ataköy", originId: 30, isIntermediate: true }); 
@@ -174,12 +168,6 @@ const getCalendarDayTrainRuns = (day, direction) => {
     for (let m = startShort; m <= endShort; m += 15) {
       const destination = (m > 20 * 60 + 50) ? "Zeytinburnu" : "Ataköy";
       runs.push({ depMinutes: m, destination: destination, originId: 32, isIntermediate: true }); 
-    }
-    
-    const startInner2 = 6 * 60 + 5;
-    const endInner2 = 22 * 60 + 35;
-    for (let m = startInner2; m <= endInner2; m += 15) {
-      runs.push({ depMinutes: m, destination: "Zeytinburnu", originId: 26, isIntermediate: true }); 
     }
   }
 
