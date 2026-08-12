@@ -136,7 +136,83 @@ const hideTrainPopup = () => { return; };
 // ============================================================
 // CANLI TRENLER (harita üzerinde) - DEVRE DIŞI
 // ============================================================
-const renderLiveTrains = () => { return; };
+const renderLiveTrains = () => {
+  const mapEl = document.getElementById('marmaray-map');
+  if (!mapEl) return;
+  mapEl.querySelectorAll('.train-node').forEach(e=>e.remove());
+
+  const now = new Date();
+  const curMins = now.getHours()*60 + now.getMinutes() + now.getSeconds()/60;
+  const isWeekend = now.getDay()===0 || now.getDay()===6;
+  const g2hSched = isWeekend ? G2H_WEEKEND : G2H_WEEKDAY;
+  const h2gSched = isWeekend ? H2G_WEEKEND : H2G_WEEKDAY;
+  
+  const frag = document.createDocumentFragment();
+
+  const processSchedule = (sched, totalDuration, dir) => {
+    sched.forEach(depMins => {
+      let active = false, elapsed = 0;
+      if (depMins <= curMins && curMins <= depMins + totalDuration) {
+        active = true; elapsed = curMins - depMins;
+      } else if (depMins > 20*60 && curMins < 4*60) {
+        // Night rollover
+        const adjustedNow = curMins + 24*60;
+        if (depMins <= adjustedNow && adjustedNow <= depMins + totalDuration) {
+          active = true; elapsed = adjustedNow - depMins;
+        }
+      }
+      
+      if (active) {
+        const { stationIdx, progress } = getTrainPosition(dir, elapsed);
+        const fromStn = dir === 'G2H' ? stationIdx : STATIONS.length - 1 - stationIdx;
+        const toStn = dir === 'G2H' ? stationIdx + 1 : fromStn - 1;
+        if (dir === 'G2H' ? toStn >= STATIONS.length : toStn < 0) return;
+        
+        const coord = lerp(fromStn, toStn, progress);
+        const coordNext = lerp(fromStn, toStn, Math.min(1, progress + 0.05));
+        const coordPrev = lerp(fromStn, toStn, Math.max(0, progress - 0.05));
+        const angle = Math.atan2(coordNext.y - coordPrev.y, coordNext.x - coordPrev.x) * 180 / Math.PI;
+
+        const el = document.createElement('div');
+        el.className = `train-node ${dir === 'G2H' ? 'train-g2h' : 'train-h2g'}`;
+        el.style.left = coord.x+'px'; el.style.top = coord.y+'px';
+        el.style.setProperty('--angle', angle + 'deg');
+        el.innerHTML = '<svg viewBox="0 0 24 24" class="train-arrow"><polygon points="8,4 20,12 8,20" fill="black"/></svg>';
+        el.dataset.dir = dir; el.dataset.elapsed = elapsed.toFixed(3);
+        
+        const nextIdx = dir === 'G2H' ? Math.min(stationIdx+1, STATIONS.length-1) : Math.max(STATIONS.length-1-stationIdx-1, 0);
+        const dirName = dir === 'G2H' ? 'Halkalı Yönü' : 'Gebze Yönü';
+        el.title = `🚂 ${dirName} | Sonraki: ${STATIONS[nextIdx]}`;
+        frag.appendChild(el);
+      }
+    });
+  };
+
+  processSchedule(g2hSched, TOTAL_G2H, 'G2H');
+  processSchedule(h2gSched, TOTAL_H2G, 'H2G');
+
+  mapEl.appendChild(frag);
+
+  // Tren tıklama & popup
+  mapEl.querySelectorAll('.train-node').forEach(node => {
+    // Hover: yön + sonraki durak tooltip
+    node.addEventListener('mouseenter', () => {
+      const tip = document.getElementById('station-tooltip');
+      if (!tip) return;
+      document.getElementById('tooltip-name').textContent = node.title.split('|')[0].trim();
+      document.getElementById('tooltip-halkali').textContent = node.title.split('|')[1]?.trim() || '';
+      document.getElementById('tooltip-gebze').textContent = '';
+      const wr = document.getElementById('map-wrapper').getBoundingClientRect();
+      const nr = node.getBoundingClientRect();
+      tip.style.left = (nr.left-wr.left+24)+'px';
+      tip.style.top  = (nr.top-wr.top-10)+'px';
+      tip.classList.add('visible');
+    });
+    node.addEventListener('mouseleave', () => {
+      document.getElementById('station-tooltip')?.classList.remove('visible');
+    });
+  });
+};
 
 // ============================================================
 // İSTASYON KARTI (seçili durak)
