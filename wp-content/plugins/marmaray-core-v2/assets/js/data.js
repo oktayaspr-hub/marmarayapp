@@ -294,7 +294,20 @@ export function getLiveTrainsForStation(stationIdx, directionIdx) {
         suanDakika += 1440;
     }
 
-    const islenmisListe = liste.map(item => {
+    let logicalDate = new Date(simdi);
+    if (simdi.getHours() < 4) {
+        logicalDate.setDate(logicalDate.getDate() - 1);
+    }
+    const logicalDay = logicalDate.getDay();
+    const isWeekendNight = (logicalDay === 5 || logicalDay === 6);
+
+    const filteredListe = liste.filter(item => {
+        const kod = item.split('/')[1];
+        if (kod === 'N' && !isWeekendNight) return false;
+        return true;
+    });
+
+    const islenmisListe = filteredListe.map(item => {
         const [saatStr, kod] = item.split('/');
         const [h, m] = saatStr.split(':').map(Number);
         let toplamDakika = h * 60 + m;
@@ -326,15 +339,35 @@ export function getLiveTrainsForStation(stationIdx, directionIdx) {
     return siradakiTrenler;
 }
 
-// Dummy functions for exports that app.js still imports (to avoid crashes before we update app.js)
-export const CUM_G2H = [];
-export const CUM_H2G = [];
-export const TOTAL_G2H = 0;
-export const TOTAL_H2G = 0;
-export const G2H_WEEKDAY = [];
-export const H2G_WEEKDAY = [];
-export const G2H_WEEKEND = [];
-export const H2G_WEEKEND = [];
+const INTERVALS_H_TO_G = [
+    0, 3, 2, 3, 2, 3, 2, 3, 2, 2, 3, 2, 4, 3, 4, 4, 3, 2, 2, 2, 3, 2, 3, 2, 2, 2, 3, 2, 2, 2, 3, 3, 3, 2, 2, 2, 2, 3, 3, 3, 2, 2, 2
+];
+const INTERVALS_G_TO_H = [
+    0, 2, 2, 2, 2, 4, 3, 2, 2, 2, 3, 2, 4, 3, 4, 4, 3, 3, 2, 2, 3, 2, 3, 2, 2, 2, 3, 2, 2, 2, 3, 3, 3, 2, 2, 2, 3, 3, 3, 2, 2, 2, 2
+];
+export const INTERVALS_G2H = [0, ...[...INTERVALS_G_TO_H].slice(1).reverse()];
+export const INTERVALS_H2G = INTERVALS_H_TO_G;
+const buildCum = (arr) => { const c = [0]; for (let i = 1; i < arr.length; i++) c.push(c[i-1] + arr[i]); return c; };
+
+export const CUM_G2H = buildCum(INTERVALS_G2H);
+export const CUM_H2G = buildCum(INTERVALS_H2G);
+export const TOTAL_G2H = CUM_G2H[CUM_G2H.length - 1];
+export const TOTAL_H2G = CUM_H2G[CUM_H2G.length - 1];
+const getDepartures = (stationKey, yon, codes) => {
+    return durakVerileri[stationKey][yon]
+        .filter(item => codes.includes(item.split('/')[1]))
+        .map(item => {
+            const [h, m] = item.split('/')[0].split(':').map(Number);
+            let mins = h * 60 + m;
+            if (mins < 240) mins += 1440;
+            return mins;
+        }).sort((a,b)=>a-b);
+};
+
+export const G2H_WEEKDAY = getDepartures("G", "hYonu", ["H"]);
+export const H2G_WEEKDAY = getDepartures("H", "gYonu", ["G"]);
+export const G2H_WEEKEND = getDepartures("G", "hYonu", ["H", "N"]);
+export const H2G_WEEKEND = getDepartures("H", "gYonu", ["G", "N"]);
 
 export function getNextTrains(idx, dirString) {
     if (dirString === 'G2H') return getLiveTrainsForStation(idx, 0); // Halkalı yönü
@@ -346,7 +379,19 @@ export function getNextTrains(idx, dirString) {
         gebze: getLiveTrainsForStation(idx, 1)
     };
 }
-export function getTrainPosition() { return { x: 0, y: 0 }; }
+export const getTrainPosition = (direction, elapsedMins) => {
+  const cum = direction === 'G2H' ? CUM_G2H : CUM_H2G;
+  const total = cum[cum.length - 1];
+  if (elapsedMins <= 0) return { stationIdx: 0, progress: 0 };
+  if (elapsedMins >= total) return { stationIdx: cum.length - 2, progress: 1 };
+  for (let i = 0; i < cum.length - 1; i++) {
+    if (elapsedMins >= cum[i] && elapsedMins < cum[i+1]) {
+      const seg = cum[i+1] - cum[i];
+      return { stationIdx: i, progress: seg > 0 ? (elapsedMins - cum[i]) / seg : 0 };
+    }
+  }
+  return { stationIdx: cum.length - 2, progress: 1 };
+};
 export function minsToHHMM(m) { 
     let hh = Math.floor(m/60)%24; 
     let mm = Math.floor(m%60); 
