@@ -2,8 +2,11 @@
 deployment:
   tasks:
     - /bin/cp -R wp-content/plugins/marmaray-core-v2 /home/poncixon/public_html/wp-content/plugins/ || true
+    - /bin/cp -R wp-content/plugins/marmaray-translator /home/poncixon/public_html/wp-content/plugins/ || true
     - /bin/cp -R wp-content/themes/marmaray-v2 /home/poncixon/public_html/wp-content/themes/ || true
     - /bin/cp -R wp-content/plugins/marmaray-core-v2 /home/poncixon/marmarayapp.com/wp-content/plugins/ || true
+    - /bin/cp -R wp-content/plugins/marmaray-translator /home/poncixon/marmarayapp.com/wp-content/plugins/ || true
     - /bin/cp -R wp-content/themes/marmaray-v2 /home/poncixon/marmarayapp.com/wp-content/themes/ || true
     - /bin/cp -R wp-content/plugins/marmaray-core-v2 /home/poncixon/www.marmarayapp.com/wp-content/plugins/ || true
+    - /bin/cp -R wp-content/plugins/marmaray-translator /home/poncixon/www.marmarayapp.com/wp-content/plugins/ || true
     - /bin/cp -R wp-content/themes/marmaray-v2 /home/poncixon/www.marmarayapp.com/wp-content/themes/ || true
