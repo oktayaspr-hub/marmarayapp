@@ -11,7 +11,7 @@ import {
   STATIONS, CUM_G2H, CUM_H2G, TOTAL_G2H, TOTAL_H2G,
   getNextTrains, getTrainPosition, minsToHHMM,
   G2H_WEEKDAY, H2G_WEEKDAY, G2H_WEEKEND, H2G_WEEKEND
-} from './data.js?v=1.9.6';
+} from './data.js?v=1.9.7';
 
 // ============================================================
 // MAP LAYOUT (S-şekli, 1200x440)
