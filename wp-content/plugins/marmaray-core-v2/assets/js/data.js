@@ -354,6 +354,7 @@ export const CUM_H2G = buildCum(INTERVALS_H2G);
 export const TOTAL_G2H = CUM_G2H[CUM_G2H.length - 1];
 export const TOTAL_H2G = CUM_H2G[CUM_H2G.length - 1];
 const getDepartures = (stationKey, yon, codes) => {
+    if (!durakVerileri[stationKey]) return [];
     return durakVerileri[stationKey][yon]
         .filter(item => codes.includes(item.split('/')[1]))
         .map(item => {
@@ -364,10 +365,10 @@ const getDepartures = (stationKey, yon, codes) => {
         }).sort((a,b)=>a-b);
 };
 
-export const G2H_WEEKDAY = getDepartures("G", "hYonu", ["H"]);
-export const H2G_WEEKDAY = getDepartures("H", "gYonu", ["G"]);
-export const G2H_WEEKEND = getDepartures("G", "hYonu", ["H", "N"]);
-export const H2G_WEEKEND = getDepartures("H", "gYonu", ["G", "N"]);
+export const G2H_WEEKDAY = getDepartures("gebze", "hYonu", ["H"]);
+export const H2G_WEEKDAY = getDepartures("halkali", "gYonu", ["G"]);
+export const G2H_WEEKEND = getDepartures("gebze", "hYonu", ["H", "N"]);
+export const H2G_WEEKEND = getDepartures("halkali", "gYonu", ["G", "N"]);
 
 export function getNextTrains(idx, dirString) {
     if (dirString === 'G2H') return getLiveTrainsForStation(idx, 0); // Halkalı yönü
