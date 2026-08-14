@@ -346,7 +346,7 @@ body {
 }
 
 .map-tcdd-header {
-    background: #cc0000;
+    background: linear-gradient(135deg, #cc0000, #0a57a9);
     color: white;
     padding: 12px 20px;
     display: flex;
@@ -354,7 +354,7 @@ body {
     align-items: center;
     gap: 15px;
     flex-wrap: wrap;
-    border-bottom: 4px solid #990000;
+    border-bottom: none;
 }
 .tcdd-logos {
     display: flex;
@@ -377,7 +377,7 @@ body {
 .last-station-label { font-size: 0.82rem; opacity: 0.85; }
 
 .map-destination-badge {
-    background: #880000;
+    background: transparent;
     padding: 7px 16px;
     border-radius: 6px;
     font-size: 0.9rem;
@@ -614,7 +614,7 @@ body {
     flex-shrink: 0;
 }
 .live-dot-anim {
-    width: 9px; height: 9px;
+    width: 14px; height: 14px;
     background: #10b981;
     border-radius: 50%;
     animation: live-pulse 1.2s ease-in-out infinite;

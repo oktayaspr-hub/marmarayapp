@@ -71,8 +71,8 @@ get_header(); ?>
                     </span>
                 </div>
                 <div class="map-destination-badge" id="map-dest-badge" style="display: flex; align-items: center; gap: 8px;">
-                    <span class="live-dot-anim" style="background: #ef4444;"></span>
-                    CANLI MARMARAY TAKİBİ
+                    <span class="live-dot-anim"></span>
+                    YAPAY ZEKA İLE SİNYALİZASYON
                 </div>
             </div>
 
