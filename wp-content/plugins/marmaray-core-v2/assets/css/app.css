@@ -981,7 +981,7 @@ body {
         font-weight: bolder;
         color: var(--text-primary);
         white-space: nowrap;
-        margin-left: -1px;
+        margin-left: -9px;
     }
     .glass-header {
         padding: 10px 10px !important;
