@@ -346,7 +346,7 @@ body {
 }
 
 .map-tcdd-header {
-    background: linear-gradient(135deg, #cc0000, #0a57a9);
+    background: #0a57a9;
     color: white;
     padding: 12px 20px;
     display: flex;
