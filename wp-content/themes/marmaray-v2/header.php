@@ -84,12 +84,17 @@
     </header>
 
     <!-- ===================== LIVE ANNOUNCEMENT BANNER ===================== -->
+    <?php 
+        $duyuru_metni = get_option( 'marmarayapp_duyuru_metni', '' );
+        if ( ! empty( trim( $duyuru_metni ) ) ) : 
+    ?>
     <div class="announcement-banner">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" style="font-weight: bold;">
             <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/>
         </svg>
         <marquee scrollamount="4" style="max-width:800px;">
-            <strong style="font-weight:900;">Duyuru:</strong> Tren hızı, istasyon trafiği ve yolcu yoğunluğuna bağlı olarak sefer saatlerinde mikro farklılıklar olabilir. İyi yolculuklar dileriz.
+            <strong style="font-weight:900;">Duyuru:</strong> <?php echo esc_html( $duyuru_metni ); ?>
         </marquee>
     </div>
+    <?php endif; ?>
 </div>
