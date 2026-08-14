@@ -82,6 +82,35 @@ function marmaray_rank_math_setup() {
             }
         }
 
+        // 5. Ana Sayfa (Front Page) İçin Otomatik Şema (Schema) Ayarı
+        $front_page_id = get_option('page_on_front');
+        if ($front_page_id) {
+            // Ana sayfa için zengin sonuç (Rich Snippet) türünü seçiyoruz
+            update_post_meta($front_page_id, 'rank_math_rich_snippet', 'software');
+            
+            // Software Application (Yazılım Uygulaması) şeması oluşturuyoruz
+            $schema_data = [
+                'SoftwareApplication' => [
+                    '@type' => 'SoftwareApplication',
+                    'metadata' => [
+                        'title' => 'SoftwareApplication',
+                        'type' => 'template',
+                        'isPrimary' => true
+                    ],
+                    'name' => '%title%',
+                    'operatingSystem' => 'Web, Android, iOS',
+                    'applicationCategory' => 'WebApplication',
+                    'description' => '%seo_description%',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'TRY'
+                    ]
+                ]
+            ];
+            update_post_meta($front_page_id, 'rank_math_schema_SoftwareApplication', $schema_data);
+        }
+
         echo "<h1>Rank Math Özel MarmarayApp SEO Ayarları Başarıyla Uygulandı!</h1>";
         echo "<p>Eklenti ayarları sitenize özel optimize edildi. Lütfen WordPress Yöneticisi üzerinden Rank Math panosuna gidip Google Search Console bağlantınızı yapmayı unutmayın.</p>";
         echo "<a href='/wp-admin/admin.php?page=rank-math'>Rank Math Paneline Git</a>";
