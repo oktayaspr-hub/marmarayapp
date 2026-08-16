@@ -3,15 +3,15 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="<?php echo esc_url( get_site_url( null, '/favicon.ico' ) ); ?>" sizes="any">
-    <link rel="apple-touch-icon" href="<?php echo esc_url( get_site_url( null, '/apple-touch-icon.png' ) ); ?>">
+    <link rel="icon" href="https://www.marmarayapp.com/wp-content/uploads/2026/08/marmarayapp_logo.png" sizes="any">
+    <link rel="apple-touch-icon" href="https://www.marmarayapp.com/wp-content/uploads/2026/08/marmarayapp_logo.png">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class( 'light-theme' ); ?>>
 <?php wp_body_open(); ?>
 <div class="sticky-wrapper">
     <!-- ===================== APP DOWNLOAD BANNER ===================== -->
-    <div class="app-download-banner">
+    <div class="app-download-banner" data-nosnippet>
         <div class="app-banner-content">
             <div class="app-banner-text">
                 <span class="app-banner-title">MarmarayApp Cebinizde!</span>
@@ -31,7 +31,7 @@
     </div>
     
     <!-- ===================== GLASS HEADER NAVBAR ===================== -->
-    <header class="glass-header" id="main-header">
+    <header class="glass-header" id="main-header" data-nosnippet>
         <div class="logo">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
                 <img src="<?php echo esc_url( plugins_url( 'assets/images/marmaray_logo_new.png', WP_PLUGIN_DIR . '/marmaray-core-v2/marmaray-core.php' ) ); ?>" alt="MarmarayApp Logo" width="110" height="110" style="background: transparent;">
