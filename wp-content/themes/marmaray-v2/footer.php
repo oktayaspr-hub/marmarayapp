@@ -15,7 +15,7 @@
             </div>
             <div class="footer-col">
                 <h4>Yasal Sözleşmeler</h4>
-                <a href="<?php echo esc_url( home_url( '/gizlilik-sozlesmesi' ) ); ?>">Gizlilik Sözleşmesi</a>
+                <a href="<?php echo esc_url( home_url( '/gizlilik-politikasi' ) ); ?>">Gizlilik Politikası</a>
                 <a href="<?php echo esc_url( home_url( '/cerez-politikasi' ) ); ?>">Çerez Politikası</a>
                 <a href="<?php echo esc_url( home_url( '/kvkk-aydinlatma-metni' ) ); ?>">KVKK Aydınlatma Metni</a>
             </div>
