@@ -3,6 +3,8 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<?php echo esc_url( get_site_url( null, '/favicon.ico' ) ); ?>" sizes="any">
+    <link rel="apple-touch-icon" href="<?php echo esc_url( get_site_url( null, '/apple-touch-icon.png' ) ); ?>">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class( 'light-theme' ); ?>>
