@@ -606,3 +606,6 @@ add_action('init', function() {
 
 
 
+
+// SEOPress Optimizer
+require_once plugin_dir_path(__FILE__) . 'seopress-optimizer.php';
