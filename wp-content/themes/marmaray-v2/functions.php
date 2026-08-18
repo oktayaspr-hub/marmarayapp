@@ -29,20 +29,7 @@ function marmaray_blog_posts_per_page($query) {
 // Remove the 32px html margin bump injected by WP admin bar properly
 add_theme_support('admin-bar', array('callback' => '__return_false'));
 
-// Rank Math Homepage Overrides
-add_filter( 'rank_math/frontend/title', function( $title ) {
-    if ( is_front_page() || is_home() ) {
-        return 'MarmarayApp - Canlı Marmaray Takip ve Sefer Saatleri';
-    }
-    return $title;
-});
 
-add_filter( 'rank_math/frontend/description', function( $description ) {
-    if ( is_front_page() || is_home() ) {
-        return 'Marmaray sefer saatleri, canlı Marmaray takip, tüm istasyon bilgileri, güncel Marmaray duyuruları ve daha fazlası yalnızca MarmarayApp\'de!';
-    }
-    return $description;
-});
 
 add_action('wp_head', function() {
     if ( is_front_page() || is_home() ) {

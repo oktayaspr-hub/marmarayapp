@@ -11,7 +11,7 @@
 <?php wp_body_open(); ?>
 <div class="sticky-wrapper">
     <!-- ===================== APP DOWNLOAD BANNER ===================== -->
-    <div class="app-download-banner" data-nosnippet>
+    <div class="app-download-banner">
         <div class="app-banner-content">
             <div class="app-banner-text">
                 <span class="app-banner-title">MarmarayApp Cebinizde!</span>
@@ -31,7 +31,7 @@
     </div>
     
     <!-- ===================== GLASS HEADER NAVBAR ===================== -->
-    <header class="glass-header" id="main-header" data-nosnippet>
+    <header class="glass-header" id="main-header">
         <div class="logo">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
                 <img src="<?php echo esc_url( plugins_url( 'assets/images/marmaray_logo_new.png', WP_PLUGIN_DIR . '/marmaray-core-v2/marmaray-core.php' ) ); ?>" alt="MarmarayApp Logo" width="110" height="110" style="background: transparent;">

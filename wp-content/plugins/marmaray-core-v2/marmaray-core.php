@@ -603,8 +603,6 @@ add_action('init', function() {
 
 
 
-// Rank Math Optimizer
-require_once plugin_dir_path(__FILE__) . 'rank-math-optimizer.php';
 
 
 
