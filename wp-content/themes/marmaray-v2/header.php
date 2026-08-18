@@ -6,6 +6,15 @@
     <link rel="icon" href="https://www.marmarayapp.com/wp-content/uploads/2026/08/marmarayapp_logo.png" sizes="any">
     <link rel="apple-touch-icon" href="https://www.marmarayapp.com/wp-content/uploads/2026/08/marmarayapp_logo.png">
     <?php wp_head(); ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDN4H0HYDC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WDN4H0HYDC');
+    </script>
 </head>
 <body <?php body_class( 'light-theme' ); ?>>
 <?php wp_body_open(); ?>
